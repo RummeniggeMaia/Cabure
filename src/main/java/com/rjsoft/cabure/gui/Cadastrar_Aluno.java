@@ -45,10 +45,7 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
         labelEmail = new javax.swing.JLabel();
         labelObservacao = new javax.swing.JLabel();
         labelSexo = new javax.swing.JLabel();
-        textFieldRG = new javax.swing.JTextField();
-        textFieldCPF = new javax.swing.JTextField();
         textFieldEmail = new javax.swing.JTextField();
-        textFieldDataDeNascimento = new javax.swing.JTextField();
         radioButtonMasculino = new javax.swing.JRadioButton();
         radioButtonFeminino = new javax.swing.JRadioButton();
         scrollObservacao = new javax.swing.JScrollPane();
@@ -57,6 +54,11 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
         labelSituacao = new javax.swing.JLabel();
         checkBoxAtivo = new javax.swing.JCheckBox();
         checkBoxInativo = new javax.swing.JCheckBox();
+        textFieldCPF = new javax.swing.JFormattedTextField();
+        textFieldRG = new javax.swing.JFormattedTextField();
+        labelTelefone = new javax.swing.JLabel();
+        textFieldTelefone = new javax.swing.JFormattedTextField();
+        textFieldDataDeNascimento = new javax.swing.JFormattedTextField();
 
         buttonGroupSexo.add(radioButtonMasculino);
         buttonGroupSexo.add(radioButtonFeminino);
@@ -114,24 +116,6 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
         labelSexo.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelSexo.setText("Sexo:");
 
-        textFieldRG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldRGActionPerformed(evt);
-            }
-        });
-
-        textFieldCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCPFActionPerformed(evt);
-            }
-        });
-
-        textFieldDataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldDataDeNascimentoActionPerformed(evt);
-            }
-        });
-
         radioButtonMasculino.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         radioButtonMasculino.setText("Masculino");
         radioButtonMasculino.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +154,42 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
             }
         });
 
+        try {
+            textFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        textFieldCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCPFActionPerformed(evt);
+            }
+        });
+
+        try {
+            textFieldRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        textFieldRG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldRGActionPerformed(evt);
+            }
+        });
+
+        labelTelefone.setText("Telefone:");
+
+        try {
+            textFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            textFieldDataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,73 +199,84 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelEndereco)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(labelNome)
-                                .addComponent(labelMatricula)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelEndereco)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(labelNome)
+                                        .addComponent(labelMatricula)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelSituacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(checkBoxAtivo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(checkBoxInativo)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textFieldNome)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelSituacao)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkBoxAtivo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkBoxInativo)
+                                        .addGap(0, 132, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(textFieldEndereco)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelNumero)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFieldEndereco)
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelBairro)
+                                    .addComponent(labelRG)
+                                    .addComponent(labelEmail))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelNumero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(textFieldEmail)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(textFieldBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                            .addComponent(textFieldRG))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labelDataDeNascimento)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldDataDeNascimento))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 35, Short.MAX_VALUE)
+                                                .addComponent(labelCPF)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(textFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(labelCadastroDeAluno)
+                        .addGap(132, 132, 132))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(scrollObservacao)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(labelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldEmail))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelBairro)
-                            .addComponent(labelRG))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldRG)
-                            .addComponent(textFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelDataDeNascimento)
+                                .addComponent(labelTelefone)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldDataDeNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelCPF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(scrollObservacao, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelObservacao)
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(labelSexo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonMasculino)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(radioButtonFeminino)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelObservacao)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labelSexo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(radioButtonMasculino)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(radioButtonFeminino)))))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
+                .addGap(182, 182, 182)
                 .addComponent(buttonSalvar)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelCadastroDeAluno)
-                .addGap(132, 132, 132))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,25 +309,29 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelRG)
-                    .addComponent(textFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCPF)
                     .addComponent(textFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCPF))
+                    .addComponent(textFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefone)
+                    .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSexo)
                     .addComponent(radioButtonMasculino)
                     .addComponent(radioButtonFeminino))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addComponent(labelObservacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollObservacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonSalvar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -308,10 +343,6 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldBairroActionPerformed
 
-    private void textFieldDataDeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDataDeNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldDataDeNascimentoActionPerformed
-
     private void radioButtonMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonMasculinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioButtonMasculinoActionPerformed
@@ -319,10 +350,6 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSalvarActionPerformed
-
-    private void textFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCPFActionPerformed
 
     private void radioButtonFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonFemininoActionPerformed
         // TODO add your handling code here:
@@ -332,13 +359,17 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldNomeActionPerformed
 
-    private void textFieldRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldRGActionPerformed
-
     private void checkBoxInativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxInativoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxInativoActionPerformed
+
+    private void textFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldCPFActionPerformed
+
+    private void textFieldRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldRGActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -359,18 +390,20 @@ public class Cadastrar_Aluno extends javax.swing.JPanel {
     private javax.swing.JLabel labelRG;
     private javax.swing.JLabel labelSexo;
     private javax.swing.JLabel labelSituacao;
+    private javax.swing.JLabel labelTelefone;
     private javax.swing.JRadioButton radioButtonFeminino;
     private javax.swing.JRadioButton radioButtonMasculino;
     private javax.swing.JScrollPane scrollObservacao;
     private javax.swing.JTextArea textAreaObservacao;
     private javax.swing.JTextField textFieldBairro;
-    private javax.swing.JTextField textFieldCPF;
-    private javax.swing.JTextField textFieldDataDeNascimento;
+    private javax.swing.JFormattedTextField textFieldCPF;
+    private javax.swing.JFormattedTextField textFieldDataDeNascimento;
     private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldEndereco;
     private javax.swing.JTextField textFieldMatricula;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldNumero;
-    private javax.swing.JTextField textFieldRG;
+    private javax.swing.JFormattedTextField textFieldRG;
+    private javax.swing.JFormattedTextField textFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,12 +9,12 @@ package cabure.gui;
  *
  * @author jrpmaia
  */
-public class home extends javax.swing.JPanel {
+public class Home extends javax.swing.JPanel {
 
     /**
-     * Creates new form home
+     * Creates new form Home
      */
-    public home() {
+    public Home() {
         initComponents();
     }
 
@@ -27,19 +27,123 @@ public class home extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelSistemaDeGerenciamento = new javax.swing.JLabel();
+        buttonGerenciarAlunos = new javax.swing.JButton();
+        buttonGerenciarLivros = new javax.swing.JButton();
+        buttonReservaDeLivro = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+
+        labelSistemaDeGerenciamento.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        labelSistemaDeGerenciamento.setText("Sistema de Gerenciamento de Bibliotecas - Caburé");
+
+        buttonGerenciarAlunos.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        buttonGerenciarAlunos.setText("Gerenciar Alunos");
+        buttonGerenciarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGerenciarAlunosActionPerformed(evt);
+            }
+        });
+
+        buttonGerenciarLivros.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        buttonGerenciarLivros.setText("Gerenciar Livros");
+        buttonGerenciarLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGerenciarLivrosActionPerformed(evt);
+            }
+        });
+
+        buttonReservaDeLivro.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        buttonReservaDeLivro.setText("Empréstimo de Livros");
+        buttonReservaDeLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReservaDeLivroActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel2.setText("Lista de pessoas em atraso na entrega de Livros");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 62, Short.MAX_VALUE)
+                        .addComponent(labelSistemaDeGerenciamento)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(buttonGerenciarAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buttonReservaDeLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buttonGerenciarLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addGap(61, 61, 61)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelSistemaDeGerenciamento)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonGerenciarAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonGerenciarLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonReservaDeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonGerenciarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerenciarAlunosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonGerenciarAlunosActionPerformed
+
+    private void buttonGerenciarLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerenciarLivrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonGerenciarLivrosActionPerformed
+
+    private void buttonReservaDeLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReservaDeLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonReservaDeLivroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonGerenciarAlunos;
+    private javax.swing.JButton buttonGerenciarLivros;
+    private javax.swing.JButton buttonReservaDeLivro;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelSistemaDeGerenciamento;
     // End of variables declaration//GEN-END:variables
 }

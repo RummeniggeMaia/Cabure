@@ -9,12 +9,12 @@ package cabure.gui;
  *
  * @author jrpmaia
  */
-public class pesquisar_aluno extends javax.swing.JPanel {
+public class Pesquisar_Aluno extends javax.swing.JPanel {
 
     /**
      * Creates new form pes_aluno
      */
-    public pesquisar_aluno() {
+    public Pesquisar_Aluno() {
         initComponents();
     }
 
@@ -66,7 +66,7 @@ public class pesquisar_aluno extends javax.swing.JPanel {
             }
         });
 
-        labelPesquisarAluno.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        labelPesquisarAluno.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         labelPesquisarAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPesquisarAluno.setText("Pesquisar Aluno");
         labelPesquisarAluno.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -90,17 +90,16 @@ public class pesquisar_aluno extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
+                            .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(buttonPesquisar)
-                                .addGap(199, 199, 199))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(labelPesquisarAluno)
-                                .addGap(180, 180, 180))))))
+                        .addComponent(buttonPesquisar)
+                        .addGap(199, 199, 199))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(labelPesquisarAluno)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

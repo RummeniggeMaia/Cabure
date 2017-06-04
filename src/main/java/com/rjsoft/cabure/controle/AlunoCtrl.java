@@ -58,6 +58,10 @@ public class AlunoCtrl {
         long contagem = dao.contar(paginador.getCondicao());
         paginador.setCont(contagem);
     }
+    
+    public AlunoJpaController getDao() {
+        return dao;
+    }
 
     public void fecharConexao() {
         if (dao != null) {

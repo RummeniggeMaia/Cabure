@@ -5,13 +5,17 @@
  */
 package com.rjsoft.cabure.gui;
 
+import com.rjsoft.cabure.gui.botoes.BotaoIcone;
 import com.rjsoft.cabure.gui.listeners.AcordeonListener;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -80,43 +84,64 @@ public class Acordeon extends javax.swing.JPanel {
         botPesAlunos = new javax.swing.JButton();
         botCadLivro = new javax.swing.JButton();
         botPesLivros = new javax.swing.JButton();
-        menuAluno1 = new javax.swing.JButton();
+        logo = new javax.swing.JLabel();
+        menuInicio = new javax.swing.JButton();
         menuAluno = new javax.swing.JButton();
         menuLivro = new javax.swing.JButton();
         menuEmprestimo = new javax.swing.JButton();
 
         botCadAluno.setBackground(new java.awt.Color(255, 255, 255));
         botCadAluno.setText("Cadastrar");
+        botCadAluno = new BotaoIcone("Cadastrar", BotaoIcone.ICON_ADD, false);
+        botCadAluno.setBackground(new java.awt.Color(200, 200, 200));
         botCadAluno.setMaximumSize(new java.awt.Dimension(1000, 32));
 
         botPesAlunos.setBackground(new java.awt.Color(255, 255, 255));
         botPesAlunos.setText("Pesquisar");
+        botPesAlunos = new BotaoIcone("Pesquisar", BotaoIcone.ICON_PESQUISAR, false);
+        botPesAlunos.setBackground(new java.awt.Color(200, 200, 200));
         botPesAlunos.setMaximumSize(new java.awt.Dimension(1000, 32));
 
         botCadLivro.setBackground(new java.awt.Color(255, 255, 255));
         botCadLivro.setText("Cadastrar");
+        botCadLivro = new BotaoIcone("Cadastrar", BotaoIcone.ICON_ADD, false);
+        botCadLivro.setBackground(new java.awt.Color(200, 200, 200));
         botCadLivro.setMaximumSize(new java.awt.Dimension(1000, 32));
 
         botPesLivros.setBackground(new java.awt.Color(255, 255, 255));
         botPesLivros.setText("Pesquisar");
+        botPesLivros = new BotaoIcone("Pesquisar", BotaoIcone.ICON_PESQUISAR, false);
+        botPesLivros.setBackground(new java.awt.Color(200, 200, 200));
         botPesLivros.setMaximumSize(new java.awt.Dimension(1000, 32));
 
         setMinimumSize(new java.awt.Dimension(100, 100));
         setPreferredSize(new java.awt.Dimension(200, 100));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        menuAluno1.setText("Inicio");
-        menuAluno1.setMaximumSize(new java.awt.Dimension(1000, 32));
-        menuAluno1.addActionListener(new java.awt.event.ActionListener() {
+        try {
+            ImageIcon ii = new ImageIcon(ImageIO.read(new File("imagens/cabure_logo.png")));
+            logo.setIcon(ii);
+        } catch (Exception ex) {
+        }
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(logo);
+
+        menuInicio.setText("Inicio");
+        menuInicio.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuInicio = new BotaoIcone("Inicio", BotaoIcone.ICON_HOME, false);
+        menuInicio.setMaximumSize(new Dimension(1000, 32));
+        menuInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAluno1ActionPerformed(evt);
+                menuInicioActionPerformed(evt);
             }
         });
         add(Box.createRigidArea(new Dimension(1, 30)));
-        add(menuAluno1);
+        add(menuInicio);
 
         menuAluno.setText("Alunos");
         menuAluno.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuAluno = new BotaoIcone("Alunos", BotaoIcone.ICON_ALUNO, true);
+        menuAluno.setMaximumSize(new Dimension(1000, 32));
         menuAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuAlunoActionPerformed(evt);
@@ -126,6 +151,8 @@ public class Acordeon extends javax.swing.JPanel {
 
         menuLivro.setText("Livros");
         menuLivro.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuLivro = new BotaoIcone("Livros", BotaoIcone.ICON_LIVRO, true);
+        menuLivro.setMaximumSize(new Dimension(1000, 32));
         menuLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuLivroActionPerformed(evt);
@@ -135,6 +162,8 @@ public class Acordeon extends javax.swing.JPanel {
 
         menuEmprestimo.setText("Empréstimos");
         menuEmprestimo.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
+        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
         menuEmprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuEmprestimoActionPerformed(evt);
@@ -169,9 +198,9 @@ public class Acordeon extends javax.swing.JPanel {
         revalidate();
     }//GEN-LAST:event_menuLivroActionPerformed
 
-    private void menuAluno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAluno1ActionPerformed
+    private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
         botaoPressionado(AcordeonListener.MENU_INICIO);
-    }//GEN-LAST:event_menuAluno1ActionPerformed
+    }//GEN-LAST:event_menuInicioActionPerformed
 
     private void menuEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEmprestimoActionPerformed
         botaoPressionado(AcordeonListener.MENU_EMPRESTIMO);
@@ -183,9 +212,10 @@ public class Acordeon extends javax.swing.JPanel {
     private javax.swing.JButton botCadLivro;
     private javax.swing.JButton botPesAlunos;
     private javax.swing.JButton botPesLivros;
+    private javax.swing.JLabel logo;
     private javax.swing.JButton menuAluno;
-    private javax.swing.JButton menuAluno1;
     private javax.swing.JButton menuEmprestimo;
+    private javax.swing.JButton menuInicio;
     private javax.swing.JButton menuLivro;
     // End of variables declaration//GEN-END:variables
 }

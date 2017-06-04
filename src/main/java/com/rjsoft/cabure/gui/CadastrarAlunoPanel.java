@@ -237,7 +237,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
 
         jCheckBox1.setText("jCheckBox1");
 
-        labelCadastroDeAluno.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        labelCadastroDeAluno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         labelCadastroDeAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCadastroDeAluno.setText("Cadastro de Aluno");
 
@@ -411,7 +411,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelCadastroDeAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+                    .addComponent(labelCadastroDeAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textFieldNome)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelNome)
@@ -461,7 +461,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(labelErrNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                             .addComponent(textFieldNumero)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()

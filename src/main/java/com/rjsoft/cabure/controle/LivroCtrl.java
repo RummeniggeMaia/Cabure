@@ -62,6 +62,10 @@ public class LivroCtrl {
         long contagem = dao.contar(paginador.getCondicao());
         paginador.setCont(contagem);
     }
+    
+    public LivroJpaController getDao() {
+        return dao;
+    }
 
     public void fecharConexao() {
         if (dao != null) {

@@ -212,7 +212,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             }
         });
 
-        labelPesquisarLivro.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        labelPesquisarLivro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         labelPesquisarLivro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPesquisarLivro.setText("Pesquisar Livro");
         labelPesquisarLivro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -231,9 +231,8 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelPesquisarLivro, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                     .addComponent(textFieldTitulo)
-                    .addComponent(scrollTabelaAlunos)
+                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTitulo)
@@ -254,12 +253,14 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagUltima)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(textFieldPrimeiroAutor))
+                    .addComponent(textFieldPrimeiroAutor)
+                    .addComponent(labelPesquisarLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(labelPesquisarLivro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitulo)
@@ -272,7 +273,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)
@@ -358,7 +359,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             data[i][3] = l.getPrimeiroAutor();
             data[i][4] = l.getSegundoAutor();
             data[i][5] = l.getTerceiroAutor();
-            data[i][6] = l.getLocal();
+            data[i][6] = l.getLocalidade();
             data[i][7] = l.getNumeroEdicao();
             data[i][8] = l.getVolume();
             data[i][9] = l.getNumeroPaginas();

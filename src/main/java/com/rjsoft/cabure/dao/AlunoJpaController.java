@@ -55,6 +55,12 @@ public class AlunoJpaController {
         return entityManager.find(Aluno.class, id);
     }
 
+    public Aluno pesquisarPorMatricula(String matricula) {
+        Query query = entityManager.createQuery(
+                "SELECT a FROM Aluno a WHERE a.matricula = " + matricula);
+        return (Aluno) query.getSingleResult();
+    }
+    
     public void fechar() {
         if (entityManager != null) {
             entityManager.close();

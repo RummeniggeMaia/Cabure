@@ -1,12 +1,15 @@
 package com.rjsoft.cabure.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.validation.constraints.Min;
 
@@ -42,8 +45,11 @@ public class Aluno implements Serializable {
     private String telefone;
     private Character sexo;
     private String observacao;
+    @OneToMany(mappedBy = "aluno")
+    private List<Emprestimo> emprestimos;
 
     public Aluno() {
+        this.emprestimos = new ArrayList();
     }
 
     public Aluno(
@@ -74,6 +80,7 @@ public class Aluno implements Serializable {
         this.telefone = telefone;
         this.sexo = sexo;
         this.observacao = observacao;
+        this.emprestimos = new ArrayList();
     }
 
     public Integer getID() {
@@ -188,4 +195,11 @@ public class Aluno implements Serializable {
         this.observacao = observação;
     }
 
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
 }

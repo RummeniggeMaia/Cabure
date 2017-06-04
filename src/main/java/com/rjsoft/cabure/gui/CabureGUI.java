@@ -2,6 +2,7 @@ package com.rjsoft.cabure.gui;
 
 import com.rjsoft.cabure.gui.listeners.AcordeonListener;
 import com.rjsoft.cabure.controle.AlunoCtrl;
+import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.util.JPAUtil;
@@ -23,14 +24,20 @@ public class CabureGUI extends javax.swing.JFrame
     private PesquisarAlunoPanel pesquisarAluno;
     private CadastrarLivroPanel cadastrarLivro;
     private PesquisarLivroPanel pesquisarLivro;
+    private GerenciarEmprestimosPanel gerenciarEmprestimos;
     private JPanel painelCentro;
     //Controles
     private AlunoCtrl alunoCtrl;
     private LivroCtrl livroCtrl;
+    private EmprestimoCtrl emprestimoCtrl;
 
     public CabureGUI() {
         alunoCtrl = new AlunoCtrl(JPAUtil.EMF.createEntityManager());
         livroCtrl = new LivroCtrl(JPAUtil.EMF.createEntityManager());
+        emprestimoCtrl = new EmprestimoCtrl(JPAUtil.EMF.createEntityManager());
+//        alunoCtrl = new AlunoCtrl(null);
+//        livroCtrl = new LivroCtrl(null);
+//        emprestimoCtrl = new EmprestimoCtrl(null);
         initComponents();
 
         home = new HomePanel();
@@ -38,6 +45,7 @@ public class CabureGUI extends javax.swing.JFrame
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
+        gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
         painelCentro = home;
         add(painelCentro, BorderLayout.CENTER);
         //Listeners
@@ -57,8 +65,6 @@ public class CabureGUI extends javax.swing.JFrame
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         acordeon1 = new com.rjsoft.cabure.gui.Acordeon();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -77,32 +83,6 @@ public class CabureGUI extends javax.swing.JFrame
         jMenuBar2.add(jMenu5);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 650));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sistema de Gerenciamento de Bibliotecas - Caburé");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
         getContentPane().add(acordeon1, java.awt.BorderLayout.LINE_START);
 
         jMenu1.setText("Inicio");
@@ -197,7 +177,6 @@ public class CabureGUI extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rjsoft.cabure.gui.Acordeon acordeon1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -210,7 +189,6 @@ public class CabureGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
     private void setPainelCentro() {
@@ -245,6 +223,10 @@ public class CabureGUI extends javax.swing.JFrame
                 painelCentro = pesquisarLivro;
                 break;
             }
+            case AcordeonListener.MENU_EMPRESTIMO: {
+                painelCentro = gerenciarEmprestimos;
+                break;
+            }
             default: {
                 painelCentro = home;
             }
@@ -260,7 +242,10 @@ public class CabureGUI extends javax.swing.JFrame
             painelCentro = cadastrarAluno;
             setPainelCentro();
         } else if (fonte == TableListener.TELA_PES_LIVRO) {
-            
+            remove(painelCentro);
+            cadastrarLivro.carregarLivro(idEntidade);
+            painelCentro = cadastrarLivro;
+            setPainelCentro();
         }
     }
 }

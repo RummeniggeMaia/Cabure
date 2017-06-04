@@ -203,7 +203,7 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
             }
         });
 
-        labelPesquisarAluno.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        labelPesquisarAluno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         labelPesquisarAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPesquisarAluno.setText("Pesquisar Aluno");
         labelPesquisarAluno.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -256,9 +256,8 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelPesquisarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                     .addComponent(textFieldNome)
-                    .addComponent(scrollTabelaAlunos)
+                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNome)
@@ -280,12 +279,14 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                                 .addComponent(botPagProxima)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagUltima)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(labelPesquisarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(labelPesquisarAluno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelNome)
@@ -298,7 +299,7 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)

@@ -6,12 +6,15 @@
 package com.rjsoft.cabure.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.validation.constraints.Min;
 
@@ -44,15 +47,20 @@ public class Livro implements Serializable {
     @Min(0)
     private Integer numeroPaginas;
     @Column(length = 100)
-    private String local;
+    private String localidade;
     @Column(length = 100)
     private String primeiroAutor;
     @Column(length = 100)
     private String segundoAutor;
     @Column(length = 100)
     private String terceiroAutor;
+    @OneToMany(mappedBy = "livro")
+    private List<Emprestimo> emprestimos;
+    @Min(0)
+    private Integer qntEstante;
     
     public Livro(){
+        this.emprestimos = new ArrayList();
     }
     
     public Livro(
@@ -79,10 +87,11 @@ public class Livro implements Serializable {
         numero_edicao = this.numeroEdicao;
         volume = this.volume;
         numero_paginas = this.numeroPaginas;
-        cidade = this.local;
+        cidade = this.localidade;
         primeiro_autor = this.primeiroAutor;
         segundo_autor = this.segundoAutor;
         terceiro_autor = this.terceiroAutor;
+        this.emprestimos = new ArrayList<>();
     }
 
     public Integer getID() {
@@ -165,12 +174,12 @@ public class Livro implements Serializable {
         this.numeroPaginas = numero_paginas;
     }
 
-    public String getLocal() {
-        return local;
+    public String getLocalidade() {
+        return localidade;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
     }
 
     public String getPrimeiroAutor() {
@@ -196,6 +205,20 @@ public class Livro implements Serializable {
     public void setTerceiroAutor(String terceiro_autor) {
         this.terceiroAutor = terceiro_autor;
     }
-        
-    
+
+    public List<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(List<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
+    }
+
+    public Integer getQntEstante() {
+        return qntEstante;
+    }
+
+    public void setQntEstante(Integer qntEstante) {
+        this.qntEstante = qntEstante;
+    }
 }

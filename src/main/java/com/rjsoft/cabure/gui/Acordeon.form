@@ -7,7 +7,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+        <Property name="text" type="java.lang.String" value="Cadastrar" postCode="botCadAluno = new BotaoIcone(&quot;Cadastrar&quot;, BotaoIcone.ICON_ADD, false);&#xa;botCadAluno.setBackground(new java.awt.Color(200, 200, 200));"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1000, 32]"/>
         </Property>
@@ -18,7 +18,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+        <Property name="text" type="java.lang.String" value="Pesquisar" postCode="botPesAlunos = new BotaoIcone(&quot;Pesquisar&quot;, BotaoIcone.ICON_PESQUISAR, false);&#xa;botPesAlunos.setBackground(new java.awt.Color(200, 200, 200));"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1000, 32]"/>
         </Property>
@@ -29,7 +29,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+        <Property name="text" type="java.lang.String" value="Cadastrar" postCode="botCadLivro = new BotaoIcone(&quot;Cadastrar&quot;, BotaoIcone.ICON_ADD, false);&#xa;botCadLivro.setBackground(new java.awt.Color(200, 200, 200));"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1000, 32]"/>
         </Property>
@@ -40,7 +40,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pesquisar"/>
+        <Property name="text" type="java.lang.String" value="Pesquisar" postCode="botPesLivros = new BotaoIcone(&quot;Pesquisar&quot;, BotaoIcone.ICON_PESQUISAR, false);&#xa;botPesLivros.setBackground(new java.awt.Color(200, 200, 200));"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1000, 32]"/>
         </Property>
@@ -65,14 +65,22 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-51,0,0,0,-77"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-50,0,0,0,-77"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
     <Property name="axis" type="int" value="1"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="menuAluno1">
+    <Component class="javax.swing.JLabel" name="logo">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    ImageIcon ii = new ImageIcon(ImageIO.read(new File(&quot;imagens/cabure_logo.png&quot;)));&#xa;    logo.setIcon(ii);&#xa;} catch (Exception ex) {&#xa;}"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="menuInicio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inicio"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -80,9 +88,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAluno1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuInicioActionPerformed"/>
       </Events>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="menuInicio = new BotaoIcone(&quot;Inicio&quot;, BotaoIcone.ICON_HOME, false);&#xa;menuInicio.setMaximumSize(new Dimension(1000, 32));"/>
         <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="add(Box.createRigidArea(new Dimension(1, 30)));"/>
       </AuxValues>
     </Component>
@@ -96,6 +105,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAlunoActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="menuAluno = new BotaoIcone(&quot;Alunos&quot;, BotaoIcone.ICON_ALUNO, true);&#xa;menuAluno.setMaximumSize(new Dimension(1000, 32));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="menuLivro">
       <Properties>
@@ -107,6 +119,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuLivroActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="menuLivro = new BotaoIcone(&quot;Livros&quot;, BotaoIcone.ICON_LIVRO, true);&#xa;menuLivro.setMaximumSize(new Dimension(1000, 32));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="menuEmprestimo">
       <Properties>
@@ -118,6 +133,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuEmprestimoActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="menuEmprestimo = new BotaoIcone(&quot;Empr&#xe9;stimos&quot;, BotaoIcone.ICON_EMPRESTIMO, false);&#xa;menuEmprestimo.setMaximumSize(new Dimension(1000, 32));"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

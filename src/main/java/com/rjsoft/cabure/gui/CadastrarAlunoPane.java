@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author jrpmaia
  */
-public class CadastrarAlunoPanel extends javax.swing.JPanel {
+public class CadastrarAlunoPane extends javax.swing.JPanel {
 
     private AlunoCtrl ctrl;
 
     /**
      * Creates new form Cadastrar_Aluno
      */
-    public CadastrarAlunoPanel(AlunoCtrl ctrl) {
+    public CadastrarAlunoPane(AlunoCtrl ctrl) {
         this.ctrl = ctrl;
         initComponents();
     }
@@ -215,7 +215,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         textFieldId = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         buttonSalvar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botRemoverAluno = new javax.swing.JButton();
         labelErrNome = new javax.swing.JLabel();
         labelErrMatricula = new javax.swing.JLabel();
         labelErrEndereco = new javax.swing.JLabel();
@@ -244,12 +244,6 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         labelNome.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelNome.setText("Nome:");
 
-        textFieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNomeActionPerformed(evt);
-            }
-        });
-
         labelMatricula.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelMatricula.setText("Matrícula:");
 
@@ -258,20 +252,8 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
 
         labelBairro.setText("Bairro:");
 
-        textFieldBairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldBairroActionPerformed(evt);
-            }
-        });
-
         labelNumero.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelNumero.setText("Nº:");
-
-        textFieldNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNumeroActionPerformed(evt);
-            }
-        });
 
         labelDataDeNascimento.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelDataDeNascimento.setText("Data de Nascimento:");
@@ -293,19 +275,9 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
 
         radioButtonMasculino.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         radioButtonMasculino.setText("Masculino");
-        radioButtonMasculino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioButtonMasculinoActionPerformed(evt);
-            }
-        });
 
         radioButtonFeminino.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         radioButtonFeminino.setText("Feminino");
-        radioButtonFeminino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioButtonFemininoActionPerformed(evt);
-            }
-        });
 
         textAreaObservacao.setColumns(20);
         textAreaObservacao.setRows(5);
@@ -320,22 +292,12 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         }
         textFieldCPF.setFocusCycleRoot(true);
         textFieldCPF.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        textFieldCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldCPFActionPerformed(evt);
-            }
-        });
 
         try {
             textFieldRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        textFieldRG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldRGActionPerformed(evt);
-            }
-        });
 
         labelTelefone.setText("Telefone:");
 
@@ -352,11 +314,6 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         }
 
         radioButtonAtivo.setText("Ativo");
-        radioButtonAtivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioButtonAtivoActionPerformed(evt);
-            }
-        });
 
         radioButtonInativo.setText("Inativo");
 
@@ -375,12 +332,12 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         });
         jPanel1.add(buttonSalvar);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("×");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botRemoverAluno.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        botRemoverAluno.setForeground(new java.awt.Color(255, 0, 0));
+        botRemoverAluno.setText("×");
+        botRemoverAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botRemoverAlunoActionPerformed(evt);
             }
         });
 
@@ -431,7 +388,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1)))
+                            .addComponent(botRemoverAluno)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -509,7 +466,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(botRemoverAluno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -588,51 +545,20 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldNumeroActionPerformed
-
-    private void textFieldBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldBairroActionPerformed
-
-    private void radioButtonMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonMasculinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioButtonMasculinoActionPerformed
+    private void botRemoverAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRemoverAlunoActionPerformed
+        limparCampos();
+        limparValidacao();
+    }//GEN-LAST:event_botRemoverAlunoActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         cadastrarAluno();
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
-    private void radioButtonFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonFemininoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioButtonFemininoActionPerformed
-
-    private void textFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldNomeActionPerformed
-
-    private void textFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldCPFActionPerformed
-
-    private void textFieldRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldRGActionPerformed
-
-    private void radioButtonAtivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonAtivoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioButtonAtivoActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        limparCampos();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botRemoverAluno;
     private javax.swing.ButtonGroup buttonGroupSexo;
     private javax.swing.ButtonGroup buttonGroupSituacao;
     private javax.swing.JButton buttonSalvar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

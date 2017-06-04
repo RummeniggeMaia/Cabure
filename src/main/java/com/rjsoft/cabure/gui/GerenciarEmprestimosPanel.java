@@ -783,7 +783,7 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
                 labelErrQuantidade.setText("* não há exemplares deste título nas estantes");
                 valido = false;
             } else if (emprestimoCtrl.getLivro().getQntEstante() - q < 0) {
-                labelErrQuantidade.setText("* quantidade deve ser maior ou igual ao total de exemplares");
+                labelErrQuantidade.setText("* quantidade deve ser menor ou igual ao total de exemplares");
                 valido = false;
             }
         } catch (Exception ex) {

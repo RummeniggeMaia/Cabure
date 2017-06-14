@@ -51,8 +51,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         labelErrCidade = new javax.swing.JLabel();
         textFieldLocal = new javax.swing.JTextField();
         textFieldNumeroEdicao = new javax.swing.JTextField();
-        labelErrNumeroEdicao = new javax.swing.JLabel();
         labelErrVolume = new javax.swing.JLabel();
+        labelErrNumeroEdicao = new javax.swing.JLabel();
         textFieldPaginas = new javax.swing.JTextField();
         labelErrPaginas = new javax.swing.JLabel();
         textFieldTitulo = new javax.swing.JTextField();
@@ -131,9 +131,9 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
 
         labelErrCidade.setForeground(new java.awt.Color(255, 0, 0));
 
-        labelErrNumeroEdicao.setForeground(new java.awt.Color(255, 0, 0));
-
         labelErrVolume.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErrNumeroEdicao.setForeground(new java.awt.Color(255, 0, 0));
 
         labelErrPaginas.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -257,11 +257,11 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelNumeroEdicao)
                                 .addGap(6, 6, 6)
-                                .addComponent(labelErrVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelErrNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(labelVolume)
                                 .addGap(6, 6, 6)
-                                .addComponent(labelErrNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelErrVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(labelPaginas)
                                 .addGap(6, 6, 6)
@@ -362,9 +362,9 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                 .addComponent(textFieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelNumeroEdicao)
-                    .addComponent(labelErrVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelVolume)
                     .addComponent(labelErrNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelVolume)
+                    .addComponent(labelErrVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPaginas)
                     .addComponent(labelErrPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
@@ -501,14 +501,14 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         labelErrEditora.setText("");
         labelErrISBN.setText("");
         labelErrId.setText("");
-        labelErrNumeroEdicao.setText("");
+        labelErrVolume.setText("");
         labelErrPrimeiroAutor.setText("");
         labelErrSegundoAutor.setText("");
         labelErrSerie.setText("");
         labelErrSubtitulo.setText("");
         labelErrTerceiroAutor.setText("");
         labelErrTitulo.setText("");
-        labelErrVolume.setText("");
+        labelErrNumeroEdicao.setText("");
         labelErrPaginas.setText("");
     }
 
@@ -529,7 +529,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         try {
             Integer.parseInt(textFieldVolume.getText());
         } catch (Exception ex) {
-            labelErrVolume.setText("* inválido");
+            labelErrNumeroEdicao.setText("* inválido");
             valido = false;
         }
         if (textFieldPaginas.getText().isEmpty()) {
@@ -537,7 +537,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             valido = false;
         }
         if (textFieldNumeroEdicao.getText().isEmpty()) {
-            labelErrNumeroEdicao.setText("* Campo obrigatório");
+            labelErrVolume.setText("* Campo obrigatório");
             valido = false;
         }
         if (textFieldEditora.getText().isEmpty()) {

@@ -64,7 +64,6 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         botPagAnterior = new javax.swing.JButton();
-        textFieldPagina = new javax.swing.JTextField();
         labelTotalPaginas = new javax.swing.JLabel();
         botPagProxima = new javax.swing.JButton();
         botPagUltima = new javax.swing.JButton();
@@ -78,17 +77,12 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         buttonPesquisar = new javax.swing.JButton();
         labelPesquisarLivro = new javax.swing.JLabel();
         botPagPrimeira = new javax.swing.JButton();
+        textFieldPagina = new javax.swing.JFormattedTextField();
 
         botPagAnterior.setText("<<");
         botPagAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botPagAnteriorActionPerformed(evt);
-            }
-        });
-
-        textFieldPagina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPaginaActionPerformed(evt);
             }
         });
 
@@ -224,6 +218,8 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             }
         });
 
+        textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,7 +241,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagAnterior)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelTotalPaginas)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -278,11 +274,11 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)
                     .addComponent(botPagAnterior)
-                    .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelTotalPaginas)
                     .addComponent(botPagProxima)
                     .addComponent(botPagUltima)
-                    .addComponent(comboLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -304,15 +300,6 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         ctrl.getPaginador().anterior();
         pesquisar();
     }//GEN-LAST:event_botPagAnteriorActionPerformed
-
-    private void textFieldPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPaginaActionPerformed
-        try {
-            int pagina = Integer.parseInt(textFieldPagina.getText());
-            ctrl.getPaginador().pular(pagina);
-            pesquisar();
-        } catch (Exception ex) {
-        }
-    }//GEN-LAST:event_textFieldPaginaActionPerformed
 
     private void botPagProximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPagProximaActionPerformed
         ctrl.getPaginador().proxima();
@@ -400,7 +387,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelTotalPaginas;
     private javax.swing.JScrollPane scrollTabelaAlunos;
     private javax.swing.JTable tableLivros;
-    private javax.swing.JTextField textFieldPagina;
+    private javax.swing.JFormattedTextField textFieldPagina;
     private javax.swing.JTextField textFieldPrimeiroAutor;
     private javax.swing.JTextField textFieldTitulo;
     // End of variables declaration//GEN-END:variables

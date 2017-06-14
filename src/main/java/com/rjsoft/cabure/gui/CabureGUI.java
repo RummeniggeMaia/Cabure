@@ -7,6 +7,7 @@ import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.util.JPAUtil;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 
 /**
@@ -30,6 +31,10 @@ public class CabureGUI extends javax.swing.JFrame
     private AlunoCtrl alunoCtrl;
     private LivroCtrl livroCtrl;
     private EmprestimoCtrl emprestimoCtrl;
+    //Constantes
+    private static final Dimension TAMANHO_MINIMO = new Dimension(600, 400);
+    private static final Dimension TAMANHO_MAXIMO = new Dimension(800, 600);
+    private static final String TITULO = "Cabure - Sistema de Gerenciamento de Biblioteca";
 
     public CabureGUI() {
         alunoCtrl = new AlunoCtrl(JPAUtil.EMF.createEntityManager());
@@ -51,6 +56,10 @@ public class CabureGUI extends javax.swing.JFrame
         //Listeners
         acordeon1.addListener(this);
         pesquisarAluno.addTableListener(this);
+        setSize(TAMANHO_MAXIMO);
+        setResizable(true);
+        setMinimumSize(TAMANHO_MINIMO);
+        setTitle(TITULO);
     }
 
     /**

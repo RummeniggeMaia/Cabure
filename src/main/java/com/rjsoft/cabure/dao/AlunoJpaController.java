@@ -4,6 +4,7 @@ import com.rjsoft.cabure.modelo.Aluno;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
@@ -23,7 +24,10 @@ public class AlunoJpaController {
         try {
             aux = entityManager.merge(aluno);
             entityManager.getTransaction().commit();
-        } catch (Exception ex) {
+        }catch(ConstraintViolationException e){         
+            entityManager.getTransaction().rollback();
+            throw e;
+        }catch (Exception ex) {
             entityManager.getTransaction().rollback();
             throw ex;
         }

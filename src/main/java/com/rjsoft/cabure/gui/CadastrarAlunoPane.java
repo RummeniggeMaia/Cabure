@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
@@ -55,7 +56,7 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
                         "Aluno cadastrado com sucesso!",
                         "Erro cadastrar Aluno",
                         JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
+            }catch (Exception ex) {
                 JOptionPane.showMessageDialog(
                         this,
                         ex.getMessage(),
@@ -112,7 +113,10 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
         }
         try {
             new SimpleDateFormat("dd/MM/yyyy").parse(textFieldDataDeNascimento.getText());
-        } catch (Exception ex) {
+        }catch (ConstraintViolationException ex){
+            labelErrDataNasc.setText("* Data inválida, ex:dd/mm/aaaa");
+            valido = false;
+        }catch (Exception ex) {
             labelErrDataNasc.setText("* Data inválida, ex:dd/mm/aaaa");
             valido = false;
         }
@@ -185,7 +189,6 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
         labelNome = new javax.swing.JLabel();
         textFieldNome = new javax.swing.JTextField();
         labelMatricula = new javax.swing.JLabel();
-        textFieldMatricula = new javax.swing.JTextField();
         labelEndereco = new javax.swing.JLabel();
         textFieldEndereco = new javax.swing.JTextField();
         labelBairro = new javax.swing.JLabel();
@@ -226,6 +229,7 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
         labelErrEmail = new javax.swing.JLabel();
         labelErrTelefone = new javax.swing.JLabel();
         labelErrNumero = new javax.swing.JLabel();
+        textFieldMatricula = new javax.swing.JFormattedTextField();
 
         buttonGroupSexo.add(radioButtonMasculino);
         buttonGroupSexo.add(radioButtonFeminino);
@@ -361,6 +365,13 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
 
         labelErrNumero.setForeground(new java.awt.Color(255, 0, 0));
 
+        textFieldMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+        textFieldMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldMatriculaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -390,8 +401,8 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(botRemoverAluno)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelSituacao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(radioButtonAtivo)
@@ -477,12 +488,16 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelMatricula)
                     .addComponent(labelErrMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelSituacao)
-                    .addComponent(radioButtonAtivo)
-                    .addComponent(radioButtonInativo))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelSituacao)
+                            .addComponent(radioButtonAtivo)
+                            .addComponent(radioButtonInativo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelErrNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,6 +569,10 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
         cadastrarAluno();
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
+    private void textFieldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldMatriculaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botRemoverAluno;
     private javax.swing.ButtonGroup buttonGroupSexo;
@@ -598,7 +617,7 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldEndereco;
     private javax.swing.JTextField textFieldId;
-    private javax.swing.JTextField textFieldMatricula;
+    private javax.swing.JFormattedTextField textFieldMatricula;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldNumero;
     private javax.swing.JFormattedTextField textFieldRG;

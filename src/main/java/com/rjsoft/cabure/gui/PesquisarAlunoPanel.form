@@ -36,8 +36,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="botPagAnterior" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="textFieldPagina" min="-2" pref="44" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="textFieldPagina" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="labelTotalPaginas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="botPagProxima" min="-2" max="-2" attributes="0"/>
@@ -74,11 +74,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botPagPrimeira" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botPagAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFieldPagina" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelTotalPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botPagProxima" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botPagUltima" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="comboLimite" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textFieldPagina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -236,11 +236,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botPagAnteriorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldPagina">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPaginaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="labelTotalPaginas">
       <Properties>
         <Property name="text" type="java.lang.String" value="de 9999"/>
@@ -272,6 +267,13 @@
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="int[] limites = ctrl.getPaginador().getLimites();&#xa;for (int i = 0; i &lt; limites.length; i++) {&#xa;    comboLimite.addItem(&quot;&quot; + limites[i]);&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="textFieldPagina">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="###" subtype="-1" type="0"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

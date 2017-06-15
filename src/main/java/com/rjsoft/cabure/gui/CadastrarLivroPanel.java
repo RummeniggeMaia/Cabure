@@ -63,7 +63,6 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         textFieldEditora = new javax.swing.JTextField();
         labelErrEditora = new javax.swing.JLabel();
         labelPrimeiroAutor = new javax.swing.JLabel();
-        textFieldAno = new javax.swing.JTextField();
         labelErrAno = new javax.swing.JLabel();
         labelSegundoAutor = new javax.swing.JLabel();
         textFieldSerie = new javax.swing.JTextField();
@@ -84,6 +83,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         labelQntEstante = new javax.swing.JLabel();
         textFieldQntEstante = new javax.swing.JTextField();
         labelErrQntEstante = new javax.swing.JLabel();
+        textFieldAno = new javax.swing.JFormattedTextField();
 
         labelId.setText("Id:");
         labelId.setOpaque(true);
@@ -206,6 +206,17 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             }
         });
 
+        try {
+            textFieldAno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        textFieldAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAnoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -302,7 +313,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                                 .addComponent(labelErrISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(textFieldISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -398,8 +409,9 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                     .addComponent(labelErrISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textFieldISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -429,6 +441,10 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private void textFieldSegundoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSegundoAutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldSegundoAutorActionPerformed
+
+    private void textFieldAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldAnoActionPerformed
 
     private void cadastrarLivro() {
         limparValidacao();
@@ -605,7 +621,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelTerceiroAutor;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelVolume;
-    private javax.swing.JTextField textFieldAno;
+    private javax.swing.JFormattedTextField textFieldAno;
     private javax.swing.JTextField textFieldEditora;
     private javax.swing.JTextField textFieldISBN;
     private javax.swing.JTextField textFieldId;

@@ -30,7 +30,7 @@
                   <Component id="textFieldSegundoAutor" max="32767" attributes="0"/>
                   <Component id="textFieldPrimeiroAutor" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="textFieldId" min="-2" pref="53" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -73,8 +73,8 @@
                               <Component id="textFieldNumeroEdicao" min="-2" pref="242" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                               <Component id="textFieldVolume" min="-2" pref="179" max="-2" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="textFieldPaginas" min="-2" pref="302" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="textFieldPaginas" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
@@ -212,8 +212,10 @@
               <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="textFieldNumeroEdicao" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFieldVolume" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFieldPaginas" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textFieldVolume" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldPaginas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -371,8 +373,6 @@
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="textFieldPaginas">
     </Component>
     <Component class="javax.swing.JLabel" name="labelErrPaginas">
       <Properties>
@@ -568,6 +568,13 @@
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="#0" subtype="-1" type="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="textFieldPaginas">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="####" subtype="-1" type="0"/>
         </Property>
       </Properties>
     </Component>

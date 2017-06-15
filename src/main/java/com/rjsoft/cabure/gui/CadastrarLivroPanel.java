@@ -53,7 +53,6 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         textFieldNumeroEdicao = new javax.swing.JTextField();
         labelErrVolume = new javax.swing.JLabel();
         labelErrNumeroEdicao = new javax.swing.JLabel();
-        textFieldPaginas = new javax.swing.JTextField();
         labelErrPaginas = new javax.swing.JLabel();
         textFieldTitulo = new javax.swing.JTextField();
         labelErrTitulo = new javax.swing.JLabel();
@@ -84,6 +83,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         labelErrQntEstante = new javax.swing.JLabel();
         textFieldAno = new javax.swing.JFormattedTextField();
         textFieldQntEstante = new javax.swing.JFormattedTextField();
+        textFieldPaginas = new javax.swing.JFormattedTextField();
 
         labelId.setText("Id:");
         labelId.setOpaque(true);
@@ -213,6 +213,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
 
         textFieldQntEstante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
+        textFieldPaginas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -230,7 +232,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                     .addComponent(textFieldSegundoAutor)
                     .addComponent(textFieldPrimeiroAutor)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
@@ -267,8 +269,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                                 .addComponent(textFieldNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(textFieldPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldPaginas))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelTitulo)
                                 .addGap(6, 6, 6)
@@ -378,8 +380,9 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTitulo)
@@ -620,7 +623,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldId;
     private javax.swing.JTextField textFieldLocal;
     private javax.swing.JTextField textFieldNumeroEdicao;
-    private javax.swing.JTextField textFieldPaginas;
+    private javax.swing.JFormattedTextField textFieldPaginas;
     private javax.swing.JTextField textFieldPrimeiroAutor;
     private javax.swing.JFormattedTextField textFieldQntEstante;
     private javax.swing.JTextField textFieldSegundoAutor;

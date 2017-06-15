@@ -81,9 +81,9 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         buttonSalvar = new javax.swing.JButton();
         labelQntEstante = new javax.swing.JLabel();
-        textFieldQntEstante = new javax.swing.JTextField();
         labelErrQntEstante = new javax.swing.JLabel();
         textFieldAno = new javax.swing.JFormattedTextField();
+        textFieldQntEstante = new javax.swing.JFormattedTextField();
 
         labelId.setText("Id:");
         labelId.setOpaque(true);
@@ -200,12 +200,6 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
 
         labelQntEstante.setText("Livros na estante:");
 
-        textFieldQntEstante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldQntEstanteActionPerformed(evt);
-            }
-        });
-
         try {
             textFieldAno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
         } catch (java.text.ParseException ex) {
@@ -216,6 +210,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                 textFieldAnoActionPerformed(evt);
             }
         });
+
+        textFieldQntEstante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -234,21 +230,11 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                     .addComponent(textFieldSegundoAutor)
                     .addComponent(textFieldPrimeiroAutor)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelId)
-                        .addGap(6, 6, 6)
-                        .addComponent(labelErrId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelQntEstante)
-                        .addGap(17, 17, 17)
-                        .addComponent(labelErrQntEstante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
-                                .addComponent(buttonCancelaID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(buttonCancelaID))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelPrimeiroAutor)
                                 .addGap(6, 6, 6)
@@ -317,7 +303,18 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                                 .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(textFieldISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textFieldQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelId)
+                                .addGap(6, 6, 6)
+                                .addComponent(labelErrId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelQntEstante)))
+                        .addGap(17, 17, 17)
+                        .addComponent(labelErrQntEstante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -433,10 +430,6 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         cadastrarLivro();
     }//GEN-LAST:event_buttonSalvarActionPerformed
-
-    private void textFieldQntEstanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldQntEstanteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldQntEstanteActionPerformed
 
     private void textFieldSegundoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSegundoAutorActionPerformed
         // TODO add your handling code here:
@@ -629,7 +622,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldNumeroEdicao;
     private javax.swing.JTextField textFieldPaginas;
     private javax.swing.JTextField textFieldPrimeiroAutor;
-    private javax.swing.JTextField textFieldQntEstante;
+    private javax.swing.JFormattedTextField textFieldQntEstante;
     private javax.swing.JTextField textFieldSegundoAutor;
     private javax.swing.JTextField textFieldSerie;
     private javax.swing.JTextField textFieldSubtitulo;

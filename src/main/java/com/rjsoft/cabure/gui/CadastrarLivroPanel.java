@@ -9,6 +9,7 @@ import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.modelo.Livro;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -199,6 +200,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         jPanel1.add(buttonSalvar);
 
         labelQntEstante.setText("Livros na estante:");
+
+        labelErrQntEstante.setForeground(new java.awt.Color(255, 0, 0));
 
         try {
             textFieldAno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
@@ -399,7 +402,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                     .addComponent(labelErrEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(textFieldEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelAno)
                     .addComponent(labelErrAno, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,8 +462,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                 livro.setSubtitulo(textFieldSubtitulo.getText());
                 livro.setEditora(textFieldEditora.getText());
                 DateFormat df = new SimpleDateFormat("yyyy");
-                livro.setAno(
-                        df.parse(textFieldAno.getText()));
+                Date d = df.parse(textFieldAno.getText());
+                livro.setAno(d);
                 livro.setSerie(textFieldSerie.getText());
                 livro.setIsbn(textFieldISBN.getText());
                 livro.setQntEstante(Integer.parseInt(textFieldQntEstante.getText()));
@@ -526,22 +529,35 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
 
     private boolean validarCampos() {
         boolean valido = true;
+        if (textFieldQntEstante.getText().trim().equals("")){
+            labelErrQntEstante.setText("* Campo obrigatório");
+            valido = false;
+        }
         if (textFieldTitulo.getText().isEmpty()) {
             labelErrTitulo.setText("* Campo obrigatório");
             valido = false;
         }
+        if (textFieldAno.getText().isEmpty() || textFieldAno.getText().trim().equals("") 
+                || textFieldAno.getText() == null){
+            labelErrAno.setText("* Campo obrigatório. ex: (2017)");
+            valido = false;
+        }
+        if ((textFieldAno.getText().length() > 4) || (textFieldAno.getText().length() < 4) ){
+            labelErrAno.setText("* Data inválida.");
+            valido = false;
+        }
         if (textFieldPrimeiroAutor.getText().length() < 2) {
-            labelErrPrimeiroAutor.setText("* nome muito pequeno");
+            labelErrPrimeiroAutor.setText("* Nome muito pequeno");
             valido = false;
         }
         if (textFieldVolume.getText().isEmpty()) {
-            labelErrPaginas.setText("* Campo obrigatório");
+            labelErrVolume.setText("* Campo obrigatório");
             valido = false;
         }
         try {
             Integer.parseInt(textFieldVolume.getText());
         } catch (Exception ex) {
-            labelErrNumeroEdicao.setText("* inválido");
+            labelErrVolume.setText("* Inválido");
             valido = false;
         }
         if (textFieldPaginas.getText().isEmpty()) {
@@ -549,7 +565,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             valido = false;
         }
         if (textFieldNumeroEdicao.getText().isEmpty()) {
-            labelErrVolume.setText("* Campo obrigatório");
+            labelErrNumeroEdicao.setText("* Campo obrigatório");
             valido = false;
         }
         if (textFieldEditora.getText().isEmpty()) {

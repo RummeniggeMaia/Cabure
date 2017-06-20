@@ -236,7 +236,7 @@
               </Group>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Component id="textFieldEditora" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelAno" min="-2" max="-2" attributes="0"/>
                   <Component id="labelErrAno" min="-2" pref="15" max="-2" attributes="0"/>
@@ -553,6 +553,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelErrQntEstante">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="textFieldAno">
       <Properties>

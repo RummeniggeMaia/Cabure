@@ -104,8 +104,8 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
         labelPrazo = new javax.swing.JLabel();
         labelErrPrazo = new javax.swing.JLabel();
         textFieldPrazo = new javax.swing.JFormattedTextField();
-        textFieldQuantidade = new javax.swing.JTextField();
         botaoProcessar = new javax.swing.JButton();
+        textFieldQuantidade = new javax.swing.JFormattedTextField();
 
         labelPesquisarAluno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         labelPesquisarAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -544,6 +544,8 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
             }
         });
 
+        textFieldQuantidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#######"))));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -558,12 +560,13 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(labelQuantidade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelErrQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(labelErrQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textFieldQuantidade)
-                            .addComponent(textFieldPrazo, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(botaoProcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textFieldPrazo, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                .addComponent(botaoProcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(textFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -573,9 +576,9 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelQuantidade)
                     .addComponent(labelErrQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
+                .addComponent(textFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelPrazo)
                     .addComponent(labelErrPrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -865,6 +868,6 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldIdLivro;
     private javax.swing.JTextField textFieldMatricula;
     private javax.swing.JFormattedTextField textFieldPrazo;
-    private javax.swing.JTextField textFieldQuantidade;
+    private javax.swing.JFormattedTextField textFieldQuantidade;
     // End of variables declaration//GEN-END:variables
 }

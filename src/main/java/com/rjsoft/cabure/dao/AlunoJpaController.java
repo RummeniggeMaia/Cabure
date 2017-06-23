@@ -61,7 +61,7 @@ public class AlunoJpaController {
 
     public Aluno pesquisarPorMatricula(String matricula) {
         Query query = entityManager.createQuery(
-                "SELECT a FROM Aluno a WHERE a.matricula = " + matricula);
+                "SELECT a FROM Aluno a WHERE a.matricula = '" + matricula + "'");
         return (Aluno) query.getSingleResult();
     }
     

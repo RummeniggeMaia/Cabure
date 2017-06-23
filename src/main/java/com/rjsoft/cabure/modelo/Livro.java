@@ -30,7 +30,7 @@ public class Livro implements Serializable {
     private Integer ID;
     @Column(nullable = false, length = 100)
     private String titulo;
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 100)
     private String subtitulo;
     @Column(nullable = false, length = 100)
     private String editora;

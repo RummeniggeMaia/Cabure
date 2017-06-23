@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.persistence.NoResultException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -677,7 +678,10 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
         Aluno a = null;
         String matricula = textFieldMatricula.getText();
         if (matricula != null && !matricula.isEmpty()) {
-            a = alunoCtrl.getDao().pesquisarPorMatricula(matricula);
+            try {
+                a = alunoCtrl.getDao().pesquisarPorMatricula(matricula);
+            } catch(NoResultException nre) {
+            }
         } else {
         }
         if (a != null) {
@@ -705,7 +709,7 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
             id = Integer.parseInt(textFieldIdLivro.getText());
             l = livroCtrl.getDao().pesquisarPorId(id);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            //JOptionPane.showMessageDialog(null, ex.getMessage());
         }
         if (l != null) {
             labelIdLivro.setText(l.getID().toString());

@@ -4,6 +4,7 @@ import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.validation.ConstraintViolationException;
@@ -53,10 +54,10 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(
                         this,
-                        "Aluno cadastrado com sucesso!",
-                        "Erro cadastrar Aluno",
+                        "Dados do Aluno salvos com sucesso!",
+                        "Sucesso ao cadastrar Aluno",
                         JOptionPane.INFORMATION_MESSAGE);
-            }catch (Exception ex) {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(
                         this,
                         ex.getMessage(),
@@ -88,7 +89,7 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
         try {
             Integer.parseInt(textFieldNumero.getText());
         } catch (Exception ex) {
-            labelErrNumero.setText("* inválido");
+            labelErrNumero.setText("* número inválido");
             valido = false;
         }
         if (!Pattern.matches("([\\w-\\.]+)@((?:[\\w]+\\.)+)([a-zA-Z]{2,4})",
@@ -111,14 +112,22 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
             labelErrRg.setText("* RG inválido");
             valido = false;
         }
-        try {
-            new SimpleDateFormat("dd/MM/yyyy").parse(textFieldDataDeNascimento.getText());
-        }catch (ConstraintViolationException ex){
+        if (!Pattern.matches("\\d{2}/\\d{2}/\\d{4}", textFieldDataDeNascimento.getText())) {
             labelErrDataNasc.setText("* Data inválida, ex:dd/mm/aaaa");
             valido = false;
-        }catch (Exception ex) {
-            labelErrDataNasc.setText("* Data inválida, ex:dd/mm/aaaa");
-            valido = false;
+        } else {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                sdf.setLenient(false);
+                Date dn = sdf.parse(textFieldDataDeNascimento.getText());
+                if (new Date().compareTo(dn) < 0) {
+                    labelErrDataNasc.setText("* Data de nascimento deve ser anterior a atual");
+                    valido = false;
+                }
+            } catch (Exception ex) {
+                labelErrDataNasc.setText("* Data de nascimento inválida, verifique o dia e o mês ");
+                valido = false;
+            }
         }
         return valido;
     }
@@ -138,7 +147,7 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
         textFieldId.setText("");
         limparValidacao();
     }
-    
+
     private void limparValidacao() {
         labelErrBairro.setText("");
         labelErrNumero.setText("");

@@ -106,6 +106,11 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         for (int i = 0; i < limites.length; i++) {
             comboLimite.addItem("" + limites[i]);
         }
+        comboLimite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLimiteActionPerformed(evt);
+            }
+        });
 
         labelTitulo.setText("Titulo:");
 
@@ -329,6 +334,14 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         ctrl.getPaginador().setCondicao(gerarCondicao());
         pesquisar();
     }//GEN-LAST:event_buttonPesquisarActionPerformed
+
+    private void comboLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLimiteActionPerformed
+        try {
+            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+            ctrl.getPaginador().setLimit(l);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_comboLimiteActionPerformed
 
     public void pesquisar() {
         List<Livro> livros = ctrl.pesquisar();

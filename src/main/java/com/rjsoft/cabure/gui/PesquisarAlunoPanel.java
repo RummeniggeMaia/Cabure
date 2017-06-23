@@ -242,6 +242,11 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         for (int i = 0; i < limites.length; i++) {
             comboLimite.addItem("" + limites[i]);
         }
+        comboLimite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLimiteActionPerformed(evt);
+            }
+        });
 
         textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
@@ -354,6 +359,14 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         pesquisar();
     }//GEN-LAST:event_botPagUltimaActionPerformed
 
+    private void comboLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLimiteActionPerformed
+        try {
+            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+            ctrl.getPaginador().setLimit(l);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_comboLimiteActionPerformed
+
     public void pesquisar() {
         List<Aluno> alunos = ctrl.pesquisar();
         listarAlunos(alunos);
@@ -385,7 +398,7 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         };
         tableAlunos.setModel(dtm);
     }
-    
+
     private void verificarPaginacao() {
         botPagAnterior.setEnabled(ctrl.getPaginador().podeVoltar());
         botPagPrimeira.setEnabled(ctrl.getPaginador().podeVoltar());

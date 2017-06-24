@@ -41,6 +41,10 @@ public class AlunoCtrl {
     public Aluno pesquisarPorId(int id) {
         return dao.pesquisarPorId(id);
     }
+    
+    public List<Aluno> pesquisarRelatorioAluno(String condicao) {
+        return dao.pesquisarRelatorioAluno(condicao);
+    }
 
     public Aluno getAluno() {
         return aluno;

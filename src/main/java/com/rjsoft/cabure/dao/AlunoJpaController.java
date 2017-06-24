@@ -70,4 +70,10 @@ public class AlunoJpaController {
             entityManager.close();
         }
     }
+
+    public List<Aluno> pesquisarRelatorioAluno(String condicao) {
+        Query query = entityManager.createQuery(
+                "SELECT a FROM Aluno a WHERE" + condicao);
+        return (List<Aluno>) query.getResultList();
+    }
 }

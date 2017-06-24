@@ -89,6 +89,9 @@ public class Acordeon extends javax.swing.JPanel {
         menuAluno = new javax.swing.JButton();
         menuLivro = new javax.swing.JButton();
         menuEmprestimo = new javax.swing.JButton();
+        menuRelatorioAlunos = new javax.swing.JButton();
+        menuRelatorioLivros = new javax.swing.JButton();
+        menuRelatorioEmprestimos = new javax.swing.JButton();
 
         botCadAluno.setBackground(new java.awt.Color(255, 255, 255));
         botCadAluno.setText("Cadastrar");
@@ -170,6 +173,39 @@ public class Acordeon extends javax.swing.JPanel {
             }
         });
         add(menuEmprestimo);
+
+        menuRelatorioAlunos.setText("Relatório Alunos");
+        menuRelatorioAlunos.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
+        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
+        menuRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelatorioAlunosActionPerformed(evt);
+            }
+        });
+        add(menuRelatorioAlunos);
+
+        menuRelatorioLivros.setText("Relatório Livros");
+        menuRelatorioLivros.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
+        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
+        menuRelatorioLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelatorioLivrosActionPerformed(evt);
+            }
+        });
+        add(menuRelatorioLivros);
+
+        menuRelatorioEmprestimos.setText("Relatório Empréstimos");
+        menuRelatorioEmprestimos.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
+        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
+        menuRelatorioEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRelatorioEmprestimosActionPerformed(evt);
+            }
+        });
+        add(menuRelatorioEmprestimos);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlunoActionPerformed
@@ -206,6 +242,18 @@ public class Acordeon extends javax.swing.JPanel {
         botaoPressionado(AcordeonListener.MENU_EMPRESTIMO);
     }//GEN-LAST:event_menuEmprestimoActionPerformed
 
+    private void menuRelatorioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioAlunosActionPerformed
+        botaoPressionado(AcordeonListener.MENU_RELATORIO_ALUNOS);
+    }//GEN-LAST:event_menuRelatorioAlunosActionPerformed
+
+    private void menuRelatorioLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioLivrosActionPerformed
+         botaoPressionado(AcordeonListener.MENU_RELATORIO_LIVROS);
+    }//GEN-LAST:event_menuRelatorioLivrosActionPerformed
+
+    private void menuRelatorioEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioEmprestimosActionPerformed
+         botaoPressionado(AcordeonListener.MENU_RELATORIO_EMPRESTIMOS);
+    }//GEN-LAST:event_menuRelatorioEmprestimosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botCadAluno;
@@ -217,5 +265,8 @@ public class Acordeon extends javax.swing.JPanel {
     private javax.swing.JButton menuEmprestimo;
     private javax.swing.JButton menuInicio;
     private javax.swing.JButton menuLivro;
+    private javax.swing.JButton menuRelatorioAlunos;
+    private javax.swing.JButton menuRelatorioEmprestimos;
+    private javax.swing.JButton menuRelatorioLivros;
     // End of variables declaration//GEN-END:variables
 }

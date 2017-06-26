@@ -46,6 +46,13 @@ public class EmprestimoCtrl {
     public Emprestimo pesquisarPorId(int id) {
         return dao.pesquisarPorId(id);
     }
+    
+    public List<Emprestimo> pesquisarAtrasados() {
+        contar();
+        return dao.pesquisarAtrasados(
+                paginador.getOffset(), 
+                paginador.getLimit());
+    }
 
     public Emprestimo getEmprestimo() {
         return emprestimo;

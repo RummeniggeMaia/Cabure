@@ -31,6 +31,7 @@ public class CabureGUI extends javax.swing.JFrame
     private AlunoCtrl alunoCtrl;
     private LivroCtrl livroCtrl;
     private EmprestimoCtrl emprestimoCtrl;
+    private EmprestimoCtrl homeCtrl;
     //Constantes
     private static final Dimension TAMANHO_MINIMO = new Dimension(600, 400);
     private static final Dimension TAMANHO_MAXIMO = new Dimension(800, 600);
@@ -40,17 +41,18 @@ public class CabureGUI extends javax.swing.JFrame
         alunoCtrl = new AlunoCtrl(JPAUtil.EMF.createEntityManager());
         livroCtrl = new LivroCtrl(JPAUtil.EMF.createEntityManager());
         emprestimoCtrl = new EmprestimoCtrl(JPAUtil.EMF.createEntityManager());
-//        alunoCtrl = new AlunoCtrl(null);
-//        livroCtrl = new LivroCtrl(null);
-//        emprestimoCtrl = new EmprestimoCtrl(null);
+        homeCtrl = new EmprestimoCtrl(JPAUtil.EMF.createEntityManager());
         initComponents();
 
-        home = new HomePanel();
+        home = new HomePanel(homeCtrl);
         cadastrarAluno = new CadastrarAlunoPane(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
         gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
+        
+        home.carregarEmprestimosAtrasados();
+        
         painelCentro = home;
         add(painelCentro, BorderLayout.CENTER);
         //Listeners

@@ -238,6 +238,15 @@ public class CabureGUI extends javax.swing.JFrame
                 painelCentro = gerenciarEmprestimos;
                 break;
             }
+            case AcordeonListener.MENU_RELATORIO_ALUNOS: {
+                break;
+            }
+            case AcordeonListener.MENU_RELATORIO_LIVROS: {
+                break;
+            }
+            case AcordeonListener.MENU_RELATORIO_EMPRESTIMOS: {
+                break;
+            }
             default: {
                 painelCentro = home;
             }

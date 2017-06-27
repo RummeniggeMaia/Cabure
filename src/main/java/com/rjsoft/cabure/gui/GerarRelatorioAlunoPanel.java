@@ -37,7 +37,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         buttonGroupTipoRelatorio = new javax.swing.ButtonGroup();
         buttonGroupTipoSituacaoAluno = new javax.swing.ButtonGroup();
-        buttonGerarRelatorioAluno = new javax.swing.JButton();
+        buttonGerarRelatorioLivro = new javax.swing.JButton();
         labelRelatorioAlunos = new javax.swing.JLabel();
         labelTipoRelatorio = new javax.swing.JLabel();
         radioButtonTipoSimplificado = new javax.swing.JRadioButton();
@@ -46,13 +46,13 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         radioButtonSituacaoAtivos = new javax.swing.JRadioButton();
         radioButtonSituacaoInativos = new javax.swing.JRadioButton();
         labelSituacao = new javax.swing.JLabel();
-        labelErrTipoRelatorio = new javax.swing.JLabel();
-        labelErrTipoSituacao = new javax.swing.JLabel();
+        labelErrTipoRelatorioAluno = new javax.swing.JLabel();
+        labelErrTipoSituacaoAluno = new javax.swing.JLabel();
 
-        buttonGerarRelatorioAluno.setText("Gerar Relatório");
-        buttonGerarRelatorioAluno.addActionListener(new java.awt.event.ActionListener() {
+        buttonGerarRelatorioLivro.setText("Gerar Relatório");
+        buttonGerarRelatorioLivro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGerarRelatorioAlunoActionPerformed(evt);
+                buttonGerarRelatorioLivroActionPerformed(evt);
             }
         });
 
@@ -80,6 +80,10 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         labelSituacao.setText("Selecione o tipo de situação do Aluno:");
 
+        labelErrTipoRelatorioAluno.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelErrTipoSituacaoAluno.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,7 +97,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelTipoRelatorio)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radioButtonTipoSimplificado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -104,11 +108,11 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                                 .addComponent(radioButtonSituacaoAtivos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radioButtonSituacaoInativos))
-                            .addComponent(buttonGerarRelatorioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelSituacao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -120,14 +124,14 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelErrTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioButtonTipoSimplificado)
                     .addComponent(radioButtonTipoCompleto))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelErrTipoSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -135,25 +139,25 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                     .addComponent(radioButtonSituacaoAtivos)
                     .addComponent(radioButtonSituacaoInativos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonGerarRelatorioAluno)
+                .addComponent(buttonGerarRelatorioLivro)
                 .addContainerGap(419, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonGerarRelatorioAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioAlunoActionPerformed
+    private void buttonGerarRelatorioLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioLivroActionPerformed
         if (validacao()){
             List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
             
         }
-    }//GEN-LAST:event_buttonGerarRelatorioAlunoActionPerformed
+    }//GEN-LAST:event_buttonGerarRelatorioLivroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonGerarRelatorioAluno;
+    private javax.swing.JButton buttonGerarRelatorioLivro;
     private javax.swing.ButtonGroup buttonGroupTipoRelatorio;
     private javax.swing.ButtonGroup buttonGroupTipoSituacaoAluno;
-    private javax.swing.JLabel labelErrTipoRelatorio;
-    private javax.swing.JLabel labelErrTipoSituacao;
+    private javax.swing.JLabel labelErrTipoRelatorioAluno;
+    private javax.swing.JLabel labelErrTipoSituacaoAluno;
     private javax.swing.JLabel labelRelatorioAlunos;
     private javax.swing.JLabel labelSituacao;
     private javax.swing.JLabel labelTipoRelatorio;
@@ -170,12 +174,12 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                (radioButtonSituacaoInativos.isSelected() == false) &&
                (radioButtonSituacaoTodas.isSelected() == false)) {
             valido = false;
-            labelErrTipoSituacao.setText("* Tipo de relatório obrigatório.");
+            labelErrTipoSituacaoAluno.setText("* Tipo de relatório obrigatório.");
        }
        if((radioButtonTipoCompleto.isSelected() == false) && 
                (radioButtonTipoSimplificado.isSelected() == false)){
            valido = false;                        
-           labelErrTipoSituacao.setText("* Tipo de situação obrigatório.");
+           labelErrTipoSituacaoAluno.setText("* Tipo de situação obrigatório.");
        }
        
        return valido;

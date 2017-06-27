@@ -8,6 +8,7 @@ import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.util.JPAUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import javax.persistence.EntityManager;
 import javax.swing.JPanel;
 
 /**
@@ -31,28 +32,33 @@ public class CabureGUI extends javax.swing.JFrame
     private AlunoCtrl alunoCtrl;
     private LivroCtrl livroCtrl;
     private EmprestimoCtrl emprestimoCtrl;
-    private EmprestimoCtrl homeCtrl;
+    private EmprestimoCtrl homeAtrasadosCtrl;
+    private EmprestimoCtrl homeRealizadosCtrl;
     //Constantes
     private static final Dimension TAMANHO_MINIMO = new Dimension(600, 400);
     private static final Dimension TAMANHO_MAXIMO = new Dimension(800, 600);
     private static final String TITULO = "Cabure - Sistema de Gerenciamento de Biblioteca";
 
     public CabureGUI() {
-        alunoCtrl = new AlunoCtrl(JPAUtil.EMF.createEntityManager());
-        livroCtrl = new LivroCtrl(JPAUtil.EMF.createEntityManager());
-        emprestimoCtrl = new EmprestimoCtrl(JPAUtil.EMF.createEntityManager());
-        homeCtrl = new EmprestimoCtrl(JPAUtil.EMF.createEntityManager());
+        EntityManager em = JPAUtil.EMF.createEntityManager();
+        alunoCtrl = new AlunoCtrl(em);
+        livroCtrl = new LivroCtrl(em);
+        emprestimoCtrl = new EmprestimoCtrl(em);
+        homeAtrasadosCtrl = new EmprestimoCtrl(em);
+        homeRealizadosCtrl = new EmprestimoCtrl(em);
+
         initComponents();
 
-        home = new HomePanel(homeCtrl);
+        home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl);
         cadastrarAluno = new CadastrarAlunoPane(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
         gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
-        
-        home.carregarEmprestimosAtrasados();
-        
+
+        home.pesquisarEA();
+        home.pesquisarER();
+
         painelCentro = home;
         add(painelCentro, BorderLayout.CENTER);
         //Listeners
@@ -203,17 +209,19 @@ public class CabureGUI extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
 
     private void setPainelCentro() {
-        
+
         add(painelCentro, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
-    
+
     @Override
     public void botaoAcordeonPressionado(int botao) {
         remove(painelCentro);
         switch (botao) {
             case AcordeonListener.MENU_INICIO: {
+                home.pesquisarEA();
+                home.pesquisarER();
                 painelCentro = home;
                 break;
             }
@@ -248,6 +256,8 @@ public class CabureGUI extends javax.swing.JFrame
                 break;
             }
             default: {
+                home.pesquisarEA();
+                home.pesquisarER();
                 painelCentro = home;
             }
         }

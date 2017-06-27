@@ -196,10 +196,10 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGerarRelatorioEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioEmprestimoActionPerformed
-        if (validacao()){
-            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
-
-        }
+//        if (validacao()){
+//            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
+//
+//        }
     }//GEN-LAST:event_buttonGerarRelatorioEmprestimoActionPerformed
 
 

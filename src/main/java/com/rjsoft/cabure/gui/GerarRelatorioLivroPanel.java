@@ -5,6 +5,9 @@
  */
 package com.rjsoft.cabure.gui;
 
+import com.rjsoft.cabure.modelo.Aluno;
+import java.util.List;
+
 /**
  *
  * @author JAEDSON
@@ -137,10 +140,10 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGerarRelatorioAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioAlunoActionPerformed
-        if (validacao()){
-            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
-
-        }
+//        if (validacao()){
+//            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
+//
+//        }
     }//GEN-LAST:event_buttonGerarRelatorioAlunoActionPerformed
 
 

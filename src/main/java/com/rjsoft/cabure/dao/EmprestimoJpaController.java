@@ -57,6 +57,15 @@ public class EmprestimoJpaController {
         query.setMaxResults(limit);
         return query.getResultList();
     }
+    
+    public List<Emprestimo> pesquisarRealizados(int offset, int limit) {
+        Query query = entityManager.createQuery(
+                "SELECT e FROM Emprestimo e WHERE e.prazo >= :hoje");
+        query.setParameter("hoje", new Date(), TemporalType.DATE);
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return query.getResultList();
+    }
 
     public void fechar() {
         if (entityManager != null) {

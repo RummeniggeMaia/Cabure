@@ -53,6 +53,13 @@ public class EmprestimoCtrl {
                 paginador.getOffset(), 
                 paginador.getLimit());
     }
+    
+    public List<Emprestimo> pesquisarRealizados() {
+        contar();
+        return dao.pesquisarRealizados(
+                paginador.getOffset(), 
+                paginador.getLimit());
+    }
 
     public Emprestimo getEmprestimo() {
         return emprestimo;

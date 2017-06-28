@@ -723,7 +723,7 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
             labelQntEstante.setText(l.getQntEstante().toString());
             labelEditora.setText(l.getEditora());
             labelLocal.setText(l.getLocalidade());
-            labelAno.setText(new SimpleDateFormat("dd/MM/yyyy").format(l.getAno()));
+            labelAno.setText(new SimpleDateFormat("yyyy").format(l.getAno()));
             labelIsbn.setText(l.getIsbn());
             emprestimoCtrl.setLivro(l);
         } else {

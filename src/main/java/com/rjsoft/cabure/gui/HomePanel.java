@@ -23,9 +23,11 @@ public class HomePanel extends javax.swing.JPanel {
      * Creates new form Home
      */
     public HomePanel(EmprestimoCtrl realizados, EmprestimoCtrl atrasados) {
-        
         this.realizadosCtrl = realizados;
         this.atrasadosCtrl = atrasados;
+        realizados.getPaginador().setLimit(25);
+        atrasados.getPaginador().setLimit(25);
+        
         colunasRealizados = new String[]{
             "Matrícula",
             "Nome",

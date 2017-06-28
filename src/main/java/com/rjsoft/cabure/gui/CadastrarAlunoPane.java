@@ -6,8 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
+import javax.persistence.PersistenceException;
 import javax.swing.JOptionPane;
-import javax.validation.ConstraintViolationException;
 
 /**
  *
@@ -57,10 +57,16 @@ public class CadastrarAlunoPane extends javax.swing.JPanel {
                         "Dados do Aluno salvos com sucesso!",
                         "Sucesso ao cadastrar Aluno",
                         JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception ex) {
+            } catch (PersistenceException pe) {
                 JOptionPane.showMessageDialog(
                         this,
-                        ex.getMessage(),
+                        "Já existe um aluno com essa matrícula, email, cpf ou rg no sistema.",
+                        "Erro cadastrar Aluno",
+                        JOptionPane.ERROR_MESSAGE);
+            } catch (Exception pe) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Aluno não pode ser cadastrado no sistema.",
                         "Erro cadastrar Aluno",
                         JOptionPane.ERROR_MESSAGE);
             }

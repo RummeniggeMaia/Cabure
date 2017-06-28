@@ -242,6 +242,11 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         for (int i = 0; i < limites.length; i++) {
             comboLimite.addItem("" + limites[i]);
         }
+        comboLimite.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboLimiteItemStateChanged(evt);
+            }
+        });
         comboLimite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboLimiteActionPerformed(evt);
@@ -319,6 +324,7 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_textFieldMatriculaActionPerformed
 
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        ctrl.getPaginador().resetar();
         ctrl.getPaginador().setCondicao(gerarCondicao());
         pesquisar();
     }//GEN-LAST:event_buttonPesquisarActionPerformed
@@ -366,6 +372,14 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_comboLimiteActionPerformed
+
+    private void comboLimiteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboLimiteItemStateChanged
+        try {
+            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+            ctrl.getPaginador().setLimit(l);
+        } catch (Exception ex) {
+        }
+    }//GEN-LAST:event_comboLimiteItemStateChanged
 
     public void pesquisar() {
         List<Aluno> alunos = ctrl.pesquisar();

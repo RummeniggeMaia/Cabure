@@ -157,8 +157,11 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
     private void buttonGerarRelatorioLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioLivroActionPerformed
         if (validacao()){
-            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
-
+            Boolean b = gerarCondicao();
+            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b);
+            
+            for(Aluno a: listaAlunos)
+                System.out.println(a.getNome());
         }
     }//GEN-LAST:event_buttonGerarRelatorioLivroActionPerformed
 
@@ -196,14 +199,14 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
        return valido;
     }
     
-    private String gerarCondicao() {
-        String condicao = "";
+    private Boolean gerarCondicao() {
+        Boolean condicao = null;
         
         if (radioButtonSituacaoAtivos.isSelected()) {
-            condicao += String.format(" a.situacao = 'b'", true);
+            condicao = true;
         }
         if (radioButtonSituacaoInativos.isSelected()){
-            condicao += String.format(" a.situacao = 'b'", false);
+            condicao = false;
         }
         if (radioButtonSituacaoTodas.isSelected()){
             // faz nada já que será o *

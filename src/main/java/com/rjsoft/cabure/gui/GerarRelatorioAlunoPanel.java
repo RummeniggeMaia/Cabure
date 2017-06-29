@@ -5,10 +5,27 @@
  */
 package com.rjsoft.cabure.gui;
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
-import javafx.scene.control.RadioButton;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +37,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
      * Creates new form RelatorioPanel
      */
     private AlunoCtrl ctrl;
-    
+
     public GerarRelatorioAlunoPanel(AlunoCtrl ctrl) {
         this.ctrl = ctrl;
         initComponents();
@@ -156,12 +173,12 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGerarRelatorioLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioLivroActionPerformed
-        if (validacao()){
+        if (validacao()) {
             Boolean b = gerarCondicao();
             List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b);
-            
-            for(Aluno a: listaAlunos)
-                System.out.println(a.getNome());
+
+            gerarPDF(listaAlunos);
+
         }
     }//GEN-LAST:event_buttonGerarRelatorioLivroActionPerformed
 
@@ -183,35 +200,117 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private boolean validacao() {
-       boolean valido = true;
-       if((radioButtonSituacaoAtivos.isSelected() == false) && 
-               (radioButtonSituacaoInativos.isSelected() == false) &&
-               (radioButtonSituacaoTodas.isSelected() == false)) {
+        boolean valido = true;
+        if ((radioButtonSituacaoAtivos.isSelected() == false)
+                && (radioButtonSituacaoInativos.isSelected() == false)
+                && (radioButtonSituacaoTodas.isSelected() == false)) {
             valido = false;
             labelErrTipoSituacaoAluno.setText("* Tipo de relatório obrigatório.");
-       }
-       if((radioButtonTipoCompleto.isSelected() == false) && 
-               (radioButtonTipoSimplificado.isSelected() == false)){
-           valido = false;                        
-           labelErrTipoSituacaoAluno.setText("* Tipo de situação obrigatório.");
-       }
-       
-       return valido;
+        }
+        if ((radioButtonTipoCompleto.isSelected() == false)
+                && (radioButtonTipoSimplificado.isSelected() == false)) {
+            valido = false;
+            labelErrTipoSituacaoAluno.setText("* Tipo de situação obrigatório.");
+        }
+
+        return valido;
     }
-    
+
     private Boolean gerarCondicao() {
         Boolean condicao = null;
-        
+
         if (radioButtonSituacaoAtivos.isSelected()) {
             condicao = true;
         }
-        if (radioButtonSituacaoInativos.isSelected()){
+        if (radioButtonSituacaoInativos.isSelected()) {
             condicao = false;
         }
-        if (radioButtonSituacaoTodas.isSelected()){
+        if (radioButtonSituacaoTodas.isSelected()) {
             // faz nada já que será o *
         }
-        
+
         return condicao;
+    }
+
+    private void gerarPDF(List<Aluno> listaAlunos) {
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Alunos.pdf"));
+
+            document.open();
+
+            try {
+                Image image = Image.getInstance("imagens/cabure_logo.png");
+                image.setAlignment(Element.ALIGN_CENTER);
+                document.add(image);
+            } catch (BadElementException | IOException ex) {
+                Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // Criando relatório simplicado, caso contrário, será criado o relatório completo.
+            if (radioButtonTipoSimplificado.isSelected()) {
+                PdfPTable tabelaSimplificada = criarTabelaSimplificada(listaAlunos);
+                document.add(tabelaSimplificada);
+            } else {
+                for (Aluno a : listaAlunos) {
+                    document.add(new Paragraph(a.getNome()));
+                }
+            }
+
+        } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+        }
+
+        try {
+            Desktop.getDesktop().open(new File("Relatório de Alunos.pdf"));
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private PdfPTable criarTabelaSimplificada(List<Aluno> listaAlunos) throws DocumentException {
+        PdfPTable table = new PdfPTable(4);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        table.setWidths(new float[]{1, 1, 1, 1});
+        PdfPCell cell;
+
+        Boolean b = gerarCondicao();
+
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+
+        if (b == null) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos e Inativos", font));
+        } else if (b == true) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos", font));
+        } else {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Inativos", font));
+        }
+        cell.setColspan(4);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Matrícula", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nome", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("CPF", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Situação", font));
+        table.addCell(cell);
+
+        for (Aluno a : listaAlunos) {
+            table.addCell(a.getMatricula());
+            table.addCell(a.getNome());
+            table.addCell(a.getCpf());
+            if(a.getSituacao() == true){
+                table.addCell("Ativo");
+            }else{
+                table.addCell("Inativo");
+            }
+        }
+        return table;
     }
 }

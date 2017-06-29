@@ -22,11 +22,14 @@ public class CabureGUI extends javax.swing.JFrame
      * Creates new form Cabure
      */
     private HomePanel home;
-    private CadastrarAlunoPane cadastrarAluno;
+    private CadastrarAlunoPanel cadastrarAluno;
     private PesquisarAlunoPanel pesquisarAluno;
     private CadastrarLivroPanel cadastrarLivro;
     private PesquisarLivroPanel pesquisarLivro;
     private GerenciarEmprestimosPanel gerenciarEmprestimos;
+    private GerarRelatorioAlunoPanel relatorioAlunoPanel;
+    private GerarRelatorioEmprestimoPanel relatorioEmprestimoPanel;
+    private GerarRelatorioLivroPanel relatorioLivroPanel;
     private JPanel painelCentro;
     //Controles
     private AlunoCtrl alunoCtrl;
@@ -50,10 +53,13 @@ public class CabureGUI extends javax.swing.JFrame
         initComponents();
 
         home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl);
-        cadastrarAluno = new CadastrarAlunoPane(alunoCtrl);
+        cadastrarAluno = new CadastrarAlunoPanel(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
+        relatorioAlunoPanel = new GerarRelatorioAlunoPanel(alunoCtrl);
+        relatorioLivroPanel = new GerarRelatorioLivroPanel();
+        relatorioEmprestimoPanel = new GerarRelatorioEmprestimoPanel();
         gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
 
         home.pesquisarEA();
@@ -247,12 +253,15 @@ public class CabureGUI extends javax.swing.JFrame
                 break;
             }
             case AcordeonListener.MENU_RELATORIO_ALUNOS: {
+                painelCentro = relatorioAlunoPanel;
                 break;
             }
             case AcordeonListener.MENU_RELATORIO_LIVROS: {
+                painelCentro = relatorioLivroPanel;
                 break;
             }
             case AcordeonListener.MENU_RELATORIO_EMPRESTIMOS: {
+                painelCentro = relatorioEmprestimoPanel;
                 break;
             }
             default: {

@@ -37,17 +37,23 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         buttonGroupTipoRelatorio = new javax.swing.ButtonGroup();
         buttonGroupTipoSituacaoAluno = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        labelSituacao = new javax.swing.JLabel();
+        labelErrTipoSituacaoAluno = new javax.swing.JLabel();
         buttonGerarRelatorioLivro = new javax.swing.JButton();
-        labelRelatorioAlunos = new javax.swing.JLabel();
-        labelTipoRelatorio = new javax.swing.JLabel();
         radioButtonTipoSimplificado = new javax.swing.JRadioButton();
         radioButtonTipoCompleto = new javax.swing.JRadioButton();
         radioButtonSituacaoTodas = new javax.swing.JRadioButton();
         radioButtonSituacaoAtivos = new javax.swing.JRadioButton();
         radioButtonSituacaoInativos = new javax.swing.JRadioButton();
-        labelSituacao = new javax.swing.JLabel();
+        labelTipoRelatorio = new javax.swing.JLabel();
         labelErrTipoRelatorioAluno = new javax.swing.JLabel();
-        labelErrTipoSituacaoAluno = new javax.swing.JLabel();
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerar Relatório de Alunos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
+
+        labelSituacao.setText("Selecione o tipo de situação do Aluno:");
+
+        labelErrTipoSituacaoAluno.setForeground(new java.awt.Color(255, 0, 0));
 
         buttonGerarRelatorioLivro.setText("Gerar Relatório");
         buttonGerarRelatorioLivro.addActionListener(new java.awt.event.ActionListener() {
@@ -55,13 +61,6 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                 buttonGerarRelatorioLivroActionPerformed(evt);
             }
         });
-
-        labelRelatorioAlunos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelRelatorioAlunos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRelatorioAlunos.setText("Relatório de Alunos");
-        labelRelatorioAlunos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        labelTipoRelatorio.setText("Selecione o tipo de relatório:");
 
         buttonGroupTipoRelatorio.add(radioButtonTipoSimplificado);
         radioButtonTipoSimplificado.setText("Simplificado");
@@ -78,11 +77,65 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         buttonGroupTipoSituacaoAluno.add(radioButtonSituacaoInativos);
         radioButtonSituacaoInativos.setText("Inativos");
 
-        labelSituacao.setText("Selecione o tipo de situação do Aluno:");
+        labelTipoRelatorio.setText("Selecione o tipo de relatório:");
 
         labelErrTipoRelatorioAluno.setForeground(new java.awt.Color(255, 0, 0));
 
-        labelErrTipoSituacaoAluno.setForeground(new java.awt.Color(255, 0, 0));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelTipoRelatorio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(radioButtonTipoSimplificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioButtonTipoCompleto))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelSituacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(radioButtonSituacaoTodas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioButtonSituacaoAtivos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioButtonSituacaoInativos)))
+                .addContainerGap(267, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonTipoSimplificado)
+                    .addComponent(radioButtonTipoCompleto))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelSituacao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonSituacaoTodas)
+                    .addComponent(radioButtonSituacaoAtivos)
+                    .addComponent(radioButtonSituacaoInativos))
+                .addGap(18, 18, 18)
+                .addComponent(buttonGerarRelatorioLivro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,64 +143,22 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelRelatorioAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonTipoSimplificado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonTipoCompleto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonSituacaoTodas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoAtivos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoInativos))
-                            .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelSituacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelRelatorioAlunos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonTipoSimplificado)
-                    .addComponent(radioButtonTipoCompleto))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonSituacaoTodas)
-                    .addComponent(radioButtonSituacaoAtivos)
-                    .addComponent(radioButtonSituacaoInativos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonGerarRelatorioLivro)
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGerarRelatorioLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioLivroActionPerformed
         if (validacao()){
             List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
-            
+
         }
     }//GEN-LAST:event_buttonGerarRelatorioLivroActionPerformed
 
@@ -156,9 +167,9 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonGerarRelatorioLivro;
     private javax.swing.ButtonGroup buttonGroupTipoRelatorio;
     private javax.swing.ButtonGroup buttonGroupTipoSituacaoAluno;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelErrTipoRelatorioAluno;
     private javax.swing.JLabel labelErrTipoSituacaoAluno;
-    private javax.swing.JLabel labelRelatorioAlunos;
     private javax.swing.JLabel labelSituacao;
     private javax.swing.JLabel labelTipoRelatorio;
     private javax.swing.JRadioButton radioButtonSituacaoAtivos;

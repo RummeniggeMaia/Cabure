@@ -63,63 +63,25 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        labelTitulo = new javax.swing.JLabel();
+        textFieldTitulo = new javax.swing.JTextField();
+        labelPrimeiroAutor = new javax.swing.JLabel();
+        textFieldPrimeiroAutor = new javax.swing.JTextField();
+        buttonPesquisar = new javax.swing.JButton();
+        scrollTabelaAlunos = new javax.swing.JScrollPane();
+        tableLivros = new javax.swing.JTable();
+        comboLimite = new javax.swing.JComboBox<>();
+        botPagPrimeira = new javax.swing.JButton();
         botPagAnterior = new javax.swing.JButton();
+        textFieldPagina = new javax.swing.JFormattedTextField();
         labelTotalPaginas = new javax.swing.JLabel();
         botPagProxima = new javax.swing.JButton();
         botPagUltima = new javax.swing.JButton();
-        comboLimite = new javax.swing.JComboBox<>();
-        labelTitulo = new javax.swing.JLabel();
-        labelPrimeiroAutor = new javax.swing.JLabel();
-        textFieldTitulo = new javax.swing.JTextField();
-        textFieldPrimeiroAutor = new javax.swing.JTextField();
-        scrollTabelaAlunos = new javax.swing.JScrollPane();
-        tableLivros = new javax.swing.JTable();
-        buttonPesquisar = new javax.swing.JButton();
-        labelPesquisarLivro = new javax.swing.JLabel();
-        botPagPrimeira = new javax.swing.JButton();
-        textFieldPagina = new javax.swing.JFormattedTextField();
 
-        botPagAnterior.setText("<<");
-        botPagAnterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagAnteriorActionPerformed(evt);
-            }
-        });
-
-        labelTotalPaginas.setText("de 9999");
-
-        botPagProxima.setText(">>");
-        botPagProxima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagProximaActionPerformed(evt);
-            }
-        });
-
-        botPagUltima.setText(">|");
-        botPagUltima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagUltimaActionPerformed(evt);
-            }
-        });
-
-        int[] limites = ctrl.getPaginador().getLimites();
-        for (int i = 0; i < limites.length; i++) {
-            comboLimite.addItem("" + limites[i]);
-        }
-        comboLimite.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboLimiteItemStateChanged(evt);
-            }
-        });
-        comboLimite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLimiteActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisar Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
         labelTitulo.setText("Titulo:");
-
-        labelPrimeiroAutor.setText("Primeiro Autor:");
 
         textFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,9 +89,18 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             }
         });
 
+        labelPrimeiroAutor.setText("Primeiro Autor:");
+
         textFieldPrimeiroAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldPrimeiroAutorActionPerformed(evt);
+            }
+        });
+
+        buttonPesquisar.setText("Pesquisar");
+        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPesquisarActionPerformed(evt);
             }
         });
 
@@ -209,17 +180,20 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         tableLivros.getTableHeader().setReorderingAllowed(false);
         scrollTabelaAlunos.setViewportView(tableLivros);
 
-        buttonPesquisar.setText("Pesquisar");
-        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPesquisarActionPerformed(evt);
+        int[] limites = ctrl.getPaginador().getLimites();
+        for (int i = 0; i < limites.length; i++) {
+            comboLimite.addItem("" + limites[i]);
+        }
+        comboLimite.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboLimiteItemStateChanged(evt);
             }
         });
-
-        labelPesquisarLivro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelPesquisarLivro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPesquisarLivro.setText("Pesquisar Livro");
-        labelPesquisarLivro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        comboLimite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLimiteActionPerformed(evt);
+            }
+        });
 
         botPagPrimeira.setText("|<");
         botPagPrimeira.addActionListener(new java.awt.event.ActionListener() {
@@ -228,23 +202,47 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             }
         });
 
+        botPagAnterior.setText("<<");
+        botPagAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagAnteriorActionPerformed(evt);
+            }
+        });
+
         textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        labelTotalPaginas.setText("de 9999");
+
+        botPagProxima.setText(">>");
+        botPagProxima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagProximaActionPerformed(evt);
+            }
+        });
+
+        botPagUltima.setText(">|");
+        botPagUltima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagUltimaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldTitulo)
-                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                    .addComponent(textFieldPrimeiroAutor)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTitulo)
                             .addComponent(labelPrimeiroAutor)
                             .addComponent(buttonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(comboLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagPrimeira)
@@ -258,17 +256,12 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                                 .addComponent(botPagProxima)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagUltima)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(textFieldPrimeiroAutor)
-                    .addComponent(labelPesquisarLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelPesquisarLivro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(labelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,16 +272,32 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)
                     .addComponent(botPagAnterior)
                     .addComponent(labelTotalPaginas)
                     .addComponent(botPagProxima)
                     .addComponent(botPagUltima)
                     .addComponent(comboLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -408,7 +417,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JButton botPagUltima;
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JComboBox<String> comboLimite;
-    private javax.swing.JLabel labelPesquisarLivro;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelPrimeiroAutor;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelTotalPaginas;

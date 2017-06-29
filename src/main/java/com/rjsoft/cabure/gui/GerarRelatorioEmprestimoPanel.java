@@ -29,48 +29,29 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
 
         buttonGroupTipoRelatorioEmprestimo = new javax.swing.ButtonGroup();
         buttonGroupSituacaoEmprestimos = new javax.swing.ButtonGroup();
-        radioButtonSituacaoEmprestimoAtrasado = new javax.swing.JRadioButton();
-        radioButtonSituacaoEmprestimoEmDia = new javax.swing.JRadioButton();
-        labelSituacaoEmprestimos = new javax.swing.JLabel();
-        labelErrTipoRelatorioEmprestimo = new javax.swing.JLabel();
-        labelErrTipoSituacao = new javax.swing.JLabel();
-        buttonGerarRelatorioEmprestimo = new javax.swing.JButton();
-        labelRelatorioEmprestimos = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         labelTipoRelatorio = new javax.swing.JLabel();
+        labelErrTipoRelatorioEmprestimo = new javax.swing.JLabel();
         radioButtonTipoSimplificado = new javax.swing.JRadioButton();
         radioButtonTipoCompleto = new javax.swing.JRadioButton();
-        radioButtonSituacaoTodosEmprestimos = new javax.swing.JRadioButton();
         labelTipoRelatorioDataInicialEmprestimos = new javax.swing.JLabel();
+        labelErrDataInicialEmprestimo = new javax.swing.JLabel();
         dataInicialEmprestimos = new javax.swing.JFormattedTextField();
         labelTipoRelatorioDataFinalEmprestimos = new javax.swing.JLabel();
         dataFinalEmprestimos = new javax.swing.JFormattedTextField();
-        labelErrDataInicialEmprestimo = new javax.swing.JLabel();
-        labelErrDataFinalEmprestimo = new javax.swing.JLabel();
+        labelSituacaoEmprestimos = new javax.swing.JLabel();
         labelErrTipoSituacaoEmprestimo = new javax.swing.JLabel();
+        radioButtonSituacaoTodosEmprestimos = new javax.swing.JRadioButton();
+        radioButtonSituacaoEmprestimoAtrasado = new javax.swing.JRadioButton();
+        radioButtonSituacaoEmprestimoEmDia = new javax.swing.JRadioButton();
+        buttonGerarRelatorioEmprestimo = new javax.swing.JButton();
+        labelErrDataFinalEmprestimo = new javax.swing.JLabel();
 
-        buttonGroupTipoRelatorioEmprestimo.add(radioButtonSituacaoEmprestimoAtrasado);
-        radioButtonSituacaoEmprestimoAtrasado.setText("Empréstimos em atraso");
-
-        buttonGroupTipoRelatorioEmprestimo.add(radioButtonSituacaoEmprestimoEmDia);
-        radioButtonSituacaoEmprestimoEmDia.setText("Empréstimo em dia");
-
-        labelSituacaoEmprestimos.setText("Selecione o tipo da situação do empréstimo:");
-
-        labelErrTipoRelatorioEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
-
-        buttonGerarRelatorioEmprestimo.setText("Gerar Relatório");
-        buttonGerarRelatorioEmprestimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGerarRelatorioEmprestimoActionPerformed(evt);
-            }
-        });
-
-        labelRelatorioEmprestimos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelRelatorioEmprestimos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRelatorioEmprestimos.setText("Relatório de Empréstimos");
-        labelRelatorioEmprestimos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerar Relatório de Empréstimos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
         labelTipoRelatorio.setText("Selecione o tipo de relatório:");
+
+        labelErrTipoRelatorioEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
 
         buttonGroupTipoRelatorioEmprestimo.add(radioButtonTipoSimplificado);
         radioButtonTipoSimplificado.setText("Simplificado");
@@ -78,10 +59,9 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         buttonGroupTipoRelatorioEmprestimo.add(radioButtonTipoCompleto);
         radioButtonTipoCompleto.setText("Completo");
 
-        buttonGroupTipoRelatorioEmprestimo.add(radioButtonSituacaoTodosEmprestimos);
-        radioButtonSituacaoTodosEmprestimos.setText("Todos os empréstimos");
-
         labelTipoRelatorioDataInicialEmprestimos.setText("Selecione a data inicial dos empréstimos:");
+
+        labelErrDataInicialEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
 
         try {
             dataInicialEmprestimos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -97,11 +77,110 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             ex.printStackTrace();
         }
 
-        labelErrDataInicialEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelErrDataFinalEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
+        labelSituacaoEmprestimos.setText("Selecione o tipo da situação do empréstimo:");
 
         labelErrTipoSituacaoEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
+
+        buttonGroupTipoRelatorioEmprestimo.add(radioButtonSituacaoTodosEmprestimos);
+        radioButtonSituacaoTodosEmprestimos.setText("Todos os empréstimos");
+
+        buttonGroupTipoRelatorioEmprestimo.add(radioButtonSituacaoEmprestimoAtrasado);
+        radioButtonSituacaoEmprestimoAtrasado.setText("Empréstimos em atraso");
+
+        buttonGroupTipoRelatorioEmprestimo.add(radioButtonSituacaoEmprestimoEmDia);
+        radioButtonSituacaoEmprestimoEmDia.setText("Empréstimo em dia");
+
+        buttonGerarRelatorioEmprestimo.setText("Gerar Relatório");
+        buttonGerarRelatorioEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGerarRelatorioEmprestimoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioButtonTipoSimplificado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonTipoCompleto))
+                            .addComponent(dataInicialEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataFinalEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelSituacaoEmprestimos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioButtonSituacaoTodosEmprestimos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonSituacaoEmprestimoAtrasado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonSituacaoEmprestimoEmDia)))
+                        .addGap(82, 82, 82))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelTipoRelatorioDataFinalEmprestimos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelErrDataFinalEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelTipoRelatorioDataInicialEmprestimos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelErrDataInicialEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelTipoRelatorio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelErrTipoRelatorioEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonGerarRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTipoRelatorio)
+                    .addComponent(labelErrTipoRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonTipoSimplificado)
+                    .addComponent(radioButtonTipoCompleto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelErrDataInicialEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTipoRelatorioDataInicialEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dataInicialEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelTipoRelatorioDataFinalEmprestimos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataFinalEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelSituacaoEmprestimos))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelErrDataFinalEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonSituacaoTodosEmprestimos)
+                    .addComponent(radioButtonSituacaoEmprestimoAtrasado)
+                    .addComponent(radioButtonSituacaoEmprestimoEmDia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonGerarRelatorioEmprestimo)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -109,89 +188,15 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelRelatorioEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonTipoSimplificado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonTipoCompleto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorioDataInicialEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrDataInicialEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelSituacaoEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorioDataFinalEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrDataFinalEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buttonGerarRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonSituacaoTodosEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoEmprestimoAtrasado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoEmprestimoEmDia))
-                            .addComponent(dataInicialEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dataFinalEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelRelatorioEmprestimos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTipoRelatorio)
-                    .addComponent(labelErrTipoRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonTipoSimplificado)
-                    .addComponent(radioButtonTipoCompleto))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(labelErrTipoSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTipoRelatorioDataInicialEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(labelErrDataInicialEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataInicialEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelTipoRelatorioDataFinalEmprestimos)
-                    .addComponent(labelErrDataFinalEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataFinalEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelSituacaoEmprestimos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(radioButtonSituacaoTodosEmprestimos)
-                            .addComponent(radioButtonSituacaoEmprestimoAtrasado)
-                            .addComponent(radioButtonSituacaoEmprestimoEmDia))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonGerarRelatorioEmprestimo))
-                    .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -209,12 +214,11 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroupTipoRelatorioEmprestimo;
     private javax.swing.JFormattedTextField dataFinalEmprestimos;
     private javax.swing.JFormattedTextField dataInicialEmprestimos;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelErrDataFinalEmprestimo;
     private javax.swing.JLabel labelErrDataInicialEmprestimo;
     private javax.swing.JLabel labelErrTipoRelatorioEmprestimo;
-    private javax.swing.JLabel labelErrTipoSituacao;
     private javax.swing.JLabel labelErrTipoSituacaoEmprestimo;
-    private javax.swing.JLabel labelRelatorioEmprestimos;
     private javax.swing.JLabel labelSituacaoEmprestimos;
     private javax.swing.JLabel labelTipoRelatorio;
     private javax.swing.JLabel labelTipoRelatorioDataFinalEmprestimos;

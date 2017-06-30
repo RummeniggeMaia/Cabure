@@ -72,4 +72,8 @@ public class LivroCtrl {
             dao.fechar();
         }
     }
+    
+    public List<Livro> pesquisarRelatorioLivro(Boolean condicao) {
+        return dao.pesquisarRelatorioLivro(condicao);
+    }
 }

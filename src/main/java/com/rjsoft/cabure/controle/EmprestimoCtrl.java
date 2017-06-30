@@ -32,7 +32,7 @@ public class EmprestimoCtrl {
         dao.salvar(emprestimo);
     }
 
-    public List<Emprestimo> pesquisarAlunos() {
+    public List<Emprestimo> pesquisarEmprestimos() {
         return dao.pesquisarTudo(paginador.getOffset(), paginador.getLimit());
     }
 

@@ -65,5 +65,13 @@ public class LivroJpaController {
             entityManager.close();
         }
     }
-    
+
+    public List<Livro> pesquisarRelatorioLivro(Boolean condicao) {
+        Query query;
+            query = entityManager.createQuery(
+                    "SELECT l FROM Livro l");
+        
+        return (List<Livro>) query.getResultList();
+    }
+
 }

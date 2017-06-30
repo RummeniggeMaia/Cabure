@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -238,12 +239,12 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream("Relatório de Alunos.pdf"));
-            
+
             document.open();
 
             PdfPTable cabecalho = criarTabelaCabecalho(document);
             document.add(cabecalho);
-            
+
             // Criando relatório simplicado, caso contrário, será criado o relatório completo.
             if (radioButtonTipoSimplificado.isSelected()) {
                 PdfPTable tabelaSimplificada = criarTabelaSimplificada(listaAlunos);
@@ -309,8 +310,55 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         return table;
     }
 
-    private PdfPTable criarTabelaCompleta(List<Aluno> listaAlunos) {
-        return null;
+    private PdfPTable criarTabelaCompleta(List<Aluno> listaAlunos) throws DocumentException {
+        PdfPTable table = new PdfPTable(6);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        table.setWidths(new float[]{13, 29, 20, 14, 14, 10});
+        PdfPCell cell;
+
+        Boolean b = gerarCondicao();
+
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+
+        if (b == null) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos e Inativos", font));
+        } else if (b == true) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos", font));
+        } else {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Inativos", font));
+        }
+        cell.setColspan(6);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Matrícula", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nome", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("CPF", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("RG", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nascimento", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Situação", font));
+        table.addCell(cell);
+
+        for (Aluno a : listaAlunos) {
+            table.addCell(a.getMatricula());
+            table.addCell(a.getNome());
+            table.addCell(a.getCpf());
+            table.addCell(a.getRg());
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            String dataFormatada = formato.format(a.getDataNascimento());
+            table.addCell(dataFormatada);
+            if (a.getSituacao() == true) {
+                table.addCell("Ativo");
+            } else {
+                table.addCell("Inativo");
+            }
+        }
+        return table;
     }
 
     private PdfPTable criarTabelaCabecalho(Document document) {
@@ -327,8 +375,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         Paragraph paragraph;
         Image image;
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
-        
-        
+
         try {
             image = Image.getInstance("imagens/cabure_logo.png");
             image.setAlignment(Element.ALIGN_CENTER);

@@ -5,8 +5,31 @@
  */
 package com.rjsoft.cabure.gui;
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.rjsoft.cabure.controle.EmprestimoCtrl;
+import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
+import com.rjsoft.cabure.modelo.Emprestimo;
+import com.rjsoft.cabure.modelo.Livro;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +40,16 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     /**
      * Creates new form GerarRelatorioLivroPanel
      */
+    LivroCtrl ctrlLivro;
+    EmprestimoCtrl ctrlEmprestimo;
+
     public GerarRelatorioLivroPanel() {
+        initComponents();
+    }
+
+    public GerarRelatorioLivroPanel(LivroCtrl ctrlLivro, EmprestimoCtrl ctrlEmprestimo) {
+        this.ctrlLivro = ctrlLivro;
+        this.ctrlEmprestimo = ctrlEmprestimo;
         initComponents();
     }
 
@@ -94,7 +126,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelSituacaoLivro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelErrTipoSituacaoLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelErrTipoSituacaoLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(radioButtonSituacaoTodas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -149,10 +181,15 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGerarRelatorioAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioAlunoActionPerformed
-//        if (validacao()){
-//            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
-//
-//        }
+        if (validacao()) {
+            Boolean b = gerarCondicao();
+
+            List<Livro> listaLivros = ctrlLivro.pesquisarRelatorioLivro(b);
+            List<Emprestimo> listaEmprestimos = ctrlEmprestimo.pesquisarEmprestimos();
+
+            gerarPDF(listaLivros, listaEmprestimos);
+
+        }
     }//GEN-LAST:event_buttonGerarRelatorioAlunoActionPerformed
 
 
@@ -171,4 +208,157 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton radioButtonTipoCompleto;
     private javax.swing.JRadioButton radioButtonTipoSimplificado;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validacao() {
+        boolean valido = true;
+        if ((radioButtonTipoCompleto.isSelected() == false)
+                && (radioButtonTipoSimplificado.isSelected() == false)) {
+            valido = false;
+            labelErrTipoRelatorioLivros.setText("* Tipo de relatório obrigatório.");
+        }
+        if ((radioButtonSituacaoTodas.isSelected() == false)
+                && (radioButtonSituacaoEmprestado.isSelected() == false)
+                && (radioButtonSituacaoNaoEmprestado.isSelected() == false)) {
+            valido = false;
+            labelErrTipoSituacaoLivros.setText("* Tipo de situação obrigatório.");
+        }
+
+        return valido;
+    }
+
+    private Boolean gerarCondicao() {
+        Boolean condicao = null;
+
+        if (radioButtonSituacaoEmprestado.isSelected()) {
+            condicao = true;
+        }
+        if (radioButtonSituacaoNaoEmprestado.isSelected()) {
+            condicao = false;
+        }
+        if (radioButtonSituacaoTodas.isSelected()) {
+            // faz nada já que será o *
+        }
+
+        return condicao;
+    }
+
+    private void gerarPDF(List<Livro> listaLivros, List<Emprestimo> listaEmprestimos) {
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Livros.pdf"));
+
+            document.open();
+
+            PdfPTable cabecalho = criarTabelaCabecalho(document);
+            document.add(cabecalho);
+
+            // Criando relatório simplicado, caso contrário, será criado o relatório completo.
+            if (radioButtonTipoSimplificado.isSelected()) {
+                PdfPTable tabelaSimplificada = criarTabelaSimplificada(listaLivros, listaEmprestimos);
+                document.add(tabelaSimplificada);
+            } else {
+                PdfPTable tabelaCompleta = criarTabelaCompleta(listaLivros, listaEmprestimos);
+                document.add(tabelaCompleta);
+            }
+
+        } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+        }
+
+        try {
+            Desktop.getDesktop().open(new File("Relatório de Livros.pdf"));
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private PdfPTable criarTabelaCabecalho(Document document) {
+        PdfPTable table = new PdfPTable(2);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        try {
+            table.setWidths(new float[]{40, 60});
+        } catch (DocumentException ex) {
+            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PdfPCell cell1;
+        PdfPCell cell2;
+        Paragraph paragraph;
+        Image image;
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
+
+        try {
+            image = Image.getInstance("imagens/cabure_logo.png");
+            image.setAlignment(Element.ALIGN_CENTER);
+            cell1 = new PdfPCell(image);
+            cell1.setBorder(0);
+            table.addCell(cell1);
+            Paragraph p = new Paragraph();
+            p.add(new Phrase("Governo do Estado do Rio Grande do Norte"));
+            p.add(new Phrase("\r\nEscola Estadual Joaquim José de Medeiros"));
+            p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
+            p.add(new Phrase("\r\nCidade: Cruzeta-RN"));
+            p.add(new Phrase("\r\nCEP: 59375-000"));
+            p.add(new Phrase("\r\nTelefone: (84) 3473-2210"));
+            cell2 = new PdfPCell(p);
+            cell2.setBorder(0);
+            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell2);
+            table.setSpacingAfter(40f);
+            table.setSpacingBefore(10f);
+        } catch (IOException | BadElementException ex) {
+            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return table;
+    }
+
+    private PdfPTable criarTabelaSimplificada(List<Livro> listaLivros, List<Emprestimo> listaEmprestimos) throws DocumentException {
+        PdfPTable table = new PdfPTable(4);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        table.setWidths(new float[]{1, 1, 1, 1});
+        PdfPCell cell;
+
+        Boolean b = gerarCondicao();
+
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+
+        if (b == null) {
+            cell = new PdfPCell(new Phrase("Relatório de Livros Emprestados e Não Emprestados", font));
+        } else if (b == true) {
+            cell = new PdfPCell(new Phrase("Relatório de Livros Emprestados", font));
+        } else {
+            cell = new PdfPCell(new Phrase("Relatório de Livros Não Emprestados", font));
+        }
+        cell.setColspan(4);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Título", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Autor", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Qtd na Estante", font));
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Qtd emprestado", font));
+        table.addCell(cell);
+
+        List<Emprestimo> listaAux = new ArrayList<Emprestimo>();
+        for (int i = 0; i<listaEmprestimos.size(); i++) {
+            int t = listaEmprestimos.get(i).getLivro().getID();
+            if(!listaAux.contains(listaEmprestimos.get(i).getLivro().getID())){
+                listaAux.add(listaEmprestimos.get(i));
+            }else{
+            }
+        }
+        
+        return table;
+    }
+
+    private PdfPTable criarTabelaCompleta(List<Livro> listaAlunos, List<Emprestimo> listaEmprestimos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

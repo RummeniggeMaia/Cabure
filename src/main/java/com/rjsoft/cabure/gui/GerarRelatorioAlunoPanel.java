@@ -19,6 +19,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
 import java.awt.Desktop;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -237,25 +238,19 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream("Relatório de Alunos.pdf"));
-
+            
             document.open();
 
-            try {
-                Image image = Image.getInstance("imagens/cabure_logo.png");
-                image.setAlignment(Element.ALIGN_CENTER);
-                document.add(image);
-            } catch (BadElementException | IOException ex) {
-                Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            PdfPTable cabecalho = criarTabelaCabecalho(document);
+            document.add(cabecalho);
+            
             // Criando relatório simplicado, caso contrário, será criado o relatório completo.
             if (radioButtonTipoSimplificado.isSelected()) {
                 PdfPTable tabelaSimplificada = criarTabelaSimplificada(listaAlunos);
                 document.add(tabelaSimplificada);
             } else {
-                for (Aluno a : listaAlunos) {
-                    document.add(new Paragraph(a.getNome()));
-                }
+                PdfPTable tabelaCompleta = criarTabelaCompleta(listaAlunos);
+                document.add(tabelaCompleta);
             }
 
         } catch (FileNotFoundException | DocumentException ex) {
@@ -305,11 +300,57 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             table.addCell(a.getMatricula());
             table.addCell(a.getNome());
             table.addCell(a.getCpf());
-            if(a.getSituacao() == true){
+            if (a.getSituacao() == true) {
                 table.addCell("Ativo");
-            }else{
+            } else {
                 table.addCell("Inativo");
             }
+        }
+        return table;
+    }
+
+    private PdfPTable criarTabelaCompleta(List<Aluno> listaAlunos) {
+        return null;
+    }
+
+    private PdfPTable criarTabelaCabecalho(Document document) {
+        PdfPTable table = new PdfPTable(2);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        try {
+            table.setWidths(new float[]{40, 60});
+        } catch (DocumentException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PdfPCell cell1;
+        PdfPCell cell2;
+        Paragraph paragraph;
+        Image image;
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
+        
+        
+        try {
+            image = Image.getInstance("imagens/cabure_logo.png");
+            image.setAlignment(Element.ALIGN_CENTER);
+            cell1 = new PdfPCell(image);
+            cell1.setBorder(0);
+            table.addCell(cell1);
+            Paragraph p = new Paragraph();
+            p.add(new Phrase("Governo do Estado do Rio Grande do Norte"));
+            p.add(new Phrase("\r\nEscola Estadual Joaquim José de Medeiros"));
+            p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
+            p.add(new Phrase("\r\nCidade: Cruzeta-RN"));
+            p.add(new Phrase("\r\nCEP: 59375-000"));
+            p.add(new Phrase("\r\nTelefone: (84) 3473-2210"));
+            cell2 = new PdfPCell(p);
+            cell2.setBorder(0);
+            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell2);
+            table.setSpacingAfter(40f);
+            table.setSpacingBefore(10f);
+        } catch (IOException | BadElementException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return table;
     }

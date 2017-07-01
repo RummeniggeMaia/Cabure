@@ -27,7 +27,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -345,16 +347,18 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Qtd emprestado", font));
         table.addCell(cell);
-
-        List<Emprestimo> listaAux = new ArrayList<Emprestimo>();
-        for (int i = 0; i<listaEmprestimos.size(); i++) {
-            int t = listaEmprestimos.get(i).getLivro().getID();
-            if(!listaAux.contains(listaEmprestimos.get(i).getLivro().getID())){
-                listaAux.add(listaEmprestimos.get(i));
+        
+        Map<Integer,Integer> array = new HashMap<Integer, Integer>();
+        
+        for(int i = 0; i<listaEmprestimos.size(); i++){
+            if(!array.containsKey(listaEmprestimos.get(i).getLivro().getID())){
+                array.put(listaEmprestimos.get(i).getLivro().getID(), listaEmprestimos.get(i).getQuantidade());
             }else{
+                int qtd = (int) array.get(listaEmprestimos.get(i).getLivro().getID());
+                array.put(listaEmprestimos.get(i).getLivro().getID(), qtd + listaEmprestimos.get(i).getQuantidade());
             }
         }
-        
+
         return table;
     }
 

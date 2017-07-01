@@ -319,10 +319,10 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     }
 
     private PdfPTable criarTabelaSimplificada(List<Livro> listaLivros, List<Emprestimo> listaEmprestimos) throws DocumentException {
-        PdfPTable table = new PdfPTable(4);
+        PdfPTable table = new PdfPTable(5);
         table.setTotalWidth(550);
         table.setLockedWidth(true);
-        table.setWidths(new float[]{1, 1, 1, 1});
+        table.setWidths(new float[]{5, 35, 25, 18, 17});
         PdfPCell cell;
 
         Boolean b = gerarCondicao();
@@ -331,32 +331,119 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
 
         if (b == null) {
             cell = new PdfPCell(new Phrase("Relatório de Livros Emprestados e Não Emprestados", font));
+            cell.setPaddingBottom(10.f);
         } else if (b == true) {
             cell = new PdfPCell(new Phrase("Relatório de Livros Emprestados", font));
+            cell.setPaddingBottom(10.f);
         } else {
             cell = new PdfPCell(new Phrase("Relatório de Livros Não Emprestados", font));
+            cell.setPaddingBottom(10.f);
         }
-        cell.setColspan(4);
+        cell.setColspan(5);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_CENTER);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase("Título", font));
+        cell = new PdfPCell(new Phrase("#", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase("Autor", font));
+        cell = new PdfPCell(new Phrase("Título do Livro", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase("Qtd na Estante", font));
+        cell = new PdfPCell(new Phrase("Autor do Livro", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase("Qtd emprestado", font));
+        cell = new PdfPCell(new Phrase("Quantidade\r\nem\r\nEstante", font));
+        cell.setVerticalAlignment(Element.ALIGN_CENTER);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
-        
-        Map<Integer,Integer> array = new HashMap<Integer, Integer>();
-        
-        for(int i = 0; i<listaEmprestimos.size(); i++){
-            if(!array.containsKey(listaEmprestimos.get(i).getLivro().getID())){
+        cell = new PdfPCell(new Phrase("Quantidade\r\nem\r\nEmpréstimo", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+
+        Map<Integer, Integer> array = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < listaEmprestimos.size(); i++) {
+            if (!array.containsKey(listaEmprestimos.get(i).getLivro().getID())) {
                 array.put(listaEmprestimos.get(i).getLivro().getID(), listaEmprestimos.get(i).getQuantidade());
-            }else{
+            } else {
                 int qtd = (int) array.get(listaEmprestimos.get(i).getLivro().getID());
                 array.put(listaEmprestimos.get(i).getLivro().getID(), qtd + listaEmprestimos.get(i).getQuantidade());
             }
+        }
+        int numeracao = 1;
+        if (gerarCondicao() == null) {
+
+            for (Livro l : listaLivros) {
+                PdfPCell cellAux;
+                cellAux = new PdfPCell(new Phrase(numeracao + "", font));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                table.addCell(l.getTitulo());
+                table.addCell(l.getPrimeiroAutor());
+                cellAux = new PdfPCell(new Phrase(l.getQntEstante() + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                if (array.containsKey(l.getID())) {
+                    int quantidade = (int) array.get(l.getID());
+                    cellAux = new PdfPCell(new Phrase(quantidade + ""));
+                    cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cellAux);
+                } else {
+                    cellAux = new PdfPCell(new Phrase(0 + ""));
+                    cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cellAux);
+                }
+                numeracao += 1;
+            }
+
+        } else if (gerarCondicao() == true) {
+
+            for (Livro l : listaLivros) {
+                if (array.containsKey(l.getID())) {
+                    PdfPCell cellAux;
+                    cellAux = new PdfPCell(new Phrase(numeracao + "", font));
+                    cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cellAux);
+                    table.addCell(l.getTitulo());
+                    table.addCell(l.getPrimeiroAutor());
+                    cellAux = new PdfPCell(new Phrase(l.getQntEstante() + ""));
+                    cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cellAux);
+                    int quantidade = (int) array.get(l.getID());
+                    cellAux = new PdfPCell(new Phrase(quantidade + ""));
+                    cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                    table.addCell(cellAux);
+                }
+            }
+
+        } else {
+
+            for (Livro l : listaLivros) {
+                if (!array.containsKey(l.getID())) {
+                    table.addCell(l.getTitulo());
+                    table.addCell(l.getPrimeiroAutor());
+                    table.addCell(l.getQntEstante() + "");
+                    table.addCell(l.getQntEstante() - l.getQntEstante() + "");
+                }
+            }
+
         }
 
         return table;

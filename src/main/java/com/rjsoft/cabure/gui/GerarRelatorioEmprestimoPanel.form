@@ -96,7 +96,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrTipoRelatorioEmprestimo" max="32767" attributes="0"/>
+                                  <Component id="labelErrTipoRelatorioEmprestimos" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -116,7 +116,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelErrTipoRelatorioEmprestimo" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="labelErrTipoRelatorioEmprestimos" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -164,7 +164,7 @@
             <Property name="text" type="java.lang.String" value="Selecione o tipo de relat&#xf3;rio:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelErrTipoRelatorioEmprestimo">
+        <Component class="javax.swing.JLabel" name="labelErrTipoRelatorioEmprestimos">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -233,7 +233,7 @@
         <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoTodosEmprestimos">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroupTipoRelatorioEmprestimo"/>
+              <ComponentRef name="buttonGroupSituacaoEmprestimos"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Todos os empr&#xe9;stimos"/>
           </Properties>
@@ -241,7 +241,7 @@
         <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoEmprestimoAtrasado">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroupTipoRelatorioEmprestimo"/>
+              <ComponentRef name="buttonGroupSituacaoEmprestimos"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Empr&#xe9;stimos em atraso"/>
           </Properties>
@@ -249,7 +249,7 @@
         <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoEmprestimoEmDia">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroupTipoRelatorioEmprestimo"/>
+              <ComponentRef name="buttonGroupSituacaoEmprestimos"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Empr&#xe9;stimo em dia"/>
           </Properties>

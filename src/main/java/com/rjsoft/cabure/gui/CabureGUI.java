@@ -59,7 +59,7 @@ public class CabureGUI extends javax.swing.JFrame
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
         relatorioAlunoPanel = new GerarRelatorioAlunoPanel(alunoCtrl);
         relatorioLivroPanel = new GerarRelatorioLivroPanel(livroCtrl,emprestimoCtrl);
-        relatorioEmprestimoPanel = new GerarRelatorioEmprestimoPanel();
+        relatorioEmprestimoPanel = new GerarRelatorioEmprestimoPanel(emprestimoCtrl, livroCtrl, alunoCtrl);
         gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
 
         home.pesquisarEA();

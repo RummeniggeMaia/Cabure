@@ -75,7 +75,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             valido = false;
             labelErrTipoSituacaoEmprestimo.setText("* Tipo de situação obrigatório.");
         }
-        
+
         return valido;
     }
 
@@ -274,7 +274,6 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
                 PdfPTable tabelaCompleta = criarTabelaCompleta(listaEmprestimos, listaEmprestimosAtrasados);
                 document.add(tabelaCompleta);
             }
-
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -333,7 +332,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         PdfPTable table = new PdfPTable(6);
         table.setTotalWidth(550);
         table.setLockedWidth(true);
-        table.setWidths(new float[]{5, 30, 25, 18, 17,5});
+        table.setWidths(new float[]{5, 30, 25, 18, 17, 5});
         PdfPCell cell;
 
         Boolean b = gerarCondicao();
@@ -520,7 +519,243 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         return table;
     }
 
-    private PdfPTable criarTabelaCompleta(List<Emprestimo> listaEmprestimos, List<Emprestimo> listaEmprestimosAtrasados) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private PdfPTable criarTabelaCompleta(List<Emprestimo> listaEmprestimos, List<Emprestimo> listaEmprestimosAtrasados) throws DocumentException {
+        PdfPTable table = new PdfPTable(7);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        table.setWidths(new float[]{5, 27, 20, 16, 14, 8, 10});
+        PdfPCell cell;
+
+        Boolean b = gerarCondicao();
+
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+        Font font2 = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+
+        if (b == null) {
+            cell = new PdfPCell(new Phrase("Relatório de Todos os Empréstimos", font));
+            cell.setPaddingBottom(10.f);
+        } else if (b == true) {
+            cell = new PdfPCell(new Phrase("Relatório de Todos os Empréstimos em Dia", font));
+            cell.setPaddingBottom(10.f);
+        } else {
+            cell = new PdfPCell(new Phrase("Relatório de Todos os Empréstimos em Atraso", font));
+            cell.setPaddingBottom(10.f);
+        }
+        cell.setColspan(7);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_CENTER);
+        cell.setPaddingBottom(10.f);
+
+        List<Emprestimo> auxiliarEmDia = new ArrayList<Emprestimo>();
+        List<Emprestimo> auxiliarEmAtraso = new ArrayList<Emprestimo>();
+        for (int i = 0; i < listaEmprestimos.size(); i++) {
+            Date dataFinal = listaEmprestimos.get(i).getPrazo();
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date dataAtual = null;
+            try {
+                String dataDeHoje = df.format(new Date());
+                dataAtual = df.parse(dataDeHoje);
+            } catch (ParseException ex) {
+                Logger.getLogger(GerarRelatorioEmprestimoPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (dataAtual.before(dataFinal)) {
+                auxiliarEmDia.add(listaEmprestimos.get(i));
+            }
+            if (dataAtual.after(dataFinal)) {
+                auxiliarEmAtraso.add(listaEmprestimos.get(i));
+            }
+        }
+
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("#", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Título do Livro", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nome do Aluno", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Data Empréstimo", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Prazo Entrega", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Qtd", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Dias em Atraso", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+
+        int numeracao = 1;
+        int qtdDiasAtrasado = 0;
+        if (gerarCondicao() == null) {
+            for (int i = 0; i < listaEmprestimos.size(); i++) {
+                PdfPCell cellAux;
+                cellAux = new PdfPCell(new Phrase(numeracao + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Livro livro = ctrlLivro.pesquisarPorId(listaEmprestimos.get(i).getLivro().getID());
+                cellAux = new PdfPCell(new Phrase(livro.getTitulo(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Aluno aluno = ctrlAluno.pesquisarPorId(listaEmprestimos.get(i).getAluno().getID());
+                cellAux = new PdfPCell(new Phrase(aluno.getNome(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                String dataEmprestimo = df.format(listaEmprestimos.get(i).getDataEmprestimo());
+                cellAux = new PdfPCell(new Phrase(dataEmprestimo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                String dataPrazo = df.format(listaEmprestimos.get(i).getPrazo());
+                cellAux = new PdfPCell(new Phrase(dataPrazo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(listaEmprestimos.get(i).getQuantidade() + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                Date dataAuxPrazo = listaEmprestimos.get(i).getPrazo();
+                Date dataAtual = new Date();
+                int qtd = 0;
+
+                for (int dias = 0; dataAtual.after(dataAuxPrazo); dias++) {
+                    dataAtual.setDate(dataAtual.getDate() - 1);
+                    qtd += 1;
+                }
+
+                cellAux = new PdfPCell(new Phrase(qtd + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                numeracao += 1;
+            }
+        } else if (gerarCondicao() == true) {
+            for (int i = 0; i < auxiliarEmDia.size(); i++) {
+                PdfPCell cellAux;
+                cellAux = new PdfPCell(new Phrase(numeracao + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Livro livro = ctrlLivro.pesquisarPorId(auxiliarEmDia.get(i).getLivro().getID());
+                cellAux = new PdfPCell(new Phrase(livro.getTitulo(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Aluno aluno = ctrlAluno.pesquisarPorId(auxiliarEmDia.get(i).getAluno().getID());
+                cellAux = new PdfPCell(new Phrase(aluno.getNome(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                String dataEmprestimo = df.format(auxiliarEmDia.get(i).getDataEmprestimo());
+                cellAux = new PdfPCell(new Phrase(dataEmprestimo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                String dataPrazo = df.format(auxiliarEmDia.get(i).getPrazo());
+                cellAux = new PdfPCell(new Phrase(dataPrazo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(auxiliarEmDia.get(i).getQuantidade() + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                Date dataAuxPrazo = auxiliarEmDia.get(i).getPrazo();
+                Date dataAtual = new Date();
+                int qtd = 0;
+
+                for (int dias = 0; dataAtual.after(dataAuxPrazo); dias++) {
+                    dataAtual.setDate(dataAtual.getDate() - 1);
+                    qtd += 1;
+                }
+
+                cellAux = new PdfPCell(new Phrase(qtd + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                numeracao += 1;
+            }
+        } else {
+            for (int i = 0; i < auxiliarEmAtraso.size(); i++) {
+                PdfPCell cellAux;
+                cellAux = new PdfPCell(new Phrase(numeracao + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Livro livro = ctrlLivro.pesquisarPorId(auxiliarEmAtraso.get(i).getLivro().getID());
+                cellAux = new PdfPCell(new Phrase(livro.getTitulo(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Aluno aluno = ctrlAluno.pesquisarPorId(auxiliarEmAtraso.get(i).getAluno().getID());
+                cellAux = new PdfPCell(new Phrase(aluno.getNome(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                String dataEmprestimo = df.format(auxiliarEmAtraso.get(i).getDataEmprestimo());
+                cellAux = new PdfPCell(new Phrase(dataEmprestimo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                String dataPrazo = df.format(auxiliarEmAtraso.get(i).getPrazo());
+                cellAux = new PdfPCell(new Phrase(dataPrazo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(auxiliarEmAtraso.get(i).getQuantidade() + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                Date dataAuxPrazo = auxiliarEmAtraso.get(i).getPrazo();
+                Date dataAtual = new Date();
+                int qtd = 0;
+
+                for (int dias = 0; dataAtual.after(dataAuxPrazo); dias++) {
+                    dataAtual.setDate(dataAtual.getDate() - 1);
+                    qtd += 1;
+                }
+
+                cellAux = new PdfPCell(new Phrase(qtd + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                numeracao += 1;
+            }
+        }
+
+        return table;
     }
+
 }

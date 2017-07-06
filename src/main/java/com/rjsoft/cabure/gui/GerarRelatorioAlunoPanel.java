@@ -268,58 +268,104 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     }
 
     private PdfPTable criarTabelaSimplificada(List<Aluno> listaAlunos) throws DocumentException {
-        PdfPTable table = new PdfPTable(4);
+        PdfPTable table = new PdfPTable(5);
         table.setTotalWidth(550);
         table.setLockedWidth(true);
-        table.setWidths(new float[]{1, 1, 1, 1});
+        table.setWidths(new float[]{5, 20, 35, 25, 15});
         PdfPCell cell;
 
         Boolean b = gerarCondicao();
 
-        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);        
+        Font font2 = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
         if (b == null) {
             cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos e Inativos", font));
+            cell.setPaddingBottom(10.f);
         } else if (b == true) {
             cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos", font));
+            cell.setPaddingBottom(10.f);
         } else {
             cell = new PdfPCell(new Phrase("Relatório de Alunos Inativos", font));
+            cell.setPaddingBottom(10.f);
         }
-        cell.setColspan(4);
+        cell.setColspan(5);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_CENTER);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("#", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Matrícula", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Nome", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("CPF", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Situação", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
 
+        int quantidade = 1;
+
         for (Aluno a : listaAlunos) {
-            table.addCell(a.getMatricula());
-            table.addCell(a.getNome());
-            table.addCell(a.getCpf());
+            PdfPCell cellAux;
+            cellAux = new PdfPCell(new Phrase(quantidade + "", font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getMatricula(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getNome(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getCpf(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
             if (a.getSituacao() == true) {
-                table.addCell("Ativo");
+                cellAux = new PdfPCell(new Phrase("Ativo", font2));
             } else {
-                table.addCell("Inativo");
+                cellAux = new PdfPCell(new Phrase("Inativo", font2));
             }
+
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+
+            quantidade += 1;
         }
         return table;
     }
 
     private PdfPTable criarTabelaCompleta(List<Aluno> listaAlunos) throws DocumentException {
-        PdfPTable table = new PdfPTable(6);
+        PdfPTable table = new PdfPTable(7);
         table.setTotalWidth(550);
         table.setLockedWidth(true);
-        table.setWidths(new float[]{13, 29, 20, 14, 14, 10});
+        table.setWidths(new float[]{5, 16, 23, 17, 14, 14, 10});
         PdfPCell cell;
 
         Boolean b = gerarCondicao();
 
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+        Font font2 = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
         if (b == null) {
             cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos e Inativos", font));
@@ -328,35 +374,88 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         } else {
             cell = new PdfPCell(new Phrase("Relatório de Alunos Inativos", font));
         }
-        cell.setColspan(6);
+        cell.setColspan(7);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
+        cell = new PdfPCell(new Phrase("#", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
         cell = new PdfPCell(new Phrase("Matrícula", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Nome", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("CPF", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("RG", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Nascimento", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Situação", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
         table.addCell(cell);
 
+        int quantidade = 1;
         for (Aluno a : listaAlunos) {
-            table.addCell(a.getMatricula());
-            table.addCell(a.getNome());
-            table.addCell(a.getCpf());
-            table.addCell(a.getRg());
+            PdfPCell cellAux;
+            cellAux = new PdfPCell(new Phrase(quantidade + "", font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getMatricula(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getNome(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cell = new PdfPCell(new Phrase(a.getCpf(), font2));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setPaddingBottom(10.f);
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(a.getRg(), font2));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setPaddingBottom(10.f);
+            table.addCell(cell);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             String dataFormatada = formato.format(a.getDataNascimento());
-            table.addCell(dataFormatada);
+            cell = new PdfPCell(new Phrase(dataFormatada, font2));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setPaddingBottom(10.f);
+            table.addCell(cell);
             if (a.getSituacao() == true) {
-                table.addCell("Ativo");
+                cellAux = new PdfPCell(new Phrase("Ativo", font2));
             } else {
-                table.addCell("Inativo");
+                cellAux = new PdfPCell(new Phrase("Inativo", font2));
             }
+
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+
+            quantidade += 1;
         }
         return table;
     }

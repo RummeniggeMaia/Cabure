@@ -34,7 +34,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,23 +54,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErrTipoRelatorioEmprestimos" pref="395" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="radioButtonTipoSimplificado" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="radioButtonTipoCompleto" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="dataInicialEmprestimos" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                              <Component id="dataFinalEmprestimos" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelSituacaoEmprestimos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrTipoSituacaoEmprestimo" min="-2" pref="240" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="radioButtonSituacaoTodosEmprestimos" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -78,35 +71,26 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="radioButtonSituacaoEmprestimoEmDia" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="radioButtonTipoSimplificado" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="radioButtonTipoCompleto" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelTipoRelatorioDataFinalEmprestimos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrDataFinalEmprestimo" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelTipoRelatorioDataInicialEmprestimos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrDataInicialEmprestimo" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrTipoRelatorioEmprestimos" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="buttonGerarRelatorioEmprestimo" min="-2" pref="199" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="labelSituacaoEmprestimos" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErrTipoSituacaoEmprestimo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonGerarRelatorioEmprestimo" min="-2" pref="199" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,40 +102,23 @@
                       <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
                       <Component id="labelErrTipoRelatorioEmprestimos" min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="radioButtonTipoSimplificado" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="radioButtonTipoCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="labelErrDataInicialEmprestimo" max="32767" attributes="0"/>
-                      <Component id="labelTipoRelatorioDataInicialEmprestimos" max="32767" attributes="0"/>
+                      <Component id="labelSituacaoEmprestimos" max="32767" attributes="0"/>
+                      <Component id="labelErrTipoSituacaoEmprestimo" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="dataInicialEmprestimos" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="labelTipoRelatorioDataFinalEmprestimos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="dataFinalEmprestimos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelSituacaoEmprestimos" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="labelErrDataFinalEmprestimo" min="-2" pref="14" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="labelErrTipoSituacaoEmprestimo" min="-2" pref="14" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="radioButtonSituacaoTodosEmprestimos" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="radioButtonSituacaoEmprestimoAtrasado" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="radioButtonSituacaoEmprestimoEmDia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="buttonGerarRelatorioEmprestimo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -187,47 +154,9 @@
             <Property name="text" type="java.lang.String" value="Completo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelTipoRelatorioDataInicialEmprestimos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Selecione a data inicial dos empr&#xe9;stimos:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelErrDataInicialEmprestimo">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="dataInicialEmprestimos">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##/##/####" subtype="-1" type="5"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelTipoRelatorioDataFinalEmprestimos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Selecione a data inicial dos empr&#xe9;stimos:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="dataFinalEmprestimos">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##/##/####" subtype="-1" type="5"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="labelSituacaoEmprestimos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Selecione o tipo da situa&#xe7;&#xe3;o do empr&#xe9;stimo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelErrTipoSituacaoEmprestimo">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoTodosEmprestimos">
@@ -262,7 +191,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonGerarRelatorioEmprestimoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelErrDataFinalEmprestimo">
+        <Component class="javax.swing.JLabel" name="labelErrTipoSituacaoEmprestimo">
         </Component>
       </SubComponents>
     </Container>

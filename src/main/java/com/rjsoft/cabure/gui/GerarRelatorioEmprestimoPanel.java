@@ -75,16 +75,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             valido = false;
             labelErrTipoSituacaoEmprestimo.setText("* Tipo de situação obrigatório.");
         }
-
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date dataInicial = formato.parse(dataInicialEmprestimos.getText());
-            Date dataFinal = formato.parse(dataFinalEmprestimos.getText());
-
-        } catch (ParseException ex) {
-            Logger.getLogger(GerarRelatorioEmprestimoPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        
         return valido;
     }
 
@@ -104,18 +95,12 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         labelErrTipoRelatorioEmprestimos = new javax.swing.JLabel();
         radioButtonTipoSimplificado = new javax.swing.JRadioButton();
         radioButtonTipoCompleto = new javax.swing.JRadioButton();
-        labelTipoRelatorioDataInicialEmprestimos = new javax.swing.JLabel();
-        labelErrDataInicialEmprestimo = new javax.swing.JLabel();
-        dataInicialEmprestimos = new javax.swing.JFormattedTextField();
-        labelTipoRelatorioDataFinalEmprestimos = new javax.swing.JLabel();
-        dataFinalEmprestimos = new javax.swing.JFormattedTextField();
         labelSituacaoEmprestimos = new javax.swing.JLabel();
-        labelErrTipoSituacaoEmprestimo = new javax.swing.JLabel();
         radioButtonSituacaoTodosEmprestimos = new javax.swing.JRadioButton();
         radioButtonSituacaoEmprestimoAtrasado = new javax.swing.JRadioButton();
         radioButtonSituacaoEmprestimoEmDia = new javax.swing.JRadioButton();
         buttonGerarRelatorioEmprestimo = new javax.swing.JButton();
-        labelErrDataFinalEmprestimo = new javax.swing.JLabel();
+        labelErrTipoSituacaoEmprestimo = new javax.swing.JLabel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerar Relatório de Empréstimos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
@@ -129,27 +114,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         buttonGroupTipoRelatorioEmprestimo.add(radioButtonTipoCompleto);
         radioButtonTipoCompleto.setText("Completo");
 
-        labelTipoRelatorioDataInicialEmprestimos.setText("Selecione a data inicial dos empréstimos:");
-
-        labelErrDataInicialEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
-
-        try {
-            dataInicialEmprestimos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        labelTipoRelatorioDataFinalEmprestimos.setText("Selecione a data inicial dos empréstimos:");
-
-        try {
-            dataFinalEmprestimos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         labelSituacaoEmprestimos.setText("Selecione o tipo da situação do empréstimo:");
-
-        labelErrTipoSituacaoEmprestimo.setForeground(new java.awt.Color(255, 0, 0));
 
         buttonGroupSituacaoEmprestimos.add(radioButtonSituacaoTodosEmprestimos);
         radioButtonSituacaoTodosEmprestimos.setText("Todos os empréstimos");
@@ -175,43 +140,31 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelTipoRelatorio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErrTipoRelatorioEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(radioButtonTipoSimplificado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonTipoCompleto))
-                            .addComponent(dataInicialEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dataFinalEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelSituacaoEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(radioButtonSituacaoTodosEmprestimos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radioButtonSituacaoEmprestimoAtrasado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoEmprestimoEmDia)))
-                        .addGap(82, 82, 82))
+                                .addComponent(radioButtonSituacaoEmprestimoEmDia))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioButtonTipoSimplificado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonTipoCompleto)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonGerarRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorioDataFinalEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrDataFinalEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorioDataInicialEmprestimos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrDataInicialEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoRelatorioEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonGerarRelatorioEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(labelSituacaoEmprestimos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,22 +179,8 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
                     .addComponent(radioButtonTipoCompleto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelErrDataInicialEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelTipoRelatorioDataInicialEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataInicialEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelTipoRelatorioDataFinalEmprestimos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dataFinalEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelSituacaoEmprestimos))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelErrDataFinalEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelSituacaoEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelErrTipoSituacaoEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioButtonSituacaoTodosEmprestimos)
@@ -266,7 +205,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -287,17 +226,11 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonGerarRelatorioEmprestimo;
     private javax.swing.ButtonGroup buttonGroupSituacaoEmprestimos;
     private javax.swing.ButtonGroup buttonGroupTipoRelatorioEmprestimo;
-    private javax.swing.JFormattedTextField dataFinalEmprestimos;
-    private javax.swing.JFormattedTextField dataInicialEmprestimos;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelErrDataFinalEmprestimo;
-    private javax.swing.JLabel labelErrDataInicialEmprestimo;
     private javax.swing.JLabel labelErrTipoRelatorioEmprestimos;
     private javax.swing.JLabel labelErrTipoSituacaoEmprestimo;
     private javax.swing.JLabel labelSituacaoEmprestimos;
     private javax.swing.JLabel labelTipoRelatorio;
-    private javax.swing.JLabel labelTipoRelatorioDataFinalEmprestimos;
-    private javax.swing.JLabel labelTipoRelatorioDataInicialEmprestimos;
     private javax.swing.JRadioButton radioButtonSituacaoEmprestimoAtrasado;
     private javax.swing.JRadioButton radioButtonSituacaoEmprestimoEmDia;
     private javax.swing.JRadioButton radioButtonSituacaoTodosEmprestimos;
@@ -397,10 +330,10 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
     }
 
     private PdfPTable criarTabelaSimplificada(List<Emprestimo> listaEmprestimos, List<Emprestimo> listaEmprestimosAtrasados) throws DocumentException {
-        PdfPTable table = new PdfPTable(5);
+        PdfPTable table = new PdfPTable(6);
         table.setTotalWidth(550);
         table.setLockedWidth(true);
-        table.setWidths(new float[]{5, 35, 25, 18, 17});
+        table.setWidths(new float[]{5, 30, 25, 18, 17,5});
         PdfPCell cell;
 
         Boolean b = gerarCondicao();
@@ -418,12 +351,13 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             cell = new PdfPCell(new Phrase("Relatório de Todos os Empréstimos em Atraso", font));
             cell.setPaddingBottom(10.f);
         }
-        cell.setColspan(5);
+        cell.setColspan(6);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setVerticalAlignment(Element.ALIGN_CENTER);
         cell.setPaddingBottom(10.f);
 
         List<Emprestimo> auxiliarEmDia = new ArrayList<Emprestimo>();
+        List<Emprestimo> auxiliarEmAtraso = new ArrayList<Emprestimo>();
         for (int i = 0; i < listaEmprestimos.size(); i++) {
             Date dataFinal = listaEmprestimos.get(i).getPrazo();
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -435,8 +369,11 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
                 Logger.getLogger(GerarRelatorioEmprestimoPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            if (dataAtual.after(dataFinal)) {
+            if (dataAtual.before(dataFinal)) {
                 auxiliarEmDia.add(listaEmprestimos.get(i));
+            }
+            if (dataAtual.after(dataFinal)) {
+                auxiliarEmAtraso.add(listaEmprestimos.get(i));
             }
         }
 
@@ -462,6 +399,11 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         cell.setPaddingBottom(10.f);
         table.addCell(cell);
         cell = new PdfPCell(new Phrase("Prazo Entrega", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Qtd", font));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setPaddingBottom(10.f);
@@ -493,6 +435,80 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
                 table.addCell(cellAux);
                 String dataPrazo = df.format(listaEmprestimos.get(i).getPrazo());
                 cellAux = new PdfPCell(new Phrase(dataPrazo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(listaEmprestimos.get(i).getQuantidade() + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                numeracao += 1;
+            }
+        } else if (gerarCondicao() == true) {
+            for (int i = 0; i < auxiliarEmDia.size(); i++) {
+                PdfPCell cellAux;
+                cellAux = new PdfPCell(new Phrase(numeracao + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Livro livro = ctrlLivro.pesquisarPorId(auxiliarEmDia.get(i).getLivro().getID());
+                cellAux = new PdfPCell(new Phrase(livro.getTitulo(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Aluno aluno = ctrlAluno.pesquisarPorId(auxiliarEmDia.get(i).getAluno().getID());
+                cellAux = new PdfPCell(new Phrase(aluno.getNome(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                String dataEmprestimo = df.format(auxiliarEmDia.get(i).getDataEmprestimo());
+                cellAux = new PdfPCell(new Phrase(dataEmprestimo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                String dataPrazo = df.format(auxiliarEmDia.get(i).getPrazo());
+                cellAux = new PdfPCell(new Phrase(dataPrazo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(auxiliarEmDia.get(i).getQuantidade() + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+
+                numeracao += 1;
+            }
+        } else {
+            for (int i = 0; i < auxiliarEmAtraso.size(); i++) {
+                PdfPCell cellAux;
+                cellAux = new PdfPCell(new Phrase(numeracao + "", font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Livro livro = ctrlLivro.pesquisarPorId(auxiliarEmAtraso.get(i).getLivro().getID());
+                cellAux = new PdfPCell(new Phrase(livro.getTitulo(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                Aluno aluno = ctrlAluno.pesquisarPorId(auxiliarEmAtraso.get(i).getAluno().getID());
+                cellAux = new PdfPCell(new Phrase(aluno.getNome(), font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                String dataEmprestimo = df.format(auxiliarEmAtraso.get(i).getDataEmprestimo());
+                cellAux = new PdfPCell(new Phrase(dataEmprestimo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                String dataPrazo = df.format(auxiliarEmAtraso.get(i).getPrazo());
+                cellAux = new PdfPCell(new Phrase(dataPrazo, font2));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(auxiliarEmAtraso.get(i).getQuantidade() + "", font2));
                 cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 table.addCell(cellAux);

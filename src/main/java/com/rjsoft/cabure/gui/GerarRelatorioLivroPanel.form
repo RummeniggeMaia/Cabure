@@ -69,7 +69,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="labelSituacaoLivro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelErrTipoSituacaoLivros" max="32767" attributes="0"/>
+                          <Component id="labelErrTipoSituacaoLivros" pref="305" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="radioButtonSituacaoTodas" min="-2" max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                           <Component id="radioButtonSituacaoNaoEmprestado" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="111" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>

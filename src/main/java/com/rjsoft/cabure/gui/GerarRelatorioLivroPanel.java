@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -130,14 +131,14 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelSituacaoLivro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelErrTipoSituacaoLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(labelErrTipoSituacaoLivros, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(radioButtonSituacaoTodas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(radioButtonSituacaoEmprestado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(radioButtonSituacaoNaoEmprestado)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonGerarRelatorioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,9 +249,11 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
 
     private void gerarPDF(List<Livro> listaLivros, List<Emprestimo> listaEmprestimos) {
         Document document = new Document();
-
+        String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
+        String nomeArquivo = "Relatório de Emprestimos_" + dataHora + ".pdf";
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Livros.pdf"));
+            
+            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
 
             document.open();
 
@@ -265,7 +268,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
                 PdfPTable tabelaCompleta = criarTabelaCompleta(listaLivros, listaEmprestimos);
                 document.add(tabelaCompleta);
             }
-
+            JOptionPane.showMessageDialog(this, "Relatório de livros emitido com sucesso!");
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -273,7 +276,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("Relatório de Livros.pdf"));
+            Desktop.getDesktop().open(new File(nomeArquivo));
         } catch (IOException ex) {
             Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -295,7 +298,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
 
         try {
-            image = Image.getInstance("imagens/cabure_logo.png");
+            image = Image.getInstance("imagens/cabure_logo_gs.png");
             image.setAlignment(Element.ALIGN_CENTER);
             cell1 = new PdfPCell(image);
             cell1.setBorder(0);

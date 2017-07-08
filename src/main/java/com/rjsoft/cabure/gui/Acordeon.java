@@ -175,6 +175,7 @@ public class Acordeon extends javax.swing.JPanel {
         add(menuEmprestimo);
 
         menuRelatorioAlunos.setText("Relatório Alunos");
+        menuRelatorioAlunos = new BotaoIcone("Relatório Alunos", BotaoIcone.ICON_RELATORIO, false);
         menuRelatorioAlunos.setMaximumSize(new java.awt.Dimension(1000, 32));
         menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
         menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
@@ -186,6 +187,7 @@ public class Acordeon extends javax.swing.JPanel {
         add(menuRelatorioAlunos);
 
         menuRelatorioLivros.setText("Relatório Livros");
+        menuRelatorioLivros = new BotaoIcone("Relatório Livros", BotaoIcone.ICON_RELATORIO, false);
         menuRelatorioLivros.setMaximumSize(new java.awt.Dimension(1000, 32));
         menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
         menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
@@ -197,6 +199,7 @@ public class Acordeon extends javax.swing.JPanel {
         add(menuRelatorioLivros);
 
         menuRelatorioEmprestimos.setText("Relatório Empréstimos");
+        menuRelatorioEmprestimos = new BotaoIcone("Relatório Empréstimos", BotaoIcone.ICON_RELATORIO, false);
         menuRelatorioEmprestimos.setMaximumSize(new java.awt.Dimension(1000, 32));
         menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
         menuEmprestimo.setMaximumSize(new Dimension(1000, 32));

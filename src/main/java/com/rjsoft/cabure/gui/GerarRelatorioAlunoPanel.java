@@ -25,9 +25,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,30 +108,33 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelTipoRelatorio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(radioButtonTipoSimplificado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioButtonTipoCompleto))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelSituacao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(radioButtonSituacaoTodas)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioButtonTipoSimplificado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonTipoCompleto))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioButtonSituacaoTodas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonSituacaoAtivos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonSituacaoInativos)))
+                        .addGap(0, 279, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelTipoRelatorio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioButtonSituacaoAtivos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(radioButtonSituacaoInativos)))
-                .addContainerGap(267, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,9 +241,10 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
     private void gerarPDF(List<Aluno> listaAlunos) {
         Document document = new Document();
-
+        String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
+        String nomeArquivo = "Relatório de Alunos_" + dataHora + ".pdf";
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Alunos.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
 
             document.open();
 
@@ -253,7 +259,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                 PdfPTable tabelaCompleta = criarTabelaCompleta(listaAlunos);
                 document.add(tabelaCompleta);
             }
-
+            JOptionPane.showMessageDialog(this, "Relatório de alunos emitido com sucesso!");
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -261,7 +267,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("Relatório de Alunos.pdf"));
+            Desktop.getDesktop().open(new File(nomeArquivo));
         } catch (IOException ex) {
             Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -476,7 +482,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
 
         try {
-            image = Image.getInstance("imagens/cabure_logo.png");
+            image = Image.getInstance("imagens/cabure_logo_gs.png");
             image.setAlignment(Element.ALIGN_CENTER);
             cell1 = new PdfPCell(image);
             cell1.setBorder(0);

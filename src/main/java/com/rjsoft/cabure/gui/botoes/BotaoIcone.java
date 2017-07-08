@@ -26,6 +26,7 @@ public class BotaoIcone extends JButton implements ActionListener {
     public static final int ICON_EMPRESTIMO = 3;
     public static final int ICON_ADD = 4;
     public static final int ICON_PESQUISAR = 5;
+    public static final int ICON_RELATORIO = 6;
 
     private boolean expandivel;
     private boolean expandido;
@@ -65,6 +66,10 @@ public class BotaoIcone extends JButton implements ActionListener {
             case ICON_PESQUISAR: {
                 imgUrl += "persquisar.png";
                 distIconEsq = 35;
+                break;
+            }
+            case ICON_RELATORIO: {
+                imgUrl += "relatorio.png";
                 break;
             }
         }

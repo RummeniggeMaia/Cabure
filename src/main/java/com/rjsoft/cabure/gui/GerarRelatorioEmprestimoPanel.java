@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -258,9 +259,11 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
 
     private void gerarPDF(List<Emprestimo> listaEmprestimos, List<Emprestimo> listaEmprestimosAtrasados) {
         Document document = new Document();
+        String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
+        String nomeArquivo = "Relatório de Emprestimos_" + dataHora + ".pdf";
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Emprestimos.pdf"));
-
+            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
+ 
             document.open();
 
             PdfPTable cabecalho = criarTabelaCabecalho(document);
@@ -274,6 +277,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
                 PdfPTable tabelaCompleta = criarTabelaCompleta(listaEmprestimos, listaEmprestimosAtrasados);
                 document.add(tabelaCompleta);
             }
+            JOptionPane.showMessageDialog(this, "Relatório de emprétimos emitido com sucesso!");
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -281,7 +285,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("Relatório de Emprestimos.pdf"));
+            Desktop.getDesktop().open(new File(nomeArquivo));
         } catch (IOException ex) {
             Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -303,7 +307,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
 
         try {
-            image = Image.getInstance("imagens/cabure_logo.png");
+            image = Image.getInstance("imagens/cabure_logo_gs.png");
             image.setAlignment(Element.ALIGN_CENTER);
             cell1 = new PdfPCell(image);
             cell1.setBorder(0);

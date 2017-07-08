@@ -24,10 +24,10 @@ public class AlunoJpaController {
         try {
             aux = entityManager.merge(aluno);
             entityManager.getTransaction().commit();
-        }catch(ConstraintViolationException e){         
+        } catch (ConstraintViolationException e) {
             entityManager.getTransaction().rollback();
             throw e;
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             entityManager.getTransaction().rollback();
             throw ex;
         }
@@ -64,16 +64,23 @@ public class AlunoJpaController {
                 "SELECT a FROM Aluno a WHERE a.matricula = '" + matricula + "'");
         return (Aluno) query.getSingleResult();
     }
-    
+
     public void fechar() {
         if (entityManager != null) {
             entityManager.close();
         }
     }
 
-    public List<Aluno> pesquisarRelatorioAluno(String condicao) {
-        Query query = entityManager.createQuery(
-                "SELECT a FROM Aluno a WHERE" + condicao);
+    public List<Aluno> pesquisarRelatorioAluno(Boolean condicao) {
+        Query query;
+        if (condicao == null) {
+            query = entityManager.createQuery(
+                    "SELECT a FROM Aluno a");
+        } else {
+            query = entityManager.createQuery(
+                    "SELECT a FROM Aluno a WHERE a.situacao = " + condicao);
+            int i = query.getResultList().size();
+        }
         return (List<Aluno>) query.getResultList();
     }
 }

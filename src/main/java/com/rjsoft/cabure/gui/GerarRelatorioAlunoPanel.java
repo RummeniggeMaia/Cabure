@@ -5,10 +5,29 @@
  */
 package com.rjsoft.cabure.gui;
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
+import java.awt.Desktop;
+import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import javafx.scene.control.RadioButton;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +39,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
      * Creates new form RelatorioPanel
      */
     private AlunoCtrl ctrl;
-    
+
     public GerarRelatorioAlunoPanel(AlunoCtrl ctrl) {
         this.ctrl = ctrl;
         initComponents();
@@ -37,17 +56,23 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         buttonGroupTipoRelatorio = new javax.swing.ButtonGroup();
         buttonGroupTipoSituacaoAluno = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        labelSituacao = new javax.swing.JLabel();
+        labelErrTipoSituacaoAluno = new javax.swing.JLabel();
         buttonGerarRelatorioLivro = new javax.swing.JButton();
-        labelRelatorioAlunos = new javax.swing.JLabel();
-        labelTipoRelatorio = new javax.swing.JLabel();
         radioButtonTipoSimplificado = new javax.swing.JRadioButton();
         radioButtonTipoCompleto = new javax.swing.JRadioButton();
         radioButtonSituacaoTodas = new javax.swing.JRadioButton();
         radioButtonSituacaoAtivos = new javax.swing.JRadioButton();
         radioButtonSituacaoInativos = new javax.swing.JRadioButton();
-        labelSituacao = new javax.swing.JLabel();
+        labelTipoRelatorio = new javax.swing.JLabel();
         labelErrTipoRelatorioAluno = new javax.swing.JLabel();
-        labelErrTipoSituacaoAluno = new javax.swing.JLabel();
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerar Relatório de Alunos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
+
+        labelSituacao.setText("Selecione o tipo de situação do Aluno:");
+
+        labelErrTipoSituacaoAluno.setForeground(new java.awt.Color(255, 0, 0));
 
         buttonGerarRelatorioLivro.setText("Gerar Relatório");
         buttonGerarRelatorioLivro.addActionListener(new java.awt.event.ActionListener() {
@@ -55,13 +80,6 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                 buttonGerarRelatorioLivroActionPerformed(evt);
             }
         });
-
-        labelRelatorioAlunos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelRelatorioAlunos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRelatorioAlunos.setText("Relatório de Alunos");
-        labelRelatorioAlunos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        labelTipoRelatorio.setText("Selecione o tipo de relatório:");
 
         buttonGroupTipoRelatorio.add(radioButtonTipoSimplificado);
         radioButtonTipoSimplificado.setText("Simplificado");
@@ -78,11 +96,65 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         buttonGroupTipoSituacaoAluno.add(radioButtonSituacaoInativos);
         radioButtonSituacaoInativos.setText("Inativos");
 
-        labelSituacao.setText("Selecione o tipo de situação do Aluno:");
+        labelTipoRelatorio.setText("Selecione o tipo de relatório:");
 
         labelErrTipoRelatorioAluno.setForeground(new java.awt.Color(255, 0, 0));
 
-        labelErrTipoSituacaoAluno.setForeground(new java.awt.Color(255, 0, 0));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelTipoRelatorio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(radioButtonTipoSimplificado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioButtonTipoCompleto))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelSituacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(radioButtonSituacaoTodas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioButtonSituacaoAtivos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioButtonSituacaoInativos)))
+                .addContainerGap(267, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonTipoSimplificado)
+                    .addComponent(radioButtonTipoCompleto))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelSituacao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonSituacaoTodas)
+                    .addComponent(radioButtonSituacaoAtivos)
+                    .addComponent(radioButtonSituacaoInativos))
+                .addGap(18, 18, 18)
+                .addComponent(buttonGerarRelatorioLivro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,64 +162,25 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelRelatorioAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTipoRelatorio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonTipoSimplificado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonTipoCompleto))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButtonSituacaoTodas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoAtivos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoInativos))
-                            .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelSituacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelRelatorioAlunos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonTipoSimplificado)
-                    .addComponent(radioButtonTipoCompleto))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonSituacaoTodas)
-                    .addComponent(radioButtonSituacaoAtivos)
-                    .addComponent(radioButtonSituacaoInativos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonGerarRelatorioLivro)
-                .addContainerGap(419, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGerarRelatorioLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioLivroActionPerformed
-        if (validacao()){
-            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(gerarCondicao());
-            
+        if (validacao()) {
+            Boolean b = gerarCondicao();
+            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b);
+
+            gerarPDF(listaAlunos);
+
         }
     }//GEN-LAST:event_buttonGerarRelatorioLivroActionPerformed
 
@@ -156,9 +189,9 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonGerarRelatorioLivro;
     private javax.swing.ButtonGroup buttonGroupTipoRelatorio;
     private javax.swing.ButtonGroup buttonGroupTipoSituacaoAluno;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelErrTipoRelatorioAluno;
     private javax.swing.JLabel labelErrTipoSituacaoAluno;
-    private javax.swing.JLabel labelRelatorioAlunos;
     private javax.swing.JLabel labelSituacao;
     private javax.swing.JLabel labelTipoRelatorio;
     private javax.swing.JRadioButton radioButtonSituacaoAtivos;
@@ -169,35 +202,302 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private boolean validacao() {
-       boolean valido = true;
-       if((radioButtonSituacaoAtivos.isSelected() == false) && 
-               (radioButtonSituacaoInativos.isSelected() == false) &&
-               (radioButtonSituacaoTodas.isSelected() == false)) {
+        boolean valido = true;
+        if ((radioButtonSituacaoAtivos.isSelected() == false)
+                && (radioButtonSituacaoInativos.isSelected() == false)
+                && (radioButtonSituacaoTodas.isSelected() == false)) {
             valido = false;
             labelErrTipoSituacaoAluno.setText("* Tipo de relatório obrigatório.");
-       }
-       if((radioButtonTipoCompleto.isSelected() == false) && 
-               (radioButtonTipoSimplificado.isSelected() == false)){
-           valido = false;                        
-           labelErrTipoSituacaoAluno.setText("* Tipo de situação obrigatório.");
-       }
-       
-       return valido;
+        }
+        if ((radioButtonTipoCompleto.isSelected() == false)
+                && (radioButtonTipoSimplificado.isSelected() == false)) {
+            valido = false;
+            labelErrTipoSituacaoAluno.setText("* Tipo de situação obrigatório.");
+        }
+
+        return valido;
     }
-    
-    private String gerarCondicao() {
-        String condicao = "";
-        
+
+    private Boolean gerarCondicao() {
+        Boolean condicao = null;
+
         if (radioButtonSituacaoAtivos.isSelected()) {
-            condicao += String.format(" a.situacao = 'b'", true);
+            condicao = true;
         }
-        if (radioButtonSituacaoInativos.isSelected()){
-            condicao += String.format(" a.situacao = 'b'", false);
+        if (radioButtonSituacaoInativos.isSelected()) {
+            condicao = false;
         }
-        if (radioButtonSituacaoTodas.isSelected()){
+        if (radioButtonSituacaoTodas.isSelected()) {
             // faz nada já que será o *
         }
-        
+
         return condicao;
+    }
+
+    private void gerarPDF(List<Aluno> listaAlunos) {
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream("Relatório de Alunos.pdf"));
+
+            document.open();
+
+            PdfPTable cabecalho = criarTabelaCabecalho(document);
+            document.add(cabecalho);
+
+            // Criando relatório simplicado, caso contrário, será criado o relatório completo.
+            if (radioButtonTipoSimplificado.isSelected()) {
+                PdfPTable tabelaSimplificada = criarTabelaSimplificada(listaAlunos);
+                document.add(tabelaSimplificada);
+            } else {
+                PdfPTable tabelaCompleta = criarTabelaCompleta(listaAlunos);
+                document.add(tabelaCompleta);
+            }
+
+        } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            document.close();
+        }
+
+        try {
+            Desktop.getDesktop().open(new File("Relatório de Alunos.pdf"));
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private PdfPTable criarTabelaSimplificada(List<Aluno> listaAlunos) throws DocumentException {
+        PdfPTable table = new PdfPTable(5);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        table.setWidths(new float[]{5, 20, 35, 25, 15});
+        PdfPCell cell;
+
+        Boolean b = gerarCondicao();
+
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);        
+        Font font2 = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+
+        if (b == null) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos e Inativos", font));
+            cell.setPaddingBottom(10.f);
+        } else if (b == true) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos", font));
+            cell.setPaddingBottom(10.f);
+        } else {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Inativos", font));
+            cell.setPaddingBottom(10.f);
+        }
+        cell.setColspan(5);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_CENTER);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("#", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Matrícula", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nome", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("CPF", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Situação", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+
+        int quantidade = 1;
+
+        for (Aluno a : listaAlunos) {
+            PdfPCell cellAux;
+            cellAux = new PdfPCell(new Phrase(quantidade + "", font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getMatricula(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getNome(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getCpf(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            if (a.getSituacao() == true) {
+                cellAux = new PdfPCell(new Phrase("Ativo", font2));
+            } else {
+                cellAux = new PdfPCell(new Phrase("Inativo", font2));
+            }
+
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+
+            quantidade += 1;
+        }
+        return table;
+    }
+
+    private PdfPTable criarTabelaCompleta(List<Aluno> listaAlunos) throws DocumentException {
+        PdfPTable table = new PdfPTable(7);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        table.setWidths(new float[]{5, 16, 23, 17, 14, 14, 10});
+        PdfPCell cell;
+
+        Boolean b = gerarCondicao();
+
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+        Font font2 = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+
+        if (b == null) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos e Inativos", font));
+        } else if (b == true) {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Ativos", font));
+        } else {
+            cell = new PdfPCell(new Phrase("Relatório de Alunos Inativos", font));
+        }
+        cell.setColspan(7);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("#", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Matrícula", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nome", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("CPF", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("RG", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Nascimento", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Situação", font));
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPaddingBottom(10.f);
+        table.addCell(cell);
+
+        int quantidade = 1;
+        for (Aluno a : listaAlunos) {
+            PdfPCell cellAux;
+            cellAux = new PdfPCell(new Phrase(quantidade + "", font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getMatricula(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cellAux = new PdfPCell(new Phrase(a.getNome(), font2));
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+            cell = new PdfPCell(new Phrase(a.getCpf(), font2));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setPaddingBottom(10.f);
+            table.addCell(cell);
+            cell = new PdfPCell(new Phrase(a.getRg(), font2));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setPaddingBottom(10.f);
+            table.addCell(cell);
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            String dataFormatada = formato.format(a.getDataNascimento());
+            cell = new PdfPCell(new Phrase(dataFormatada, font2));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setPaddingBottom(10.f);
+            table.addCell(cell);
+            if (a.getSituacao() == true) {
+                cellAux = new PdfPCell(new Phrase("Ativo", font2));
+            } else {
+                cellAux = new PdfPCell(new Phrase("Inativo", font2));
+            }
+
+            cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cellAux);
+
+            quantidade += 1;
+        }
+        return table;
+    }
+
+    private PdfPTable criarTabelaCabecalho(Document document) {
+        PdfPTable table = new PdfPTable(2);
+        table.setTotalWidth(550);
+        table.setLockedWidth(true);
+        try {
+            table.setWidths(new float[]{40, 60});
+        } catch (DocumentException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PdfPCell cell1;
+        PdfPCell cell2;
+        Paragraph paragraph;
+        Image image;
+        Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
+
+        try {
+            image = Image.getInstance("imagens/cabure_logo.png");
+            image.setAlignment(Element.ALIGN_CENTER);
+            cell1 = new PdfPCell(image);
+            cell1.setBorder(0);
+            table.addCell(cell1);
+            Paragraph p = new Paragraph();
+            p.add(new Phrase("Governo do Estado do Rio Grande do Norte"));
+            p.add(new Phrase("\r\nEscola Estadual Joaquim José de Medeiros"));
+            p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
+            p.add(new Phrase("\r\nCidade: Cruzeta-RN"));
+            p.add(new Phrase("\r\nCEP: 59375-000"));
+            p.add(new Phrase("\r\nTelefone: (84) 3473-2210"));
+            cell2 = new PdfPCell(p);
+            cell2.setBorder(0);
+            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            table.addCell(cell2);
+            table.setSpacingAfter(40f);
+            table.setSpacingBefore(10f);
+        } catch (IOException | BadElementException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return table;
     }
 }

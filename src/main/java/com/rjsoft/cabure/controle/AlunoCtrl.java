@@ -42,7 +42,7 @@ public class AlunoCtrl {
         return dao.pesquisarPorId(id);
     }
     
-    public List<Aluno> pesquisarRelatorioAluno(String condicao) {
+    public List<Aluno> pesquisarRelatorioAluno(Boolean condicao) {
         return dao.pesquisarRelatorioAluno(condicao);
     }
 

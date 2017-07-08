@@ -24,37 +24,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelRelatorioLivros" alignment="0" pref="666" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelErrTipoRelatorioLivros" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="radioButtonTipoSimplificado" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="radioButtonTipoCompleto" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="radioButtonSituacaoTodas" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="radioButtonSituacaoEmprestado" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="radioButtonSituacaoNaoEmprestado" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="buttonGerarRelatorioAluno" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labelSituacaoLivro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="labelErrTipoSituacaoLivros" min="-2" pref="153" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -63,117 +33,165 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="labelRelatorioLivros" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="labelTipoRelatorio" alignment="0" max="32767" attributes="0"/>
-                  <Component id="labelErrTipoRelatorioLivros" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioButtonTipoSimplificado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioButtonTipoCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="labelErrTipoSituacaoLivros" alignment="0" max="32767" attributes="0"/>
-                  <Component id="labelSituacaoLivro" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioButtonSituacaoTodas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioButtonSituacaoEmprestado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioButtonSituacaoNaoEmprestado" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="buttonGerarRelatorioAluno" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="419" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="labelErrTipoSituacaoLivros">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="2" title="Gerar Relat&#xf3;rio de Livros">
+              <Font PropertyName="font" name="Tahoma" size="24" style="0"/>
+            </TitledBorder>
+          </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="buttonGerarRelatorioAluno">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Gerar Relat&#xf3;rio"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonGerarRelatorioAlunoActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelRelatorioLivros">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Livros"/>
-        <Property name="verticalAlignment" type="int" value="1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelTipoRelatorio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Selecione o tipo de relat&#xf3;rio:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="radioButtonTipoSimplificado">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupTipoRelatorioLivro"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Simplificado"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="radioButtonTipoCompleto">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupTipoRelatorioLivro"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Completo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoTodas">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupSituacaoLivros"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Todas as situa&#xe7;&#xf5;es (Emprestado e N&#xe3;o Emprestado)"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoEmprestado">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupSituacaoLivros"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Emprestado"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoNaoEmprestado">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="buttonGroupSituacaoLivros"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="N&#xe3;o Emprestado"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelSituacaoLivro">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Selecione o tipo de situa&#xe7;&#xe3;o que o Livro se encontra:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelErrTipoRelatorioLivros">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="labelTipoRelatorio" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErrTipoRelatorioLivros" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="radioButtonTipoSimplificado" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="radioButtonTipoCompleto" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="labelSituacaoLivro" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelErrTipoSituacaoLivros" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="radioButtonSituacaoTodas" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="radioButtonSituacaoEmprestado" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="radioButtonSituacaoNaoEmprestado" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="111" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="buttonGerarRelatorioAluno" min="-2" pref="199" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="labelTipoRelatorio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="labelErrTipoRelatorioLivros" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioButtonTipoSimplificado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonTipoCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="labelErrTipoSituacaoLivros" alignment="0" max="32767" attributes="0"/>
+                      <Component id="labelSituacaoLivro" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioButtonSituacaoTodas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonSituacaoEmprestado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonSituacaoNaoEmprestado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buttonGerarRelatorioAluno" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="labelTipoRelatorio">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Selecione o tipo de relat&#xf3;rio:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonTipoSimplificado">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupTipoRelatorioLivro"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Simplificado"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonTipoCompleto">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupTipoRelatorioLivro"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Completo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErrTipoRelatorioLivros">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelSituacaoLivro">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Selecione o tipo de situa&#xe7;&#xe3;o que o Livro se encontra:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelErrTipoSituacaoLivros">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoTodas">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupSituacaoLivros"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Todas as situa&#xe7;&#xf5;es (Emprestado e N&#xe3;o Emprestado)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoEmprestado">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupSituacaoLivros"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Emprestado"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButtonSituacaoNaoEmprestado">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupSituacaoLivros"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="N&#xe3;o Emprestado"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonGerarRelatorioAluno">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gerar Relat&#xf3;rio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonGerarRelatorioAlunoActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

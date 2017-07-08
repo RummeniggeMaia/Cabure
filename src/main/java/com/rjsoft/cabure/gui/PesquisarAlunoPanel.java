@@ -66,25 +66,25 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         labelNome = new javax.swing.JLabel();
-        labelMatricula = new javax.swing.JLabel();
         textFieldNome = new javax.swing.JTextField();
+        labelMatricula = new javax.swing.JLabel();
         textFieldMatricula = new javax.swing.JTextField();
+        buttonPesquisar = new javax.swing.JButton();
         scrollTabelaAlunos = new javax.swing.JScrollPane();
         tableAlunos = new javax.swing.JTable();
-        buttonPesquisar = new javax.swing.JButton();
-        labelPesquisarAluno = new javax.swing.JLabel();
+        comboLimite = new javax.swing.JComboBox<>();
         botPagPrimeira = new javax.swing.JButton();
         botPagAnterior = new javax.swing.JButton();
+        textFieldPagina = new javax.swing.JFormattedTextField();
         labelTotalPaginas = new javax.swing.JLabel();
         botPagProxima = new javax.swing.JButton();
         botPagUltima = new javax.swing.JButton();
-        comboLimite = new javax.swing.JComboBox<>();
-        textFieldPagina = new javax.swing.JFormattedTextField();
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisar Aluno", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
         labelNome.setText("Nome:");
-
-        labelMatricula.setText("Matrícula:");
 
         textFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,9 +92,18 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
             }
         });
 
+        labelMatricula.setText("Matrícula:");
+
         textFieldMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldMatriculaActionPerformed(evt);
+            }
+        });
+
+        buttonPesquisar.setText("Pesquisar");
+        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPesquisarActionPerformed(evt);
             }
         });
 
@@ -196,17 +205,20 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
             }
         });
 
-        buttonPesquisar.setText("Pesquisar");
-        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPesquisarActionPerformed(evt);
+        int[] limites = ctrl.getPaginador().getLimites();
+        for (int i = 0; i < limites.length; i++) {
+            comboLimite.addItem("" + limites[i]);
+        }
+        comboLimite.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboLimiteItemStateChanged(evt);
             }
         });
-
-        labelPesquisarAluno.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelPesquisarAluno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPesquisarAluno.setText("Pesquisar Aluno");
-        labelPesquisarAluno.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        comboLimite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLimiteActionPerformed(evt);
+            }
+        });
 
         botPagPrimeira.setText("|<");
         botPagPrimeira.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +233,8 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                 botPagAnteriorActionPerformed(evt);
             }
         });
+
+        textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
         labelTotalPaginas.setText("de 9999");
 
@@ -238,40 +252,22 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
             }
         });
 
-        int[] limites = ctrl.getPaginador().getLimites();
-        for (int i = 0; i < limites.length; i++) {
-            comboLimite.addItem("" + limites[i]);
-        }
-        comboLimite.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboLimiteItemStateChanged(evt);
-            }
-        });
-        comboLimite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLimiteActionPerformed(evt);
-            }
-        });
-
-        textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldNome)
+                    .addComponent(textFieldMatricula)
                     .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNome)
                             .addComponent(labelMatricula)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(buttonPesquisar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                .addComponent(textFieldMatricula, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(layout.createSequentialGroup()
+                            .addComponent(buttonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(comboLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagPrimeira)
@@ -285,16 +281,13 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                                 .addComponent(botPagProxima)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(botPagUltima)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(labelPesquisarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelPesquisarAluno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,9 +298,9 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)
                     .addComponent(botPagAnterior)
                     .addComponent(labelTotalPaginas)
@@ -315,6 +308,23 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                     .addComponent(botPagUltima)
                     .addComponent(comboLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldPagina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -429,9 +439,9 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
     private javax.swing.JButton botPagUltima;
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JComboBox<String> comboLimite;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelNome;
-    private javax.swing.JLabel labelPesquisarAluno;
     private javax.swing.JLabel labelTotalPaginas;
     private javax.swing.JScrollPane scrollTabelaAlunos;
     private javax.swing.JTable tableAlunos;

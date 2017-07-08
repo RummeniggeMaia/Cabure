@@ -36,138 +36,64 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelId = new javax.swing.JLabel();
-        labelSubtitulo = new javax.swing.JLabel();
-        labelEditora = new javax.swing.JLabel();
-        labelAno = new javax.swing.JLabel();
-        labelSerie = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         labelErrId = new javax.swing.JLabel();
-        labelISBN = new javax.swing.JLabel();
-        labelErrSegundoAutor = new javax.swing.JLabel();
-        textFieldPrimeiroAutor = new javax.swing.JTextField();
+        labelId = new javax.swing.JLabel();
+        textFieldId = new javax.swing.JTextField();
+        buttonCancelaID = new javax.swing.JButton();
+        labelQntEstante = new javax.swing.JLabel();
+        textFieldQntEstante = new javax.swing.JFormattedTextField();
+        labelErrQntEstante = new javax.swing.JLabel();
+        labelPrimeiroAutor = new javax.swing.JLabel();
         labelErrPrimeiroAutor = new javax.swing.JLabel();
+        textFieldPrimeiroAutor = new javax.swing.JTextField();
+        labelSegundoAutor = new javax.swing.JLabel();
+        labelErrSegundoAutor = new javax.swing.JLabel();
+        textFieldSegundoAutor = new javax.swing.JTextField();
+        labelTerceiroAutor = new javax.swing.JLabel();
         textFieldTerceiroAutor = new javax.swing.JTextField();
         labelErrTerceiroAutor = new javax.swing.JLabel();
-        textFieldSegundoAutor = new javax.swing.JTextField();
+        labelLocal = new javax.swing.JLabel();
         labelErrCidade = new javax.swing.JLabel();
         textFieldLocal = new javax.swing.JTextField();
-        textFieldNumeroEdicao = new javax.swing.JTextField();
-        labelErrVolume = new javax.swing.JLabel();
-        labelErrNumeroEdicao = new javax.swing.JLabel();
-        labelErrPaginas = new javax.swing.JLabel();
-        textFieldTitulo = new javax.swing.JTextField();
-        labelErrTitulo = new javax.swing.JLabel();
-        textFieldSubtitulo = new javax.swing.JTextField();
-        labelErrSubtitulo = new javax.swing.JLabel();
-        labelCadastroDeLivro = new javax.swing.JLabel();
-        textFieldEditora = new javax.swing.JTextField();
-        labelErrEditora = new javax.swing.JLabel();
-        labelPrimeiroAutor = new javax.swing.JLabel();
-        labelErrAno = new javax.swing.JLabel();
-        labelSegundoAutor = new javax.swing.JLabel();
-        textFieldSerie = new javax.swing.JTextField();
-        labelErrSerie = new javax.swing.JLabel();
-        labelTerceiroAutor = new javax.swing.JLabel();
-        textFieldISBN = new javax.swing.JTextField();
-        labelErrISBN = new javax.swing.JLabel();
-        labelLocal = new javax.swing.JLabel();
-        textFieldVolume = new javax.swing.JTextField();
         labelNumeroEdicao = new javax.swing.JLabel();
-        buttonCancelaID = new javax.swing.JButton();
+        labelErrNumeroEdicao = new javax.swing.JLabel();
         labelVolume = new javax.swing.JLabel();
-        textFieldId = new javax.swing.JTextField();
+        labelErrVolume = new javax.swing.JLabel();
         labelPaginas = new javax.swing.JLabel();
-        labelTitulo = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        buttonSalvar = new javax.swing.JButton();
-        labelQntEstante = new javax.swing.JLabel();
-        labelErrQntEstante = new javax.swing.JLabel();
-        textFieldAno = new javax.swing.JFormattedTextField();
-        textFieldQntEstante = new javax.swing.JFormattedTextField();
+        labelErrPaginas = new javax.swing.JLabel();
         textFieldPaginas = new javax.swing.JFormattedTextField();
+        textFieldVolume = new javax.swing.JTextField();
+        textFieldNumeroEdicao = new javax.swing.JTextField();
+        labelTitulo = new javax.swing.JLabel();
+        labelErrTitulo = new javax.swing.JLabel();
+        labelSubtitulo = new javax.swing.JLabel();
+        labelErrSubtitulo = new javax.swing.JLabel();
+        textFieldSubtitulo = new javax.swing.JTextField();
+        textFieldTitulo = new javax.swing.JTextField();
+        labelEditora = new javax.swing.JLabel();
+        labelErrEditora = new javax.swing.JLabel();
+        textFieldEditora = new javax.swing.JTextField();
+        labelAno = new javax.swing.JLabel();
+        labelErrAno = new javax.swing.JLabel();
+        labelSerie = new javax.swing.JLabel();
+        labelErrSerie = new javax.swing.JLabel();
+        labelISBN = new javax.swing.JLabel();
+        labelErrISBN = new javax.swing.JLabel();
+        textFieldAno = new javax.swing.JFormattedTextField();
+        textFieldSerie = new javax.swing.JTextField();
+        textFieldISBN = new javax.swing.JTextField();
+        buttonSalvar = new javax.swing.JButton();
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastrar Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
+
+        labelErrId.setForeground(new java.awt.Color(255, 0, 0));
 
         labelId.setText("Id:");
         labelId.setOpaque(true);
 
-        labelSubtitulo.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelSubtitulo.setText("Subtítulo:");
-
-        labelEditora.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelEditora.setText("Editora:");
-
-        labelAno.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelAno.setText("Ano:");
-
-        labelSerie.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelSerie.setText("Série:");
-
-        labelErrId.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelISBN.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelISBN.setText("ISBN:");
-
-        labelErrSegundoAutor.setForeground(new java.awt.Color(255, 0, 0));
-
-        textFieldPrimeiroAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPrimeiroAutorActionPerformed(evt);
-            }
-        });
-
-        labelErrPrimeiroAutor.setForeground(new java.awt.Color(255, 0, 0));
-
-        textFieldTerceiroAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldTerceiroAutorActionPerformed(evt);
-            }
-        });
-
-        labelErrTerceiroAutor.setForeground(new java.awt.Color(255, 0, 0));
-
-        textFieldSegundoAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldSegundoAutorActionPerformed(evt);
-            }
-        });
-
-        labelErrCidade.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelErrVolume.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelErrNumeroEdicao.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelErrPaginas.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelErrTitulo.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelErrSubtitulo.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelCadastroDeLivro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        labelCadastroDeLivro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCadastroDeLivro.setText("Cadastro de Livro");
-
-        labelErrEditora.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelPrimeiroAutor.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelPrimeiroAutor.setText("1º Autor:");
-
-        labelErrAno.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelSegundoAutor.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelSegundoAutor.setText("2º Autor:");
-
-        labelErrSerie.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelTerceiroAutor.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelTerceiroAutor.setText("3º Autor:");
-
-        labelErrISBN.setForeground(new java.awt.Color(255, 0, 0));
-
-        labelLocal.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelLocal.setText("Local (Cidade):");
-
-        labelNumeroEdicao.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelNumeroEdicao.setText("Nº da Edição:");
+        textFieldId.setEditable(false);
 
         buttonCancelaID.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         buttonCancelaID.setForeground(new java.awt.Color(255, 0, 0));
@@ -178,30 +104,96 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             }
         });
 
+        labelQntEstante.setText("Livros na estante:");
+
+        textFieldQntEstante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+
+        labelErrQntEstante.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelPrimeiroAutor.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelPrimeiroAutor.setText("1º Autor:");
+
+        labelErrPrimeiroAutor.setForeground(new java.awt.Color(255, 0, 0));
+
+        textFieldPrimeiroAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPrimeiroAutorActionPerformed(evt);
+            }
+        });
+
+        labelSegundoAutor.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelSegundoAutor.setText("2º Autor:");
+
+        labelErrSegundoAutor.setForeground(new java.awt.Color(255, 0, 0));
+
+        textFieldSegundoAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldSegundoAutorActionPerformed(evt);
+            }
+        });
+
+        labelTerceiroAutor.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelTerceiroAutor.setText("3º Autor:");
+
+        textFieldTerceiroAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTerceiroAutorActionPerformed(evt);
+            }
+        });
+
+        labelErrTerceiroAutor.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelLocal.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelLocal.setText("Local (Cidade):");
+
+        labelErrCidade.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelNumeroEdicao.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelNumeroEdicao.setText("Nº da Edição:");
+
+        labelErrNumeroEdicao.setForeground(new java.awt.Color(255, 0, 0));
+
         labelVolume.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelVolume.setText("Volume:");
 
-        textFieldId.setEditable(false);
+        labelErrVolume.setForeground(new java.awt.Color(255, 0, 0));
 
         labelPaginas.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelPaginas.setText("Páginas:");
 
+        labelErrPaginas.setForeground(new java.awt.Color(255, 0, 0));
+
+        textFieldPaginas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
+
         labelTitulo.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelTitulo.setText("Título:");
 
-        buttonSalvar.setText("Salvar");
-        buttonSalvar.setMaximumSize(new java.awt.Dimension(200, 28));
-        buttonSalvar.setPreferredSize(new java.awt.Dimension(200, 30));
-        buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSalvarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonSalvar);
+        labelErrTitulo.setForeground(new java.awt.Color(255, 0, 0));
 
-        labelQntEstante.setText("Livros na estante:");
+        labelSubtitulo.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelSubtitulo.setText("Subtítulo:");
 
-        labelErrQntEstante.setForeground(new java.awt.Color(255, 0, 0));
+        labelErrSubtitulo.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelEditora.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelEditora.setText("Editora:");
+
+        labelErrEditora.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelAno.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelAno.setText("Ano:");
+
+        labelErrAno.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelSerie.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelSerie.setText("Série:");
+
+        labelErrSerie.setForeground(new java.awt.Color(255, 0, 0));
+
+        labelISBN.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        labelISBN.setText("ISBN:");
+
+        labelErrISBN.setForeground(new java.awt.Color(255, 0, 0));
 
         try {
             textFieldAno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
@@ -214,166 +206,180 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             }
         });
 
-        textFieldQntEstante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        buttonSalvar.setText("Salvar");
+        buttonSalvar.setMaximumSize(new java.awt.Dimension(200, 28));
+        buttonSalvar.setPreferredSize(new java.awt.Dimension(200, 30));
+        buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalvarActionPerformed(evt);
+            }
+        });
 
-        textFieldPaginas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelCadastroDeLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldEditora)
-                    .addComponent(textFieldLocal)
-                    .addComponent(textFieldTerceiroAutor)
-                    .addComponent(textFieldSegundoAutor)
-                    .addComponent(textFieldPrimeiroAutor)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(buttonCancelaID))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelPrimeiroAutor)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrPrimeiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelSegundoAutor)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrSegundoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTerceiroAutor)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrTerceiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelLocal)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelNumeroEdicao)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelVolume)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelPaginas)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textFieldEditora))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textFieldLocal))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textFieldTerceiroAutor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textFieldSegundoAutor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(textFieldPrimeiroAutor))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(textFieldNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textFieldPaginas))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTitulo)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelSubtitulo)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(labelId)
+                                                .addGap(6, 6, 6)
+                                                .addComponent(labelErrId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buttonCancelaID)))
+                                        .addGap(14, 14, 14)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(labelQntEstante)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(labelErrQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(textFieldQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelPrimeiroAutor)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrPrimeiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelSegundoAutor)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrSegundoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelTerceiroAutor)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrTerceiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelLocal)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelNumeroEdicao)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelVolume)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelPaginas)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelTitulo)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelSubtitulo)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelEditora)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(labelAno)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrAno, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelSerie)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelISBN)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelErrISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(textFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(textFieldSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelEditora)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelAno)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrAno, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelSerie)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelISBN)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldSubtitulo))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(textFieldISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textFieldQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelId)
-                                .addGap(6, 6, 6)
-                                .addComponent(labelErrId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelQntEstante)))
-                        .addGap(17, 17, 17)
-                        .addComponent(labelErrQntEstante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(textFieldISBN)))))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(labelCadastroDeLivro)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelQntEstante)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelErrId, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelId)
+                            .addComponent(labelErrQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonCancelaID)
+                            .addComponent(textFieldQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelId)
-                    .addComponent(labelErrId, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelErrQntEstante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelQntEstante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(textFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonCancelaID)
-                        .addComponent(textFieldQntEstante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelPrimeiroAutor)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(labelErrPrimeiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addComponent(textFieldPrimeiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelSegundoAutor)
                     .addComponent(labelErrSegundoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(textFieldSegundoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTerceiroAutor)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(labelErrTerceiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addComponent(textFieldTerceiroAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelLocal)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(labelErrCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addComponent(textFieldLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelNumeroEdicao)
                     .addComponent(labelErrNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelVolume)
@@ -381,29 +387,29 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                     .addComponent(labelPaginas)
                     .addComponent(labelErrPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(textFieldPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTitulo)
                     .addComponent(labelErrTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelSubtitulo)
                     .addComponent(labelErrSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEditora)
                     .addComponent(labelErrEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(textFieldEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelAno)
                     .addComponent(labelErrAno, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelSerie)
@@ -411,12 +417,34 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                     .addComponent(labelISBN)
                     .addComponent(labelErrISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textFieldISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 221, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -602,8 +630,8 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonCancelaID;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelAno;
-    private javax.swing.JLabel labelCadastroDeLivro;
     private javax.swing.JLabel labelEditora;
     private javax.swing.JLabel labelErrAno;
     private javax.swing.JLabel labelErrCidade;

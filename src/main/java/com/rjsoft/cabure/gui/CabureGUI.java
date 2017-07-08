@@ -27,6 +27,9 @@ public class CabureGUI extends javax.swing.JFrame
     private CadastrarLivroPanel cadastrarLivro;
     private PesquisarLivroPanel pesquisarLivro;
     private GerenciarEmprestimosPanel gerenciarEmprestimos;
+    private GerarRelatorioAlunoPanel relatorioAlunoPanel;
+    private GerarRelatorioEmprestimoPanel relatorioEmprestimoPanel;
+    private GerarRelatorioLivroPanel relatorioLivroPanel;
     private JPanel painelCentro;
     //Controles
     private AlunoCtrl alunoCtrl;
@@ -54,6 +57,9 @@ public class CabureGUI extends javax.swing.JFrame
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
+        relatorioAlunoPanel = new GerarRelatorioAlunoPanel(alunoCtrl);
+        relatorioLivroPanel = new GerarRelatorioLivroPanel(livroCtrl,emprestimoCtrl);
+        relatorioEmprestimoPanel = new GerarRelatorioEmprestimoPanel(emprestimoCtrl, livroCtrl, alunoCtrl);
         gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
 
         home.pesquisarEA();
@@ -247,12 +253,15 @@ public class CabureGUI extends javax.swing.JFrame
                 break;
             }
             case AcordeonListener.MENU_RELATORIO_ALUNOS: {
+                painelCentro = relatorioAlunoPanel;
                 break;
             }
             case AcordeonListener.MENU_RELATORIO_LIVROS: {
+                painelCentro = relatorioLivroPanel;
                 break;
             }
             case AcordeonListener.MENU_RELATORIO_EMPRESTIMOS: {
+                painelCentro = relatorioEmprestimoPanel;
                 break;
             }
             default: {

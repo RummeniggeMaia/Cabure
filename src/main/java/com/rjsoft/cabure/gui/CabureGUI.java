@@ -22,7 +22,7 @@ public class CabureGUI extends javax.swing.JFrame
      * Creates new form Cabure
      */
     private HomePanel home;
-    private CadastrarAlunoPane cadastrarAluno;
+    private CadastrarAlunoPanel cadastrarAluno;
     private PesquisarAlunoPanel pesquisarAluno;
     private CadastrarLivroPanel cadastrarLivro;
     private PesquisarLivroPanel pesquisarLivro;
@@ -50,7 +50,7 @@ public class CabureGUI extends javax.swing.JFrame
         initComponents();
 
         home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl);
-        cadastrarAluno = new CadastrarAlunoPane(alunoCtrl);
+        cadastrarAluno = new CadastrarAlunoPanel(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);

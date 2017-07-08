@@ -53,6 +53,7 @@ public class Cabure {
                             null, 
                             "Não foi possível se conectar com o banco de dados, sistema será finalizado.", "Erro ao iniciar Cabure", 
                             JOptionPane.ERROR_MESSAGE);
+                    System.exit(0);
                 }
 
             }

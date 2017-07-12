@@ -1,14 +1,15 @@
-
-
 package com.rjsoft.cabure.gui;
 
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.modelo.Livro;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,7 +54,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     public void removeTableListener(TableListener tl) {
         listeners.remove(tl);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,7 +70,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         labelPrimeiroAutor = new javax.swing.JLabel();
         textFieldPrimeiroAutor = new javax.swing.JTextField();
         buttonPesquisar = new javax.swing.JButton();
-        scrollTabelaAlunos = new javax.swing.JScrollPane();
+        scrollTabelaLivros = new javax.swing.JScrollPane();
         tableLivros = new javax.swing.JTable();
         comboLimite = new javax.swing.JComboBox<>();
         botPagPrimeira = new javax.swing.JButton();
@@ -178,7 +179,35 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             }
         });
         tableLivros.getTableHeader().setReorderingAllowed(false);
-        scrollTabelaAlunos.setViewportView(tableLivros);
+        scrollTabelaLivros.setViewportView(tableLivros);
+        tableLivros.setRowSelectionAllowed(true);
+        tableLivros.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        tableLivros.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
+                    int linhaSelecionada = tableLivros.getSelectedRow();
+                    Object idObj = tableLivros.getValueAt(linhaSelecionada, 0);
+                    Integer id = null;
+                    System.out.println("opa");
+                    try {
+                        System.out.println("TRY antes ID");
+                        id = Integer.parseInt(idObj.toString());
+                        System.out.println("ID: " + id);
+                    } catch (Exception ex) {
+                    }
+                    System.out.println("ANTES IF");
+                    if (id != null) {
+                        System.out.println("DPS IF");
+                        for (TableListener tl : listeners) {
+                            System.out.println("FOR LISTENER");
+                            tl.linhaSelecionada(TableListener.TELA_PES_LIVRO, id);
+                        }
+                    }
+                }
+            }
+        });
 
         int[] limites = ctrl.getPaginador().getLimites();
         for (int i = 0; i < limites.length; i++) {
@@ -235,7 +264,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textFieldTitulo)
-                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                    .addComponent(scrollTabelaLivros, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
                     .addComponent(textFieldPrimeiroAutor)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +301,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                .addComponent(scrollTabelaLivros, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)
@@ -314,7 +343,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         }
         return condicao;
     }
-  
+
     private void botPagAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botPagAnteriorActionPerformed
         ctrl.getPaginador().anterior();
         pesquisar();
@@ -330,12 +359,12 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         pesquisar();
     }//GEN-LAST:event_botPagUltimaActionPerformed
 
-    private void botPagPrimeiraActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void botPagPrimeiraActionPerformed(java.awt.event.ActionEvent evt) {
         ctrl.getPaginador().primeira();
         pesquisar();
-    }                                            
+    }
 
-        
+
     private void textFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldTituloActionPerformed
@@ -371,7 +400,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         listarLivros(livros);
         verificarPaginacao();
     }
-    
+
     private void listarLivros(List<Livro> livros) {
         Object[][] data = new Object[livros.size()][colunas.length];
         for (int i = 0; i < livros.size(); i++) {
@@ -421,7 +450,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelPrimeiroAutor;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelTotalPaginas;
-    private javax.swing.JScrollPane scrollTabelaAlunos;
+    private javax.swing.JScrollPane scrollTabelaLivros;
     private javax.swing.JTable tableLivros;
     private javax.swing.JFormattedTextField textFieldPagina;
     private javax.swing.JTextField textFieldPrimeiroAutor;

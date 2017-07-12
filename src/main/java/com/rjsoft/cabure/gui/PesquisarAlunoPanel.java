@@ -72,8 +72,6 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         labelMatricula = new javax.swing.JLabel();
         textFieldMatricula = new javax.swing.JTextField();
         buttonPesquisar = new javax.swing.JButton();
-        scrollTabelaAlunos = new javax.swing.JScrollPane();
-        tableAlunos = new javax.swing.JTable();
         comboLimite = new javax.swing.JComboBox<>();
         botPagPrimeira = new javax.swing.JButton();
         botPagAnterior = new javax.swing.JButton();
@@ -81,6 +79,8 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         labelTotalPaginas = new javax.swing.JLabel();
         botPagProxima = new javax.swing.JButton();
         botPagUltima = new javax.swing.JButton();
+        scrollTabelaAlunos = new javax.swing.JScrollPane();
+        tableAlunos = new javax.swing.JTable();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisar Aluno", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
@@ -104,6 +104,53 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPesquisarActionPerformed(evt);
+            }
+        });
+
+        int[] limites = ctrl.getPaginador().getLimites();
+        for (int i = 0; i < limites.length; i++) {
+            comboLimite.addItem("" + limites[i]);
+        }
+        comboLimite.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboLimiteItemStateChanged(evt);
+            }
+        });
+        comboLimite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLimiteActionPerformed(evt);
+            }
+        });
+
+        botPagPrimeira.setText("|<");
+        botPagPrimeira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagPrimeiraActionPerformed(evt);
+            }
+        });
+
+        botPagAnterior.setText("<<");
+        botPagAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagAnteriorActionPerformed(evt);
+            }
+        });
+
+        textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
+
+        labelTotalPaginas.setText("de 9999");
+
+        botPagProxima.setText(">>");
+        botPagProxima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagProximaActionPerformed(evt);
+            }
+        });
+
+        botPagUltima.setText(">|");
+        botPagUltima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botPagUltimaActionPerformed(evt);
             }
         });
 
@@ -205,64 +252,17 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
             }
         });
 
-        int[] limites = ctrl.getPaginador().getLimites();
-        for (int i = 0; i < limites.length; i++) {
-            comboLimite.addItem("" + limites[i]);
-        }
-        comboLimite.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboLimiteItemStateChanged(evt);
-            }
-        });
-        comboLimite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLimiteActionPerformed(evt);
-            }
-        });
-
-        botPagPrimeira.setText("|<");
-        botPagPrimeira.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagPrimeiraActionPerformed(evt);
-            }
-        });
-
-        botPagAnterior.setText("<<");
-        botPagAnterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagAnteriorActionPerformed(evt);
-            }
-        });
-
-        textFieldPagina.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
-
-        labelTotalPaginas.setText("de 9999");
-
-        botPagProxima.setText(">>");
-        botPagProxima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagProximaActionPerformed(evt);
-            }
-        });
-
-        botPagUltima.setText(">|");
-        botPagUltima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botPagUltimaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldNome)
-                    .addComponent(textFieldMatricula)
-                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+                    .addComponent(textFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldMatricula, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNome)
                             .addComponent(labelMatricula)
@@ -298,7 +298,7 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(scrollTabelaAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botPagPrimeira)

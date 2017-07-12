@@ -52,7 +52,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="textFieldTitulo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="scrollTabelaAlunos" alignment="0" pref="644" max="32767" attributes="0"/>
+                      <Component id="scrollTabelaLivros" alignment="0" pref="644" max="32767" attributes="0"/>
                       <Component id="textFieldPrimeiroAutor" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -95,7 +95,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="buttonPesquisar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="scrollTabelaAlunos" pref="264" max="32767" attributes="0"/>
+                  <Component id="scrollTabelaLivros" pref="264" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botPagPrimeira" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -139,7 +139,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonPesquisarActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="scrollTabelaAlunos">
+        <Container class="javax.swing.JScrollPane" name="scrollTabelaLivros">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -166,7 +166,7 @@
                     <Column editable="true" title="ISBN" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="tableLivros.setRowSelectionAllowed(true);&#xa;tableLivros.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);&#xa;&#xa;tableLivros.addMouseListener(new MouseAdapter() {&#xa;    @Override&#xa;    public void mouseClicked(MouseEvent e) {&#xa;        if (e.getClickCount() == 2 &amp;&amp; e.getButton() == MouseEvent.BUTTON1) {&#xa;            int linhaSelecionada = tableLivros.getSelectedRow();&#xa;            Object idObj = tableLivros.getValueAt(linhaSelecionada, 0);&#xa;            Integer id = null;&#xa;            System.out.println(&quot;opa&quot;);&#xa;            try {&#xa;                System.out.println(&quot;TRY antes ID&quot;);&#xa;                id = Integer.parseInt(idObj.toString());&#xa;                System.out.println(&quot;ID: &quot; + id);&#xa;            } catch (Exception ex) {  &#xa;            }&#xa;            System.out.println(&quot;ANTES IF&quot;);&#xa;            if (id != null) {&#xa;                System.out.println(&quot;DPS IF&quot;);&#xa;                for (TableListener tl : listeners) {&#xa;                    System.out.println(&quot;FOR LISTENER&quot;);&#xa;                    tl.linhaSelecionada(TableListener.TELA_PES_LIVRO, id);&#xa;                }&#xa;            }&#xa;        }&#xa;    }    &#xa;});">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>

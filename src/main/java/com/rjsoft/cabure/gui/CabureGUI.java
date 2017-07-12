@@ -70,6 +70,7 @@ public class CabureGUI extends javax.swing.JFrame
         //Listeners
         acordeon1.addListener(this);
         pesquisarAluno.addTableListener(this);
+        pesquisarLivro.addTableListener(this);
         setSize(TAMANHO_MAXIMO);
         setResizable(true);
         setMinimumSize(TAMANHO_MINIMO);
@@ -285,6 +286,6 @@ public class CabureGUI extends javax.swing.JFrame
             cadastrarLivro.carregarLivro(idEntidade);
             painelCentro = cadastrarLivro;
             setPainelCentro();
-        }
+        } 
     }
 }

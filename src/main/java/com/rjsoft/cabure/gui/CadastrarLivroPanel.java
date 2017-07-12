@@ -479,6 +479,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             try {
                 Livro livro = new Livro();
                 String id = textFieldId.getText();
+                livro.setID(id.isEmpty() ? 0 : Integer.parseInt(id));
                 livro.setPrimeiroAutor(textFieldPrimeiroAutor.getText());
                 livro.setSegundoAutor(textFieldSegundoAutor.getText());
                 livro.setTerceiroAutor(textFieldTerceiroAutor.getText());
@@ -498,6 +499,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                 ctrl.setLivro(livro);
                 ctrl.salvarLivro();
                 limparCampos();
+                limparValidacao();
 
                 JOptionPane.showMessageDialog(
                         this,
@@ -521,6 +523,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     }
 
     private void limparCampos() {
+        textFieldQntEstante.setText("");
         textFieldAno.setText("");
         textFieldEditora.setText("");
         textFieldISBN.setText("");
@@ -539,6 +542,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     }
 
     private void limparValidacao() {
+        labelErrQntEstante.setText("");
         labelErrAno.setText("");
         labelErrCidade.setText("");
         labelErrEditora.setText("");
@@ -624,6 +628,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             textFieldTitulo.setText(l.getTitulo());
             textFieldPaginas.setText(l.getNumeroPaginas().toString());
             textFieldQntEstante.setText(l.getQntEstante().toString());
+            textFieldId.setText(l.getID().toString());
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

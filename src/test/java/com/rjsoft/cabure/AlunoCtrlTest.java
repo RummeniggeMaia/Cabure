@@ -28,26 +28,26 @@ public class AlunoCtrlTest {
 
     @Before
     public void setUp() {
-        EntityManager em = JPAUtil.EMF.createEntityManager();
-
-        ctrl = new AlunoCtrl(em);
-
-        aluno = new Aluno();
-        aluno.setBairro("bairro 12");
-        aluno.setCpf("123.456.7");
-        aluno.setDataNascimento(new Date());
-        aluno.setEmail("mail@mail.com");
-        aluno.setEndereco("Endereço 1");
-        aluno.setMatricula("123");
-        aluno.setNome("Aluno Um");
-        aluno.setNumero(321);
-        aluno.setObservacao("obs");
-        aluno.setRg("987.654.321");
-        aluno.setSexo('M');
-        aluno.setSituacao(true);
-        aluno.setTelefone("(99) 9 9999-9999");
-
-        ctrl.setAluno(aluno);
+//        EntityManager em = JPAUtil.EMF.createEntityManager();
+//
+//        ctrl = new AlunoCtrl(em);
+//
+//        aluno = new Aluno();
+//        aluno.setBairro("bairro 12");
+//        aluno.setCpf("123.456.7");
+//        aluno.setDataNascimento(new Date());
+//        aluno.setEmail("mail@mail.com");
+//        aluno.setEndereco("Endereço 1");
+//        aluno.setMatricula("123");
+//        aluno.setNome("Aluno Um");
+//        aluno.setNumero(321);
+//        aluno.setObservacao("obs");
+//        aluno.setRg("987.654.321");
+//        aluno.setSexo('M');
+//        aluno.setSituacao(true);
+//        aluno.setTelefone("(99) 9 9999-9999");
+//
+//        ctrl.setAluno(aluno);
     }
 
     @After

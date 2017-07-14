@@ -9,6 +9,7 @@ import com.rjsoft.cabure.util.JPAUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.persistence.EntityManager;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -89,16 +90,25 @@ public class CabureGUI extends javax.swing.JFrame
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         acordeon1 = new com.rjsoft.cabure.gui.Acordeon();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuIniciar = new javax.swing.JMenu();
+        menuItemIniciar = new javax.swing.JMenuItem();
+        menuAluno = new javax.swing.JMenu();
+        menuItemCadAluno = new javax.swing.JMenuItem();
+        menuItemPesAluno = new javax.swing.JMenuItem();
+        menuLivro = new javax.swing.JMenu();
+        menuItemCadLivro = new javax.swing.JMenuItem();
+        menuItemPesLivro = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuItemEmprestimos = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuItemRelAlunos = new javax.swing.JMenuItem();
+        menuItemLivros = new javax.swing.JMenuItem();
+        menuItemRelEmprestimos = new javax.swing.JMenuItem();
+        menuSobre = new javax.swing.JMenu();
+        menuItemSobre = new javax.swing.JMenuItem();
 
         jMenu4.setText("File");
         jMenuBar2.add(jMenu4);
@@ -106,113 +116,208 @@ public class CabureGUI extends javax.swing.JFrame
         jMenu5.setText("Edit");
         jMenuBar2.add(jMenu5);
 
+        jMenu6.setText("jMenu6");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().add(acordeon1, java.awt.BorderLayout.LINE_START);
 
-        jMenu1.setText("Inicio");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        menuIniciar.setText("Inicio");
+        menuIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                menuIniciarActionPerformed(evt);
             }
         });
 
-        jMenuItem5.setText("Menu Inicial");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuItemIniciar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        menuItemIniciar.setText("Menu Inicial");
+        menuItemIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuItemIniciarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        menuIniciar.add(menuItemIniciar);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuIniciar);
 
-        jMenu2.setText("Aluno");
+        menuAluno.setText("Aluno");
 
-        jMenuItem1.setText("Cadastrar Aluno");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemCadAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        menuItemCadAluno.setText("Cadastrar Aluno");
+        menuItemCadAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItemCadAlunoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        menuAluno.add(menuItemCadAluno);
 
-        jMenuItem2.setText("Pesquisar Aluno");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuItemPesAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menuItemPesAluno.setText("Pesquisar Aluno");
+        menuItemPesAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuItemPesAlunoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        menuAluno.add(menuItemPesAluno);
+
+        jMenuBar1.add(menuAluno);
+
+        menuLivro.setText("Livro");
+
+        menuItemCadLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        menuItemCadLivro.setText("Cadastrar Livro");
+        menuItemCadLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadLivroActionPerformed(evt);
+            }
+        });
+        menuLivro.add(menuItemCadLivro);
+
+        menuItemPesLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        menuItemPesLivro.setText("Pesquisar Livro");
+        menuItemPesLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPesLivroActionPerformed(evt);
+            }
+        });
+        menuLivro.add(menuItemPesLivro);
+
+        jMenuBar1.add(menuLivro);
+
+        jMenu2.setText("Empréstimos");
+
+        menuItemEmprestimos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        menuItemEmprestimos.setText("Verificar Empréstimos");
+        menuItemEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEmprestimosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemEmprestimos);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Livro");
+        jMenu1.setText("Relatórios");
 
-        jMenuItem3.setText("Cadastrar Livro");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        menuItemRelAlunos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        menuItemRelAlunos.setText("Relatório de Alunos");
+        menuItemRelAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                menuItemRelAlunosActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu1.add(menuItemRelAlunos);
 
-        jMenuItem4.setText("Pesquisar Livro");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuItemLivros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        menuItemLivros.setText("Relatório de Livros");
+        menuItemLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuItemLivrosActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenu1.add(menuItemLivros);
 
-        jMenuBar1.add(jMenu3);
+        menuItemRelEmprestimos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
+        menuItemRelEmprestimos.setText("Relatório de Empréstimos");
+        menuItemRelEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRelEmprestimosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemRelEmprestimos);
+
+        jMenuBar1.add(jMenu1);
+
+        menuSobre.setText("Sobre");
+
+        menuItemSobre.setText("Informações");
+        menuItemSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSobreActionPerformed(evt);
+            }
+        });
+        menuSobre.add(menuItemSobre);
+
+        jMenuBar1.add(menuSobre);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuItemPesLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPesLivroActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.BOT_PES_LIVRO);
+    }//GEN-LAST:event_menuItemPesLivroActionPerformed
+
+    private void menuItemCadLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadLivroActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.BOT_CAD_LIVRO);
+    }//GEN-LAST:event_menuItemCadLivroActionPerformed
+
+    private void menuItemPesAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPesAlunoActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.BOT_PES_ALUNO);
+    }//GEN-LAST:event_menuItemPesAlunoActionPerformed
+
+    private void menuItemCadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadAlunoActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.BOT_CAD_ALUNO);
+    }//GEN-LAST:event_menuItemCadAlunoActionPerformed
+
+    private void menuIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuIniciarActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_menuIniciarActionPerformed
 
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void menuItemIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIniciarActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.MENU_INICIO);
+    }//GEN-LAST:event_menuItemIniciarActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+    private void menuItemEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEmprestimosActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.MENU_EMPRESTIMO);
+    }//GEN-LAST:event_menuItemEmprestimosActionPerformed
 
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void menuItemRelAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelAlunosActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.MENU_RELATORIO_ALUNOS);
+    }//GEN-LAST:event_menuItemRelAlunosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+    private void menuItemLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemLivrosActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.MENU_RELATORIO_LIVROS);
+    }//GEN-LAST:event_menuItemLivrosActionPerformed
 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void menuItemRelEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelEmprestimosActionPerformed
+        botaoAcordeonPressionado(AcordeonListener.MENU_RELATORIO_EMPRESTIMOS);
+    }//GEN-LAST:event_menuItemRelEmprestimosActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void menuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSobreActionPerformed
+        JOptionPane.showMessageDialog(this, 
+                "Sistema de Gerenciamento de Bibliotecas - Caburé\n"
+                        + "Desenvolvedores:\n"
+                        + "        Rummenigge Maia\n"
+                        + "        Jaedson Araújo", 
+                "Sobre o sistema Caburé", 
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_menuItemSobreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rjsoft.cabure.gui.Acordeon acordeon1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenu menuAluno;
+    private javax.swing.JMenu menuIniciar;
+    private javax.swing.JMenuItem menuItemCadAluno;
+    private javax.swing.JMenuItem menuItemCadLivro;
+    private javax.swing.JMenuItem menuItemEmprestimos;
+    private javax.swing.JMenuItem menuItemIniciar;
+    private javax.swing.JMenuItem menuItemLivros;
+    private javax.swing.JMenuItem menuItemPesAluno;
+    private javax.swing.JMenuItem menuItemPesLivro;
+    private javax.swing.JMenuItem menuItemRelAlunos;
+    private javax.swing.JMenuItem menuItemRelEmprestimos;
+    private javax.swing.JMenuItem menuItemSobre;
+    private javax.swing.JMenu menuLivro;
+    private javax.swing.JMenu menuSobre;
     // End of variables declaration//GEN-END:variables
 
     private void setPainelCentro() {

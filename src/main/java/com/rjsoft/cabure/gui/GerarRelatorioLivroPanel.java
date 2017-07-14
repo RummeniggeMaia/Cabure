@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -250,10 +251,19 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     private void gerarPDF(List<Livro> listaLivros, List<Emprestimo> listaEmprestimos) {
         Document document = new Document();
         String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
-        String nomeArquivo = "Relatório de Emprestimos_" + dataHora + ".pdf";
+        String nomeArquivo = "Relatório de Livros_" + dataHora + ".pdf";
+        JFileChooser jfc = new JFileChooser();
+        jfc.setSelectedFile(new File(nomeArquivo));
+        int esc = jfc.showOpenDialog(this);
+        File diretorio = null;
+        if (esc == JFileChooser.APPROVE_OPTION) {
+            diretorio = jfc.getSelectedFile();
+        } else {
+            return;
+        }
         try {
             
-            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
+            PdfWriter.getInstance(document, new FileOutputStream(diretorio));
 
             document.open();
 
@@ -275,11 +285,11 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             document.close();
         }
 
-        try {
-            Desktop.getDesktop().open(new File(nomeArquivo));
-        } catch (IOException ex) {
-            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Desktop.getDesktop().open(new File(nomeArquivo));
+//        } catch (IOException ex) {
+//            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private PdfPTable criarTabelaCabecalho(Document document) {

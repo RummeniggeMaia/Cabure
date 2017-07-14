@@ -18,8 +18,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
-import java.awt.Desktop;
-import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,6 +27,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.FileChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -243,8 +243,18 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         Document document = new Document();
         String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
         String nomeArquivo = "Relatório de Alunos_" + dataHora + ".pdf";
+        JFileChooser jfc = new JFileChooser();
+        jfc.setSelectedFile(new File(nomeArquivo));
+        int esc = jfc.showOpenDialog(this);
+        File diretorio = null;
+        if (esc == JFileChooser.APPROVE_OPTION) {
+            diretorio = jfc.getSelectedFile();
+        } else {
+            return;
+        }
+            
         try {
-            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
+            PdfWriter.getInstance(document, new FileOutputStream(diretorio));
 
             document.open();
 
@@ -265,12 +275,11 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         } finally {
             document.close();
         }
-
-        try {
-            Desktop.getDesktop().open(new File(nomeArquivo));
-        } catch (IOException ex) {
-            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Desktop.getDesktop().open(new File(nomeArquivo));
+//        } catch (IOException ex) {
+//            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private PdfPTable criarTabelaSimplificada(List<Aluno> listaAlunos) throws DocumentException {

@@ -336,7 +336,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
         String primeiroAutor = textFieldPrimeiroAutor.getText();
         String titulo = textFieldTitulo.getText();
         if (!primeiroAutor.isEmpty()) {
-            condicao += String.format(" AND l.primeiroAutor = '%s'", primeiroAutor);
+            condicao += String.format(" AND l.primeiroAutor = '%%%s%%'", primeiroAutor);
         }
         if (!titulo.isEmpty()) {
             condicao += String.format(" AND l.titulo like '%%%s%%'", titulo);

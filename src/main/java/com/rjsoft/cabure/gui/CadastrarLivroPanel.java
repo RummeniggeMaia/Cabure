@@ -586,12 +586,12 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             labelErrVolume.setText("* Campo obrigatório");
             valido = false;
         }
-        try {
-            Integer.parseInt(textFieldVolume.getText());
-        } catch (Exception ex) {
-            labelErrVolume.setText("* Inválido");
-            valido = false;
-        }
+//        try {
+//            Integer.parseInt(textFieldVolume.getText());
+//        } catch (Exception ex) {
+//            labelErrVolume.setText("* Inválido");
+//            valido = false;
+//        }
         if (textFieldPaginas.getText().isEmpty()) {
             labelErrPaginas.setText("* Campo obrigatório");
             valido = false;

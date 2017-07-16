@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -376,17 +377,19 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_botPagUltimaActionPerformed
 
     private void comboLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLimiteActionPerformed
-        try {
-            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
-            ctrl.getPaginador().setLimit(l);
-        } catch (Exception ex) {
-        }
+//        try {
+//            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+//            ctrl.getPaginador().setLimit(l);
+//        } catch (Exception ex) {
+//        }
     }//GEN-LAST:event_comboLimiteActionPerformed
 
     private void comboLimiteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboLimiteItemStateChanged
         try {
             int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+            ctrl.getPaginador().resetar();
             ctrl.getPaginador().setLimit(l);
+            pesquisar();
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_comboLimiteItemStateChanged

@@ -318,7 +318,7 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
             p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
             p.add(new Phrase("\r\nCidade: Cruzeta-RN"));
             p.add(new Phrase("\r\nCEP: 59375-000"));
-            p.add(new Phrase("\r\nTelefone: (84) 3473-2210"));
+            p.add(new Phrase("\r\nTelefone: (84) 3473-4287"));
             cell2 = new PdfPCell(p);
             cell2.setBorder(0);
             cell2.setHorizontalAlignment(Element.ALIGN_CENTER);

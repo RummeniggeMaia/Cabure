@@ -135,8 +135,8 @@
                             <Column editable="true" title="Nome" type="java.lang.Object"/>
                             <Column editable="true" title="Livro" type="java.lang.Object"/>
                             <Column editable="true" title="Quantidade" type="java.lang.Object"/>
-                            <Column editable="true" title="Dia do empr&#xe9;stimo" type="java.lang.Object"/>
-                            <Column editable="true" title="Prazo" type="java.lang.Object"/>
+                            <Column editable="true" title="Retirada do livro" type="java.lang.Object"/>
+                            <Column editable="true" title="Prazo para entrega" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -174,7 +174,7 @@
                           </TableColumnModel>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -345,7 +345,7 @@
                           </TableColumnModel>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                     </Component>

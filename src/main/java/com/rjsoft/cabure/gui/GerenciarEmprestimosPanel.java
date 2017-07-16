@@ -776,6 +776,20 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
         textFieldMatricula.setText("");
         textFieldPrazo.setText("");
     }
+    
+    private void limparValidacao() {
+        labelErrIdLivro.setText("");
+        labelErrMatricula.setText("");
+        labelErrPrazo.setText("");
+        labelErrQuantidade.setText("");
+    }
+    
+    public void limparCampos() {
+        limparAluno();
+        limparLivro();
+        limparValidacao();
+        limparForm();
+    }
 
     private boolean validarEmprestimo() {
         boolean valido = true;

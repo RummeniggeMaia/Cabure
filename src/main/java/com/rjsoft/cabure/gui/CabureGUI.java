@@ -338,6 +338,7 @@ public class CabureGUI extends javax.swing.JFrame
                 break;
             }
             case AcordeonListener.BOT_CAD_ALUNO: {
+                cadastrarAluno.limparCampos();
                 painelCentro = cadastrarAluno;
                 break;
             }
@@ -347,6 +348,7 @@ public class CabureGUI extends javax.swing.JFrame
                 break;
             }
             case AcordeonListener.BOT_CAD_LIVRO: {
+                cadastrarLivro.limparCampos();
                 painelCentro = cadastrarLivro;
                 break;
             }

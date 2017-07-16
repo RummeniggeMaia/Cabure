@@ -138,7 +138,7 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         return valido;
     }
 
-    private void limparCampos() {
+    public void limparCampos() {
         textFieldNome.setText("");
         textFieldMatricula.setText("");
         textFieldEndereco.setText("");

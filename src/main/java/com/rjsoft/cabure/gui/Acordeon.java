@@ -126,7 +126,10 @@ public class Acordeon extends javax.swing.JPanel {
             logo.setIcon(ii);
         } catch (Exception ex) {
         }
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 50));
+        logo.setMaximumSize(new java.awt.Dimension(100, 1));
+        logo.setMinimumSize(new java.awt.Dimension(51, 1));
         add(logo);
 
         menuInicio.setText("Inicio");

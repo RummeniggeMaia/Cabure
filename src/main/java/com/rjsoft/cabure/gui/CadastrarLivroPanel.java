@@ -522,7 +522,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         }
     }
 
-    private void limparCampos() {
+    public void limparCampos() {
         textFieldQntEstante.setText("");
         textFieldAno.setText("");
         textFieldEditora.setText("");

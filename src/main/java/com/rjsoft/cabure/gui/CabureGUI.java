@@ -351,6 +351,7 @@ public class CabureGUI extends javax.swing.JFrame
                 break;
             }
             case AcordeonListener.BOT_PES_LIVRO: {
+                pesquisarLivro.pesquisar();
                 painelCentro = pesquisarLivro;
                 break;
             }

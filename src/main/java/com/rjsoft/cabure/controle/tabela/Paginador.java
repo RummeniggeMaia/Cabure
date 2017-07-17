@@ -14,7 +14,7 @@ public class Paginador {
 
     public Paginador() {
         this.offset = 0;
-        this.limites = new int[]{5, 10, 15, 25, 50, 100};
+        this.limites = new int[]{25, 50, 75, 100};
         this.limit = limites[0];
         this.cont = 0;
         this.condicao = "";

@@ -32,8 +32,7 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             "Titulo",
             "Subtitulo",
             "Primeiro Autor",
-            "Segundo Autor",
-            "Terceiro Autor",
+            "Estante",
             "Local",
             "Edição",
             "Volume",
@@ -406,21 +405,21 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
     private void listarLivros(List<Livro> livros) {
         Object[][] data = new Object[livros.size()][colunas.length];
         for (int i = 0; i < livros.size(); i++) {
+            int j = 0;
             Livro l = livros.get(i);
-            data[i][0] = l.getID();
-            data[i][1] = l.getTitulo();
-            data[i][2] = l.getSubtitulo();
-            data[i][3] = l.getPrimeiroAutor();
-            data[i][4] = l.getSegundoAutor();
-            data[i][5] = l.getTerceiroAutor();
-            data[i][6] = l.getLocalidade();
-            data[i][7] = l.getNumeroEdicao();
-            data[i][8] = l.getVolume();
-            data[i][9] = l.getNumeroPaginas();
-            data[i][10] = l.getEditora();
-            data[i][11] = new SimpleDateFormat("yyyy").format(l.getAno());
-            data[i][12] = l.getSerie();
-            data[i][13] = l.getIsbn();
+            data[i][j++] = l.getID();
+            data[i][j++] = l.getTitulo();
+            data[i][j++] = l.getSubtitulo();
+            data[i][j++] = l.getPrimeiroAutor();
+            data[i][j++] = l.getQntEstante();
+            data[i][j++] = l.getLocalidade();
+            data[i][j++] = l.getNumeroEdicao();
+            data[i][j++] = l.getVolume();
+            data[i][j++] = l.getNumeroPaginas();
+            data[i][j++] = l.getEditora();
+            data[i][j++] = new SimpleDateFormat("yyyy").format(l.getAno());
+            data[i][j++] = l.getSerie();
+            data[i][j++] = l.getIsbn();
         }
         DefaultTableModel dtm = new DefaultTableModel(data, colunas) {
             @Override

@@ -44,7 +44,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="Gerar Relat&#xf3;rio de Alunos">
+            <TitledBorder justification="2" title="Gerar Relat&#xf3;rio de Pessoas">
               <Font PropertyName="font" name="Tahoma" size="24" style="0"/>
             </TitledBorder>
           </Border>
@@ -128,7 +128,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="labelSituacao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Selecione o tipo de situa&#xe7;&#xe3;o do Aluno:"/>
+            <Property name="text" type="java.lang.String" value="Selecione o tipo de situa&#xe7;&#xe3;o da Pessoa:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelErrTipoSituacaoAluno">

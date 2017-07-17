@@ -5,7 +5,7 @@
  */
 package com.rjsoft.cabure.gui;
 
-import com.rjsoft.cabure.gui.botoes.BotaoIcone;
+import com.rjsoft.cabure.gui.outros.BotaoIcone;
 import com.rjsoft.cabure.gui.listeners.AcordeonListener;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -128,8 +128,11 @@ public class Acordeon extends javax.swing.JPanel {
         }
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 50));
-        logo.setMaximumSize(new java.awt.Dimension(100, 1));
-        logo.setMinimumSize(new java.awt.Dimension(51, 1));
+        logo.setFocusable(false);
+        logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        logo.setMaximumSize(new java.awt.Dimension(1000, 154));
+        logo.setMinimumSize(new java.awt.Dimension(51, 16));
+        logo.setPreferredSize(new java.awt.Dimension(51, 16));
         add(logo);
 
         menuInicio.setText("Inicio");
@@ -144,9 +147,9 @@ public class Acordeon extends javax.swing.JPanel {
         add(Box.createRigidArea(new Dimension(1, 30)));
         add(menuInicio);
 
-        menuAluno.setText("Alunos");
+        menuAluno.setText("Pessoas");
         menuAluno.setMaximumSize(new java.awt.Dimension(1000, 32));
-        menuAluno = new BotaoIcone("Alunos", BotaoIcone.ICON_ALUNO, true);
+        menuAluno = new BotaoIcone("Pessoas", BotaoIcone.ICON_PESSOAS, true);
         menuAluno.setMaximumSize(new Dimension(1000, 32));
         menuAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,8 +180,8 @@ public class Acordeon extends javax.swing.JPanel {
         });
         add(menuEmprestimo);
 
-        menuRelatorioAlunos.setText("Relatório Alunos");
-        menuRelatorioAlunos = new BotaoIcone("Relatório Alunos", BotaoIcone.ICON_RELATORIO, false);
+        menuRelatorioAlunos.setText("Relatório Pessoas");
+        menuRelatorioAlunos = new BotaoIcone("Relatório Pessoas", BotaoIcone.ICON_RELATORIO, false);
         menuRelatorioAlunos.setMaximumSize(new java.awt.Dimension(1000, 32));
         menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
         menuEmprestimo.setMaximumSize(new Dimension(1000, 32));

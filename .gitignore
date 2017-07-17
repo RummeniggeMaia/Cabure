@@ -3,3 +3,4 @@
 !.gitignore
 !pom.xml
 !/imagens/
+!cabecalho_relatorio.json

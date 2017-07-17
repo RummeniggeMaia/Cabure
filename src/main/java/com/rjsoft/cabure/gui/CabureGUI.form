@@ -38,6 +38,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuIniciarActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuIniciar.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/home.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemIniciar">
               <Properties>
@@ -54,37 +57,49 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuAluno">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Aluno"/>
+            <Property name="text" type="java.lang.String" value="Pessoas"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pessoas.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCadAluno">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F2"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cadastrar Aluno"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Pessoa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCadAlunoActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemCadAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/add.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemPesAluno">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar Aluno"/>
+                <Property name="text" type="java.lang.String" value="Pesquisar Pessoa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPesAlunoActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemPesAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pesquisar.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuLivro">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Livro"/>
+            <Property name="text" type="java.lang.String" value="Livros"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/livros.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCadLivro">
               <Properties>
@@ -96,6 +111,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCadLivroActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemCadLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/add.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemPesLivro">
               <Properties>
@@ -107,6 +125,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPesLivroActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemPesLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pesquisar.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -114,6 +135,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Empr&#xe9;stimos"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    jMenu2.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/emprestimos.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemEmprestimos">
               <Properties>
@@ -132,6 +156,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    jMenu1.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/relatorio.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemRelAlunos">
               <Properties>
@@ -172,6 +199,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sobre"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuSobre.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/info.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemSobre">
               <Properties>
@@ -212,7 +242,7 @@
     <Component class="com.rjsoft.cabure.gui.Acordeon" name="acordeon1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="Before"/>
+          <BorderConstraints direction="West"/>
         </Constraint>
       </Constraints>
     </Component>

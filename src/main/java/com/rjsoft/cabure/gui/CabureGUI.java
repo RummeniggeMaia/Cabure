@@ -5,10 +5,19 @@ import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
+import com.rjsoft.cabure.gui.outros.PainelTextura;
 import com.rjsoft.cabure.util.JPAUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.TexturePaint;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -44,22 +53,23 @@ public class CabureGUI extends javax.swing.JFrame
     private static final String TITULO = "Cabure - Sistema de Gerenciamento de Biblioteca";
 
     public CabureGUI() {
+
         EntityManager em = JPAUtil.EMF.createEntityManager();
         alunoCtrl = new AlunoCtrl(em);
         livroCtrl = new LivroCtrl(em);
         emprestimoCtrl = new EmprestimoCtrl(em);
         homeAtrasadosCtrl = new EmprestimoCtrl(em);
         homeRealizadosCtrl = new EmprestimoCtrl(em);
-
+        
         initComponents();
-
+        
         home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl);
         cadastrarAluno = new CadastrarAlunoPanel(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);
         pesquisarLivro = new PesquisarLivroPanel(livroCtrl);
         relatorioAlunoPanel = new GerarRelatorioAlunoPanel(alunoCtrl);
-        relatorioLivroPanel = new GerarRelatorioLivroPanel(livroCtrl,emprestimoCtrl);
+        relatorioLivroPanel = new GerarRelatorioLivroPanel(livroCtrl, emprestimoCtrl);
         relatorioEmprestimoPanel = new GerarRelatorioEmprestimoPanel(emprestimoCtrl, livroCtrl, alunoCtrl);
         gerenciarEmprestimos = new GerenciarEmprestimosPanel(alunoCtrl, livroCtrl, emprestimoCtrl);
 
@@ -119,8 +129,12 @@ public class CabureGUI extends javax.swing.JFrame
         jMenu6.setText("jMenu6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().add(acordeon1, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(acordeon1, java.awt.BorderLayout.WEST);
 
+        try {
+            menuIniciar.setIcon(new ImageIcon(ImageIO.read(new File("imagens/home.png"))));
+        } catch (Exception ex) {
+        }
         menuIniciar.setText("Inicio");
         menuIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,10 +153,18 @@ public class CabureGUI extends javax.swing.JFrame
 
         jMenuBar1.add(menuIniciar);
 
-        menuAluno.setText("Aluno");
+        try {
+            menuAluno.setIcon(new ImageIcon(ImageIO.read(new File("imagens/pessoas.png"))));
+        } catch (Exception ex) {
+        }
+        menuAluno.setText("Pessoas");
 
+        try {
+            menuItemCadAluno.setIcon(new ImageIcon(ImageIO.read(new File("imagens/add.png"))));
+        } catch (Exception ex) {
+        }
         menuItemCadAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        menuItemCadAluno.setText("Cadastrar Aluno");
+        menuItemCadAluno.setText("Cadastrar Pessoa");
         menuItemCadAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemCadAlunoActionPerformed(evt);
@@ -150,8 +172,12 @@ public class CabureGUI extends javax.swing.JFrame
         });
         menuAluno.add(menuItemCadAluno);
 
+        try {
+            menuItemPesAluno.setIcon(new ImageIcon(ImageIO.read(new File("imagens/pesquisar.png"))));
+        } catch (Exception ex) {
+        }
         menuItemPesAluno.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        menuItemPesAluno.setText("Pesquisar Aluno");
+        menuItemPesAluno.setText("Pesquisar Pessoa");
         menuItemPesAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemPesAlunoActionPerformed(evt);
@@ -161,8 +187,16 @@ public class CabureGUI extends javax.swing.JFrame
 
         jMenuBar1.add(menuAluno);
 
-        menuLivro.setText("Livro");
+        try {
+            menuLivro.setIcon(new ImageIcon(ImageIO.read(new File("imagens/livros.png"))));
+        } catch (Exception ex) {
+        }
+        menuLivro.setText("Livros");
 
+        try {
+            menuItemCadLivro.setIcon(new ImageIcon(ImageIO.read(new File("imagens/add.png"))));
+        } catch (Exception ex) {
+        }
         menuItemCadLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         menuItemCadLivro.setText("Cadastrar Livro");
         menuItemCadLivro.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +206,10 @@ public class CabureGUI extends javax.swing.JFrame
         });
         menuLivro.add(menuItemCadLivro);
 
+        try {
+            menuItemPesLivro.setIcon(new ImageIcon(ImageIO.read(new File("imagens/pesquisar.png"))));
+        } catch (Exception ex) {
+        }
         menuItemPesLivro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         menuItemPesLivro.setText("Pesquisar Livro");
         menuItemPesLivro.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +221,10 @@ public class CabureGUI extends javax.swing.JFrame
 
         jMenuBar1.add(menuLivro);
 
+        try {
+            jMenu2.setIcon(new ImageIcon(ImageIO.read(new File("imagens/emprestimos.png"))));
+        } catch (Exception ex) {
+        }
         jMenu2.setText("Empréstimos");
 
         menuItemEmprestimos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
@@ -196,6 +238,10 @@ public class CabureGUI extends javax.swing.JFrame
 
         jMenuBar1.add(jMenu2);
 
+        try {
+            jMenu1.setIcon(new ImageIcon(ImageIO.read(new File("imagens/relatorio.png"))));
+        } catch (Exception ex) {
+        }
         jMenu1.setText("Relatórios");
 
         menuItemRelAlunos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
@@ -227,6 +273,10 @@ public class CabureGUI extends javax.swing.JFrame
 
         jMenuBar1.add(jMenu1);
 
+        try {
+            menuSobre.setIcon(new ImageIcon(ImageIO.read(new File("imagens/info.png"))));
+        } catch (Exception ex) {
+        }
         menuSobre.setText("Sobre");
 
         menuItemSobre.setText("Informações");
@@ -285,12 +335,12 @@ public class CabureGUI extends javax.swing.JFrame
     }//GEN-LAST:event_menuItemRelEmprestimosActionPerformed
 
     private void menuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSobreActionPerformed
-        JOptionPane.showMessageDialog(this, 
+        JOptionPane.showMessageDialog(this,
                 "Sistema de Gerenciamento de Bibliotecas - Caburé\n"
-                        + "Desenvolvedores:\n"
-                        + "        Rummenigge Maia\n"
-                        + "        Jaedson Araújo", 
-                "Sobre o sistema Caburé", 
+                + "Desenvolvedores:\n"
+                + "        Rummenigge Maia\n"
+                + "        Jaedson Araújo",
+                "Sobre o sistema Caburé",
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_menuItemSobreActionPerformed
 
@@ -394,6 +444,6 @@ public class CabureGUI extends javax.swing.JFrame
             cadastrarLivro.carregarLivro(idEntidade);
             painelCentro = cadastrarLivro;
             setPainelCentro();
-        } 
+        }
     }
 }

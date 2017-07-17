@@ -395,7 +395,9 @@ public class HomePanel extends javax.swing.JPanel {
     private void comboLimiteEAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLimiteEAActionPerformed
         try {
             int l = atrasadosCtrl.getPaginador().getLimites()[comboLimiteEA.getSelectedIndex()];
+            atrasadosCtrl.getPaginador().resetar();
             atrasadosCtrl.getPaginador().setLimit(l);
+            pesquisarEA();
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_comboLimiteEAActionPerformed
@@ -423,7 +425,9 @@ public class HomePanel extends javax.swing.JPanel {
     private void comboLimiteERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLimiteERActionPerformed
         try {
             int l = realizadosCtrl.getPaginador().getLimites()[comboLimiteER.getSelectedIndex()];
+            realizadosCtrl.getPaginador().resetar();
             realizadosCtrl.getPaginador().setLimit(l);
+            pesquisarER();
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_comboLimiteERActionPerformed

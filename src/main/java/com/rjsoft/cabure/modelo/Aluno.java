@@ -44,10 +44,15 @@ public class Aluno implements Serializable {
     private String email;
     private String telefone;
     private Character sexo;
+    private String categoria;
     private String observacao;
     @OneToMany(mappedBy = "aluno")
     private List<Emprestimo> emprestimos;
-
+    
+    public static String CATEGORIA_ALUNO = "Aluno";
+    public static String CATEGORIA_PROFESSOR = "Professor";
+    public static String CATEGORIA_COMUNIDADE = "Comunidade";
+    
     public Aluno() {
         this.emprestimos = new ArrayList();
     }
@@ -81,6 +86,14 @@ public class Aluno implements Serializable {
         this.sexo = sexo;
         this.observacao = observacao;
         this.emprestimos = new ArrayList();
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public Integer getID() {

@@ -604,6 +604,11 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
             labelErrEditora.setText("* Campo obrigatório");
             valido = false;
         }
+        
+        if (textFieldPaginas.getText().length() > 5){
+            labelErrPaginas.setText("* O Campo deve ter no máximo 5 dígitos");
+            valido = false;
+        }
         return valido;
     }
 

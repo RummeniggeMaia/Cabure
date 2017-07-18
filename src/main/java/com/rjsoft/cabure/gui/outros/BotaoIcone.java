@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.rjsoft.cabure.gui.botoes;
+package com.rjsoft.cabure.gui.outros;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -27,6 +27,7 @@ public class BotaoIcone extends JButton implements ActionListener {
     public static final int ICON_ADD = 4;
     public static final int ICON_PESQUISAR = 5;
     public static final int ICON_RELATORIO = 6;
+    public static final int ICON_PESSOAS = 7;
 
     private boolean expandivel;
     private boolean expandido;
@@ -54,6 +55,10 @@ public class BotaoIcone extends JButton implements ActionListener {
                 imgUrl += "alunos.png";
                 break;
             }
+            case ICON_PESSOAS: {
+                imgUrl += "pessoas.png";
+                break;
+            }
             case ICON_EMPRESTIMO: {
                 imgUrl += "emprestimos.png";
                 break;
@@ -64,7 +69,7 @@ public class BotaoIcone extends JButton implements ActionListener {
                 break;
             }
             case ICON_PESQUISAR: {
-                imgUrl += "persquisar.png";
+                imgUrl += "pesquisar.png";
                 distIconEsq = 35;
                 break;
             }

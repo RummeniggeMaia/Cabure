@@ -25,6 +25,7 @@ public class Cabure {
 
         try {
 //            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+//            TextureLookAndFeel.setTheme("Textile", "", "");
             UIManager.setLookAndFeel(new TextureLookAndFeel());
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {

@@ -12,10 +12,10 @@
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="buttonGroupSituacao.add(radioButtonAtivo);&#xa;buttonGroupSituacao.add(radioButtonInativo);&#xa;radioButtonAtivo.setSelected(true);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-      </Properties>
+    <Component class="javax.swing.ButtonGroup" name="buttonGrupoCategoria">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="buttonGrupoCategoria.add(radioButtonAluno);&#xa;buttonGrupoCategoria.add(radioButtonProfessor);&#xa;buttonGrupoCategoria.add(RadioButtonComunidade);&#xa;radioButtonAluno.setSelected(true);"/>
+      </AuxValues>
     </Component>
   </NonVisualComponents>
   <AuxValues>
@@ -33,11 +33,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="jPanel2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -47,10 +47,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanel2" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,7 +63,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="Cadastrar Alunos">
+            <TitledBorder justification="2" title="Cadastrar Pessoas">
               <Font PropertyName="font" name="Tahoma" size="24" style="0"/>
             </TitledBorder>
           </Border>
@@ -74,121 +73,123 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="textFieldNome" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="labelNome" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="buttonSalvar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="383" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelErrNome" max="32767" attributes="0"/>
+                          <Component id="scrollObservacao" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="textFieldEmail" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="textFieldBairro" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="labelMatricula" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelErrMatricula" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrEndereco" min="-2" pref="349" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="textFieldEndereco" min="-2" pref="615" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelNumero" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrNumero" pref="28" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="textFieldNumero" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="textFieldBairro" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="labelBairro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="labelErrBairro" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textFieldRG" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelRG" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrRg" min="-2" pref="172" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="labelCPF" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrCpf" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="labelErrEndereco" min="-2" pref="559" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="textFieldCPF" max="32767" attributes="0"/>
+                              <Component id="textFieldEndereco" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelDataDeNascimento" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="labelNumero" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelErrDataNasc" pref="135" max="32767" attributes="0"/>
+                                  <Component id="labelErrNumero" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="textFieldDataDeNascimento" max="32767" attributes="0"/>
+                              <Component id="textFieldNumero" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="textFieldNome" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="labelNome" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelErrNome" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="labelEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="labelErrEmail" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelErrTelefone" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="scrollObservacao" alignment="0" max="32767" attributes="0"/>
-                      <Component id="labelObservacao" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textFieldEmail" alignment="1" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="textFieldId" min="-2" pref="53" max="-2" attributes="0"/>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="botRemoverAluno" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelMatricula" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textFieldMatricula" min="-2" pref="156" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="textFieldRG" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Component id="textFieldCPF" min="-2" pref="201" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="textFieldDataDeNascimento" min="-2" pref="192" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="labelObservacao" min="-2" pref="880" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="textFieldTelefone" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="labelSexo" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="labelErrTelefone" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="textFieldTelefone" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="radioButtonMasculino" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="radioButtonFeminino" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="151" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="buttonSalvar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="textFieldMatricula" min="-2" pref="156" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelSituacao" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelRG" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="labelErrRg" min="-2" pref="172" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="labelCPF" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="labelErrCpf" min="-2" pref="168" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="labelDataDeNascimento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="radioButtonAtivo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="radioButtonInativo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="textFieldId" min="-2" pref="53" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botRemoverAluno" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="labelErrDataNasc" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -197,106 +198,103 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textFieldId" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botRemoverAluno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="labelErrNome" max="32767" attributes="0"/>
-                      <Component id="labelNome" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textFieldNome" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="labelMatricula" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelErrMatricula" min="-2" pref="12" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textFieldMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelSituacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioButtonAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioButtonInativo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="labelEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          <Component id="textFieldId" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="labelErrNumero" alignment="1" max="32767" attributes="0"/>
-                      <Component id="labelErrEndereco" alignment="1" max="32767" attributes="0"/>
+                      <Component id="botRemoverAluno" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textFieldEndereco" alignment="3" max="32767" attributes="0"/>
-                      <Component id="textFieldNumero" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="labelErrBairro" alignment="0" pref="15" max="32767" attributes="0"/>
-                      <Component id="labelBairro" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textFieldBairro" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelErrRg" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="labelErrCpf" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="labelRG" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="labelErrDataNasc" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="textFieldRG" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldCPF" min="-2" pref="21" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="labelNome" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrNome" min="-2" pref="15" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Component id="textFieldNome" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="labelMatricula" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="textFieldMatricula" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrEndereco" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="labelNumero" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrNumero" min="-2" pref="15" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="textFieldEndereco" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldNumero" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="labelBairro" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrBairro" min="-2" pref="15" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Component id="textFieldBairro" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="labelRG" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrRg" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="labelCPF" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrCpf" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="labelDataDeNascimento" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelErrDataNasc" min="-2" pref="15" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <Component id="textFieldRG" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="labelDataDeNascimento" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="textFieldDataDeNascimento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="textFieldCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldDataDeNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="labelEmail" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           <Component id="labelErrEmail" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Component id="textFieldEmail" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelErrTelefone" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelErrTelefone" min="-2" pref="14" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Component id="textFieldTelefone" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                          <Component id="labelObservacao" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textFieldTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioButtonMasculino" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="radioButtonFeminino" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Component id="labelObservacao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="scrollObservacao" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="buttonSalvar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -368,21 +366,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldMatriculaActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelSituacao">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Situa&#xe7;&#xe3;o:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioButtonAtivo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ativo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioButtonInativo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Inativo"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelEndereco">
           <Properties>
@@ -520,30 +503,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelSexo">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Sexo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioButtonMasculino">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Masculino"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="radioButtonFeminino">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Feminino"/>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="scrollObservacao">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -595,6 +554,142 @@
             </Property>
           </Properties>
         </Component>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Categoria"/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="radioButtonAluno" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="radioButtonProfessor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="RadioButtonComunidade" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="radioButtonAluno" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="RadioButtonComunidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonProfessor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JRadioButton" name="radioButtonAluno">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aluno"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="radioButtonProfessor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Professor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="RadioButtonComunidade">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Comunidade"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel4">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Situa&#xe7;&#xe3;o"/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="radioButtonAtivo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="radioButtonInativo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioButtonAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonInativo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JRadioButton" name="radioButtonAtivo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ativo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="radioButtonInativo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inativo"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel5">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Sexo"/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="radioButtonMasculino" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="radioButtonFeminino" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="radioButtonMasculino" min="-2" max="-2" attributes="0"/>
+                  <Component id="radioButtonFeminino" min="-2" max="-2" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JRadioButton" name="radioButtonMasculino">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Verdana" size="11" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Masculino"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="radioButtonFeminino">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Verdana" size="11" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Feminino"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

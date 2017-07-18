@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -33,6 +34,7 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         this.ctrl = ctrl;
         colunas = new String[]{
             "Id",
+            "Categoria",
             "Nome",
             "Matricula",
             "Endereço",
@@ -376,17 +378,19 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_botPagUltimaActionPerformed
 
     private void comboLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLimiteActionPerformed
-        try {
-            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
-            ctrl.getPaginador().setLimit(l);
-        } catch (Exception ex) {
-        }
+//        try {
+//            int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+//            ctrl.getPaginador().setLimit(l);
+//        } catch (Exception ex) {
+//        }
     }//GEN-LAST:event_comboLimiteActionPerformed
 
     private void comboLimiteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboLimiteItemStateChanged
         try {
             int l = ctrl.getPaginador().getLimites()[comboLimite.getSelectedIndex()];
+            ctrl.getPaginador().resetar();
             ctrl.getPaginador().setLimit(l);
+            pesquisar();
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_comboLimiteItemStateChanged
@@ -401,18 +405,36 @@ public class PesquisarAlunoPanel extends javax.swing.JPanel {
         Object[][] data = new Object[alunos.size()][colunas.length];
         for (int i = 0; i < alunos.size(); i++) {
             Aluno a = alunos.get(i);
-            data[i][0] = a.getID();
-            data[i][1] = a.getNome();
-            data[i][2] = a.getMatricula();
-            data[i][3] = a.getEndereco() + " Nº: " + a.getNumero();
-            data[i][4] = a.getBairro();
-            data[i][5] = new SimpleDateFormat("dd/MM/yyyy").format(a.getDataNascimento());
-            data[i][6] = a.getRg();
-            data[i][7] = a.getCpf();
-            data[i][8] = a.getEmail();
-            data[i][9] = a.getTelefone();
-            data[i][10] = a.getSexo() == 'M' ? "Masculino" : "Feminino";
-            data[i][11] = a.getSituacao() ? "Ativo" : "Inativo";
+            int j = 0;
+            data[i][j++] = a.getID();
+            data[i][j++] = a.getCategoria();
+            data[i][j++] = a.getNome();
+            data[i][j++] = a.getMatricula();
+            String endereco = a.getEndereco() != null ? a.getEndereco() : "";
+            data[i][j++] = endereco + ", Nº: " + a.getNumero();
+            data[i][j++] = a.getBairro();
+            Date dataNasc = a.getDataNascimento();
+            if (dataNasc == null) {
+                data[i][j++] = "";
+            } else {
+                data[i][j++] = new SimpleDateFormat("dd/MM/yyyy").format(a.getDataNascimento());
+            }
+            data[i][j++] = a.getRg();
+            data[i][j++] = a.getCpf();
+            data[i][j++] = a.getEmail();
+            data[i][j++] = a.getTelefone();
+            Character sexo = a.getSexo();
+            if (sexo != null) {
+                data[i][j++] = sexo == 'M' ? "Masculino" : "Feminino";
+            } else {
+                data[i][j++] = "";
+            }
+            Boolean situacao = a.getSituacao();
+            if (situacao != null) {
+                data[i][j++] = a.getSituacao() ? "Ativo" : "Inativo";
+            } else {
+                data[i][j++] = "";
+            }
         }
         DefaultTableModel dtm = new DefaultTableModel(data, colunas) {
             @Override

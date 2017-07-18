@@ -5,6 +5,11 @@
  */
 package com.rjsoft.cabure.gui;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -18,22 +23,21 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.controle.LivroCtrl;
-import com.rjsoft.cabure.modelo.Aluno;
 import com.rjsoft.cabure.modelo.Emprestimo;
 import com.rjsoft.cabure.modelo.Livro;
-import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -250,10 +254,19 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
     private void gerarPDF(List<Livro> listaLivros, List<Emprestimo> listaEmprestimos) {
         Document document = new Document();
         String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
-        String nomeArquivo = "Relatório de Emprestimos_" + dataHora + ".pdf";
+        String nomeArquivo = "Relatório de Livros_" + dataHora + ".pdf";
+        JFileChooser jfc = new JFileChooser();
+        jfc.setSelectedFile(new File(nomeArquivo));
+        int esc = jfc.showSaveDialog(this);
+        File diretorio = null;
+        if (esc == JFileChooser.APPROVE_OPTION) {
+            diretorio = jfc.getSelectedFile();
+        } else {
+            return;
+        }
         try {
-            
-            PdfWriter.getInstance(document, new FileOutputStream(nomeArquivo));
+
+            PdfWriter.getInstance(document, new FileOutputStream(diretorio));
 
             document.open();
 
@@ -275,11 +288,11 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             document.close();
         }
 
-        try {
-            Desktop.getDesktop().open(new File(nomeArquivo));
-        } catch (IOException ex) {
-            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Desktop.getDesktop().open(new File(nomeArquivo));
+//        } catch (IOException ex) {
+//            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private PdfPTable criarTabelaCabecalho(Document document) {
@@ -289,8 +302,9 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         try {
             table.setWidths(new float[]{40, 60});
         } catch (DocumentException ex) {
-            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        PdfPCell cellTitulo;
         PdfPCell cell1;
         PdfPCell cell2;
         Paragraph paragraph;
@@ -300,17 +314,40 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         try {
             image = Image.getInstance("imagens/cabure_logo_gs.png");
             image.setAlignment(Element.ALIGN_CENTER);
+            cellTitulo = new PdfPCell(
+                    new Phrase("Sistema de Gerenciamento de Biblioteca - Caburé",
+                            new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD))
+            );
+            cellTitulo.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cellTitulo.setBorder(0);
+            cellTitulo.setColspan(2);
+            cellTitulo.setPaddingBottom(20f);
+            table.addCell(cellTitulo);
             cell1 = new PdfPCell(image);
             cell1.setBorder(0);
+            cell1.setPaddingLeft(20f);
+            cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             table.addCell(cell1);
             Paragraph p = new Paragraph();
-            p.add(new Phrase("Governo do Estado do Rio Grande do Norte"));
-            p.add(new Phrase("\r\nEscola Estadual Joaquim José de Medeiros"));
-            p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
-            p.add(new Phrase("\r\nCidade: Cruzeta-RN"));
-            p.add(new Phrase("\r\nCEP: 59375-000"));
-            p.add(new Phrase("\r\nTelefone: (84) 3473-4287"));
+
+            JsonReader jr = new JsonReader(new FileReader("cabecalho_relatorio.json"));
+            JsonElement je = new JsonParser().parse(jr);
+            JsonObject jo = je.getAsJsonObject();
+            JsonArray ja = jo.get("frases").getAsJsonArray();
+            JsonObject frases = ja.get(0).getAsJsonObject();
+            for (int i = 0; i < frases.size(); i++) {
+                p.add(new Phrase(frases.get("" + i).toString().replaceAll("\"", "") + "\r\n"));
+            }
+
+//            p.add(new Phrase("Governo do Estado do Rio Grande do Norte"));
+//            p.add(new Phrase("\r\nEscola Estadual Joaquim José de Medeiros"));
+//            p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
+//            p.add(new Phrase("\r\nCidade: Cruzeta-RN"));
+//            p.add(new Phrase("\r\nCEP: 59375-000"));
+//            p.add(new Phrase("\r\nTelefone: (84) 3473-2210"));
             cell2 = new PdfPCell(p);
+            cell2.setPaddingRight(80f);
             cell2.setBorder(0);
             cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -318,7 +355,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             table.setSpacingAfter(40f);
             table.setSpacingBefore(10f);
         } catch (IOException | BadElementException ex) {
-            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return table;
     }
@@ -390,12 +427,18 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
 
             for (Livro l : listaLivros) {
                 PdfPCell cellAux;
-                cellAux = new PdfPCell(new Phrase(numeracao + "", font));
+                cellAux = new PdfPCell(new Phrase(numeracao + ""));
                 cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 table.addCell(cellAux);
-                table.addCell(l.getTitulo());
-                table.addCell(l.getPrimeiroAutor());
+                cellAux = new PdfPCell(new Phrase(l.getTitulo() + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(l.getPrimeiroAutor() + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
                 cellAux = new PdfPCell(new Phrase(l.getQntEstante() + ""));
                 cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);

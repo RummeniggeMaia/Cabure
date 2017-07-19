@@ -250,7 +250,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         String nomeArquivo = "Relatório de Pessoas_" + dataHora + ".pdf";
         JFileChooser jfc = new JFileChooser();
         jfc.setSelectedFile(new File(nomeArquivo));
-        int esc = jfc.showOpenDialog(this);
+        int esc = jfc.showSaveDialog(this);
         File diretorio = null;
         if (esc == JFileChooser.APPROVE_OPTION) {
             diretorio = jfc.getSelectedFile();
@@ -506,10 +506,13 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             cellTitulo.setHorizontalAlignment(Element.ALIGN_CENTER);
             cellTitulo.setBorder(0);
             cellTitulo.setColspan(2);
+            cellTitulo.setPaddingBottom(20f);
             table.addCell(cellTitulo);
             cell1 = new PdfPCell(image);
             cell1.setBorder(0);
             cell1.setPaddingLeft(20f);
+            cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             table.addCell(cell1);
             Paragraph p = new Paragraph();
 

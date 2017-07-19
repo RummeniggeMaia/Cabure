@@ -257,7 +257,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         String nomeArquivo = "Relatório de Livros_" + dataHora + ".pdf";
         JFileChooser jfc = new JFileChooser();
         jfc.setSelectedFile(new File(nomeArquivo));
-        int esc = jfc.showOpenDialog(this);
+        int esc = jfc.showSaveDialog(this);
         File diretorio = null;
         if (esc == JFileChooser.APPROVE_OPTION) {
             diretorio = jfc.getSelectedFile();
@@ -265,7 +265,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             return;
         }
         try {
-            
+
             PdfWriter.getInstance(document, new FileOutputStream(diretorio));
 
             document.open();
@@ -302,7 +302,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         try {
             table.setWidths(new float[]{40, 60});
         } catch (DocumentException ex) {
-            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         PdfPCell cellTitulo;
         PdfPCell cell1;
@@ -321,13 +321,16 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             cellTitulo.setHorizontalAlignment(Element.ALIGN_CENTER);
             cellTitulo.setBorder(0);
             cellTitulo.setColspan(2);
+            cellTitulo.setPaddingBottom(20f);
             table.addCell(cellTitulo);
             cell1 = new PdfPCell(image);
             cell1.setBorder(0);
             cell1.setPaddingLeft(20f);
+            cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             table.addCell(cell1);
             Paragraph p = new Paragraph();
-            
+
             JsonReader jr = new JsonReader(new FileReader("cabecalho_relatorio.json"));
             JsonElement je = new JsonParser().parse(jr);
             JsonObject jo = je.getAsJsonObject();
@@ -336,6 +339,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             for (int i = 0; i < frases.size(); i++) {
                 p.add(new Phrase(frases.get("" + i).toString().replaceAll("\"", "") + "\r\n"));
             }
+
 //            p.add(new Phrase("Governo do Estado do Rio Grande do Norte"));
 //            p.add(new Phrase("\r\nEscola Estadual Joaquim José de Medeiros"));
 //            p.add(new Phrase("\r\nEndereço: Praça Dr. Silvio Bezerra de Melo"));
@@ -343,7 +347,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
 //            p.add(new Phrase("\r\nCEP: 59375-000"));
 //            p.add(new Phrase("\r\nTelefone: (84) 3473-2210"));
             cell2 = new PdfPCell(p);
-            cell2.setPaddingLeft(80f);
+            cell2.setPaddingRight(80f);
             cell2.setBorder(0);
             cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -351,7 +355,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             table.setSpacingAfter(40f);
             table.setSpacingBefore(10f);
         } catch (IOException | BadElementException ex) {
-            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return table;
     }
@@ -423,12 +427,18 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
 
             for (Livro l : listaLivros) {
                 PdfPCell cellAux;
-                cellAux = new PdfPCell(new Phrase(numeracao + "", font));
+                cellAux = new PdfPCell(new Phrase(numeracao + ""));
                 cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 table.addCell(cellAux);
-                table.addCell(l.getTitulo());
-                table.addCell(l.getPrimeiroAutor());
+                cellAux = new PdfPCell(new Phrase(l.getTitulo() + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
+                cellAux = new PdfPCell(new Phrase(l.getPrimeiroAutor() + ""));
+                cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                table.addCell(cellAux);
                 cellAux = new PdfPCell(new Phrase(l.getQntEstante() + ""));
                 cellAux.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cellAux.setVerticalAlignment(Element.ALIGN_MIDDLE);

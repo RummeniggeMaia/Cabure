@@ -170,9 +170,10 @@ public class HomePanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Matrícula", "Nome", "Livro", "Quantidade", "Dia do empréstimo", "Prazo"
+                "Matrícula", "Nome", "Livro", "Quantidade", "Retirada do livro", "Prazo para entrega"
             }
         ));
+        tabelaRealizados.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tabelaRealizados);
 
         int[] limitesER = realizadosCtrl.getPaginador().getLimites();
@@ -275,6 +276,7 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
         tabelaAtrasos.setToolTipText("");
+        tabelaAtrasos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaAtrasos);
 
         int[] limitesEA = atrasadosCtrl.getPaginador().getLimites();

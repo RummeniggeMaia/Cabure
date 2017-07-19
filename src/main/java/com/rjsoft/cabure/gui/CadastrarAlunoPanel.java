@@ -160,9 +160,18 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
         textFieldTelefone.setText("");
         textFieldDataDeNascimento.setText("");
         textFieldId.setText("");
-        radioButtonAluno.setSelected(true);
-        radioButtonAtivo.setSelected(true);
-        radioButtonMasculino.setSelected(true);
+        radioButtonAluno.setSelected(false);
+        radioButtonProfessor.setSelected(false);
+        RadioButtonComunidade.setSelected(false);
+        radioButtonAtivo.setSelected(false);
+        radioButtonInativo.setSelected(false);
+        radioButtonFeminino.setSelected(false);
+        radioButtonMasculino.setSelected(false);
+        
+        buttonGroupSexo.clearSelection();
+        buttonGroupSituacao.clearSelection();
+        buttonGrupoCategoria.clearSelection();
+        
         limparValidacao();
     }
 
@@ -198,12 +207,22 @@ public class CadastrarAlunoPanel extends javax.swing.JPanel {
                             a.getDataNascimento()));
             textFieldId.setText(a.getID().toString());
             Enumeration<AbstractButton> cats = buttonGrupoCategoria.getElements();
-            while(cats.hasMoreElements()) {
+            while (cats.hasMoreElements()) {
                 AbstractButton ab = cats.nextElement();
                 if (ab.getActionCommand().equals(a.getCategoria())) {
                     ab.setSelected(true);
                 }
             }
+            
+            if(a.getSituacao() == true)
+                radioButtonAtivo.setSelected(true);
+            else
+                radioButtonInativo.setSelected(true);
+            
+            if (a.getSexo().equals('M'))
+                radioButtonMasculino.setSelected(true);
+            else
+                radioButtonFeminino.setSelected(true);
         }
     }
 

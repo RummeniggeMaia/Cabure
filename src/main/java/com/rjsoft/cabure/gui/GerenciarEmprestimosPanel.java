@@ -106,7 +106,7 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
         botaoProcessar = new javax.swing.JButton();
         textFieldQuantidade = new javax.swing.JFormattedTextField();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerenciar Empréstimos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Realizar Empréstimos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
         alunoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Pessoa"));
 
@@ -659,6 +659,8 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
                 e.setQuantidade(qnt);
                 e.setPrazo(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(textFieldPrazo.getText() + " 23:59:59"));
                 e.setDataEmprestimo(new Date());
+                e.setAluno(emprestimoCtrl.getAluno());
+                e.setLivro(emprestimoCtrl.getLivro());
                 emprestimoCtrl.getLivro().setQntEstante(emprestimoCtrl.getLivro().getQntEstante() - qnt);
                 emprestimoCtrl.setEmprestimo(e);
                 emprestimoCtrl.salvarEmprestimo();
@@ -667,8 +669,6 @@ public class GerenciarEmprestimosPanel extends javax.swing.JPanel {
                         "Empréstimo realizado com sucesso!",
                         "Processar empréstimo",
                         JOptionPane.INFORMATION_MESSAGE);
-
-                
                 limparAluno();
                 limparLivro();
                 limparForm();

@@ -1,11 +1,15 @@
 package com.rjsoft.cabure.gui;
 
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
-import com.rjsoft.cabure.modelo.Aluno;
+import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.modelo.Emprestimo;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,8 +31,9 @@ public class HomePanel extends javax.swing.JPanel {
         this.atrasadosCtrl = atrasados;
         realizados.getPaginador().setLimit(25);
         atrasados.getPaginador().setLimit(25);
-        
+
         colunasRealizados = new String[]{
+            "ID",
             "Matrícula",
             "Nome",
             "Livro",
@@ -37,6 +42,7 @@ public class HomePanel extends javax.swing.JPanel {
             "Prazo"
         };
         colunasAtrasados = new String[]{
+            "ID",
             "Matrícula",
             "Nome",
             "Livro",
@@ -52,12 +58,14 @@ public class HomePanel extends javax.swing.JPanel {
         Object[][] data = new Object[lista.size()][colunasRealizados.length];
         for (int i = 0; i < lista.size(); i++) {
             Emprestimo e = lista.get(i);
-            data[i][0] = e.getAluno().getMatricula();
-            data[i][1] = e.getAluno().getNome();
-            data[i][2] = e.getLivro().getTitulo();
-            data[i][3] = e.getQuantidade();
-            data[i][4] = new SimpleDateFormat("dd/MM/yyyy").format(e.getDataEmprestimo());
-            data[i][5] = new SimpleDateFormat("dd/MM/yyyy").format(e.getPrazo());
+            int j = 0;
+            data[i][j++] = e.getID();
+            data[i][j++] = e.getAluno().getMatricula();
+            data[i][j++] = e.getAluno().getNome();
+            data[i][j++] = e.getLivro().getTitulo();
+            data[i][j++] = e.getQuantidade();
+            data[i][j++] = new SimpleDateFormat("dd/MM/yyyy").format(e.getDataEmprestimo());
+            data[i][j++] = new SimpleDateFormat("dd/MM/yyyy").format(e.getPrazo());
         }
         DefaultTableModel dtm = new DefaultTableModel(data, colunasRealizados) {
             @Override
@@ -74,14 +82,16 @@ public class HomePanel extends javax.swing.JPanel {
         Object[][] data = new Object[lista.size()][colunasAtrasados.length];
         for (int i = 0; i < lista.size(); i++) {
             Emprestimo e = lista.get(i);
-            data[i][0] = e.getAluno().getMatricula();
-            data[i][1] = e.getAluno().getNome();
-            data[i][2] = e.getLivro().getTitulo();
-            data[i][3] = e.getQuantidade();
+            int j = 0;
+            data[i][j++] = e.getID();
+            data[i][j++] = e.getAluno().getMatricula();
+            data[i][j++] = e.getAluno().getNome();
+            data[i][j++] = e.getLivro().getTitulo();
+            data[i][j++] = e.getQuantidade();
             Date prazo = e.getPrazo();
-            data[i][4] = new SimpleDateFormat("dd/MM/yyyy").format(prazo);
+            data[i][j++] = new SimpleDateFormat("dd/MM/yyyy").format(prazo);
             long mils = new Date().getTime() - prazo.getTime();
-            data[i][5] = mils / 1000 / 60 / 60 / 24;
+            data[i][j++] = mils / 1000 / 60 / 60 / 24;
         }
         DefaultTableModel dtm = new DefaultTableModel(data, colunasAtrasados) {
             @Override
@@ -122,7 +132,7 @@ public class HomePanel extends javax.swing.JPanel {
         labelTotalPaginasER.setText(" de " + realizadosCtrl.getPaginador().totalDePaginas());
         textFieldPaginaER.setText("" + realizadosCtrl.getPaginador().paginaAtual());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -174,6 +184,11 @@ public class HomePanel extends javax.swing.JPanel {
             }
         ));
         tabelaRealizados.getTableHeader().setReorderingAllowed(false);
+        tabelaRealizados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaRealizadosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaRealizados);
 
         int[] limitesER = realizadosCtrl.getPaginador().getLimites();
@@ -277,6 +292,11 @@ public class HomePanel extends javax.swing.JPanel {
         });
         tabelaAtrasos.setToolTipText("");
         tabelaAtrasos.getTableHeader().setReorderingAllowed(false);
+        tabelaAtrasos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaAtrasosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaAtrasos);
 
         int[] limitesEA = atrasadosCtrl.getPaginador().getLimites();
@@ -453,6 +473,80 @@ public class HomePanel extends javax.swing.JPanel {
         realizadosCtrl.getPaginador().ultima();
 //        pesquisar();
     }//GEN-LAST:event_botPagUltimaERActionPerformed
+
+    private void tabelaAtrasosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAtrasosMouseClicked
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            int linhaSelecionada = tabelaAtrasos.getSelectedRow();
+            Object idObj = tabelaAtrasos.getValueAt(linhaSelecionada, 0);
+            Integer id = null;
+            try {
+                id = Integer.parseInt(idObj.toString());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Empréstimo com id inválido.",
+                        "Finalizar empréstimos",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int esc = JOptionPane.showConfirmDialog(
+                    null,
+                    "Deseja finalizar o empréstimo \"" + id + "\"?",
+                    "Finalizar empréstimos",
+                    JOptionPane.YES_NO_CANCEL_OPTION);
+            if (esc == JOptionPane.OK_OPTION) {
+                if (id != null) {
+                    Emprestimo r = atrasadosCtrl.pesquisarPorId(id);
+                    r.setFinalizado(true);
+                    atrasadosCtrl.setEmprestimo(r);
+                    atrasadosCtrl.salvarEmprestimo();
+                    atrasadosCtrl.setEmprestimo(null);
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Empréstimo com id \"" + id + "\" foi finalizado com sucesso!",
+                            "Finalizar empréstimos",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_tabelaAtrasosMouseClicked
+
+    private void tabelaRealizadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaRealizadosMouseClicked
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            int linhaSelecionada = tabelaRealizados.getSelectedRow();
+            Object idObj = tabelaRealizados.getValueAt(linhaSelecionada, 0);
+            Integer id = null;
+            try {
+                id = Integer.parseInt(idObj.toString());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Empréstimo com id inválido.",
+                        "Finalizar empréstimos",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int esc = JOptionPane.showConfirmDialog(
+                    null,
+                    "Deseja finalizar o empréstimo \"" + id + "\"?",
+                    "Finalizar empréstimos",
+                    JOptionPane.YES_NO_CANCEL_OPTION);
+            if (esc == JOptionPane.OK_OPTION) {
+                if (id != null) {
+                    Emprestimo r = realizadosCtrl.pesquisarPorId(id);
+                    r.setFinalizado(true);
+                    realizadosCtrl.setEmprestimo(r);
+                    realizadosCtrl.salvarEmprestimo();
+                    realizadosCtrl.setEmprestimo(null);
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Empréstimo com id \"" + id + "\" foi finalizado com sucesso!",
+                            "Finalizar empréstimos",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_tabelaRealizadosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -23,13 +23,14 @@ public class Emprestimo implements Serializable {
     private Integer ID;
     @ManyToOne(fetch = FetchType.EAGER)
     private Aluno aluno;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.EAGER)
     private Livro livro;
     private int quantidade;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataEmprestimo;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date prazo;
+    private boolean finalizado;
     
 
     public Emprestimo() {
@@ -88,6 +89,12 @@ public class Emprestimo implements Serializable {
     public void setPrazo(Date prazo) {
         this.prazo = prazo;
     }
-    
-    
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
 }

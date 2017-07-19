@@ -8,7 +8,6 @@ public interface TableListener {
     
     public static final int TELA_PES_ALUNO = 0;
     public static final int TELA_PES_LIVRO = 1;
-    
     /**
      * Método utilizado para informar ao CabureGUI que uma entidade foi
      * selecionada, o id é passado para o controle da entidade para ser

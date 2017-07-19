@@ -73,29 +73,21 @@ public class Cabure {
             public void run() {
                 try {
                     iniciarSplash();
-                    
                     splash.setProgresso(0.1);
                     EntityManager em = JPAUtil.EMF.createEntityManager();
-                    splash.setProgresso(0.3);
                     AlunoCtrl alunoCtrl = new AlunoCtrl(em);
-                    splash.setProgresso(0.35);
                     LivroCtrl livroCtrl = new LivroCtrl(em);
-                    splash.setProgresso(0.40);
                     EmprestimoCtrl emprestimoCtrl = new EmprestimoCtrl(em);
-                    splash.setProgresso(0.45);
                     EmprestimoCtrl homeAtrasadosCtrl = new EmprestimoCtrl(em);
-                    splash.setProgresso(0.50);
                     EmprestimoCtrl homeRealizadosCtrl = new EmprestimoCtrl(em);
-
+                    splash.setProgresso(0.5);
                     CabureGUI gui = new CabureGUI();
-                    splash.setProgresso(0.80);
                     gui.setAlunoCtrl(alunoCtrl);
                     gui.setLivroCtrl(livroCtrl);
                     gui.setEmprestimoCtrl(emprestimoCtrl);
                     gui.setHomeAtrasadosCtrl(homeAtrasadosCtrl);
                     gui.setHomeRealizadosCtrl(homeRealizadosCtrl);
-                    splash.setProgresso(0.95);
-
+                    splash.setProgresso(0.9);
                     gui.iniciarPaineis();
                     gui.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
                     gui.setVisible(true);

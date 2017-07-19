@@ -3,7 +3,6 @@ package com.rjsoft.cabure.gui;
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.modelo.Livro;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
@@ -32,7 +31,6 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             "Titulo",
             "Subtitulo",
             "Primeiro Autor",
-            "Estante",
             "Local",
             "Edição",
             "Volume",
@@ -40,7 +38,8 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             "Editora",
             "Ano",
             "Série",
-            "ISBN"
+            "ISBN",
+            "Estante"
         };
         listeners = new ArrayList<>();
         initComponents();
@@ -189,18 +188,12 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
                     int linhaSelecionada = tableLivros.getSelectedRow();
                     Object idObj = tableLivros.getValueAt(linhaSelecionada, 0);
                     Integer id = null;
-                    System.out.println("opa");
                     try {
-                        System.out.println("TRY antes ID");
                         id = Integer.parseInt(idObj.toString());
-                        System.out.println("ID: " + id);
                     } catch (Exception ex) {
                     }
-                    System.out.println("ANTES IF");
                     if (id != null) {
-                        System.out.println("DPS IF");
                         for (TableListener tl : listeners) {
-                            System.out.println("FOR LISTENER");
                             tl.linhaSelecionada(TableListener.TELA_PES_LIVRO, id);
                         }
                     }
@@ -411,15 +404,17 @@ public class PesquisarLivroPanel extends javax.swing.JPanel {
             data[i][j++] = l.getTitulo();
             data[i][j++] = l.getSubtitulo();
             data[i][j++] = l.getPrimeiroAutor();
-            data[i][j++] = l.getQntEstante();
             data[i][j++] = l.getLocalidade();
             data[i][j++] = l.getNumeroEdicao();
             data[i][j++] = l.getVolume();
             data[i][j++] = l.getNumeroPaginas();
             data[i][j++] = l.getEditora();
-            data[i][j++] = new SimpleDateFormat("yyyy").format(l.getAno());
+            data[i][j++] = l.getAno() != null
+                    ? new SimpleDateFormat("yyyy").format(l.getAno())
+                    : "";
             data[i][j++] = l.getSerie();
             data[i][j++] = l.getIsbn();
+            data[i][j++] = l.getQntEstante();
         }
         DefaultTableModel dtm = new DefaultTableModel(data, colunas) {
             @Override

@@ -51,7 +51,7 @@ public class EmprestimoJpaController {
     
     public List<Emprestimo> pesquisarAtrasados(int offset, int limit) {
         Query query = entityManager.createQuery(
-                "SELECT e FROM Emprestimo e WHERE e.prazo < :hoje");
+                "SELECT e FROM Emprestimo e WHERE e.prazo < :hoje AND e.finalizado = false");
         query.setParameter("hoje", new Date(), TemporalType.DATE);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
@@ -60,8 +60,16 @@ public class EmprestimoJpaController {
     
     public List<Emprestimo> pesquisarRealizados(int offset, int limit) {
         Query query = entityManager.createQuery(
-                "SELECT e FROM Emprestimo e WHERE e.prazo >= :hoje");
+                "SELECT e FROM Emprestimo e WHERE e.prazo >= :hoje AND e.finalizado = false");
         query.setParameter("hoje", new Date(), TemporalType.DATE);
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return query.getResultList();
+    }
+    
+    public List<Emprestimo> pesquisarFinalizados(int offset, int limit) {
+        Query query = entityManager.createQuery(
+                "SELECT e FROM Emprestimo e WHERE e.finalizado = true");
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return query.getResultList();

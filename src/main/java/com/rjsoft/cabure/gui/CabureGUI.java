@@ -336,7 +336,7 @@ public class CabureGUI extends javax.swing.JFrame
 
     private void menuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSobreActionPerformed
         JOptionPane.showMessageDialog(this,
-                "Sistema de Gerenciamento de Bibliotecas - Caburé\n"
+                "Sistema de Gerenciamento de Biblioteca - Caburé\n"
                 + "Desenvolvedores:\n"
                 + "        Rummenigge Maia\n"
                 + "        Jaedson Araújo",

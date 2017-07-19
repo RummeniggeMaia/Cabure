@@ -42,8 +42,8 @@ public class AlunoCtrl {
         return dao.pesquisarPorId(id);
     }
     
-    public List<Aluno> pesquisarRelatorioAluno(Boolean condicao) {
-        return dao.pesquisarRelatorioAluno(condicao);
+    public List<Aluno> pesquisarRelatorioAluno(Boolean condicao, String categoria) {
+        return dao.pesquisarRelatorioAluno(condicao,categoria);
     }
 
     public Aluno getAluno() {

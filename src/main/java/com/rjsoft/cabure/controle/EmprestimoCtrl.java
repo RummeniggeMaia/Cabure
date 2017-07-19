@@ -67,8 +67,6 @@ public class EmprestimoCtrl {
 
     public void setEmprestimo(Emprestimo emprestimo) {
         this.emprestimo = emprestimo;
-        this.emprestimo.setAluno(aluno);
-        this.emprestimo.setLivro(livro);
     }
 
     public Paginador getPaginador() {

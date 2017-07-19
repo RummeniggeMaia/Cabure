@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -54,6 +55,10 @@ public class SplashScreen extends javax.swing.JFrame {
 
     public void setProgresso(double p) {
 //        progresso = p;
+//        screen.paintComponent(splash.getGraphics());
+//        screen.revalidate();
+//        screen.repaint();
+//        repaint();
     }
 
     /**
@@ -86,15 +91,15 @@ public class SplashScreen extends javax.swing.JFrame {
         public Screen() {
         }
 
-        @Override
-        public void paint(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g;
-            super.paint(g2d);
-            g2d.drawImage(
-                    splash,
-                    0,
-                    0,
-                    null);
+//        @Override
+//        public void paint(Graphics g) {
+//            Graphics2D g2d = (Graphics2D) g;
+//            super.paint(g2d);
+//            g2d.drawImage(
+//                    splash,
+//                    0,
+//                    0,
+//                    null);
 //            g2d.setColor(new Color(222, 170, 135));
 //            double largura = 300;
 //            g2d.fill(
@@ -115,18 +120,18 @@ public class SplashScreen extends javax.swing.JFrame {
 //                            10
 //                    )
 //            );
-        }
-    }
-//        @Override
-//        protected void paintComponent(Graphics g) {
-//            super.paintComponent(g);
-//            Graphics2D g2d = (Graphics2D) g;
-//
-//            g2d.drawImage(
-//                    splash,
-//                    0,
-//                    0,
-//                    null);
+//        }
+    
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g;
+
+            g2d.drawImage(
+                    splash,
+                    0,
+                    0,
+                    null);
 //            g2d.setColor(new Color(222, 170, 135));
 //            double largura = 300;
 //            g2d.fill(
@@ -146,9 +151,9 @@ public class SplashScreen extends javax.swing.JFrame {
 //                            10
 //                    )
 //            );
-//        }
-//
-//    }
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

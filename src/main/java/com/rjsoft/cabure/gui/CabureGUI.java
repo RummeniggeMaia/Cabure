@@ -5,13 +5,10 @@ import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
-import com.rjsoft.cabure.gui.outros.SplashScreen;
-import com.rjsoft.cabure.util.JPAUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
 import javax.imageio.ImageIO;
-import javax.persistence.EntityManager;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -57,11 +54,15 @@ public class CabureGUI extends javax.swing.JFrame
 //        homeRealizadosCtrl = new EmprestimoCtrl(em);
 
         initComponents();
-   
+
         setSize(TAMANHO_MAXIMO);
         setResizable(true);
         setMinimumSize(TAMANHO_MINIMO);
         setTitle(TITULO);
+        try {
+            setIconImage(new ImageIcon(getClass().getResource("/icone.png")).getImage());
+        } catch (Exception ex) {
+        }
     }
 
     public void iniciarPaineis() {
@@ -80,12 +81,13 @@ public class CabureGUI extends javax.swing.JFrame
 
         painelCentro = home;
         add(painelCentro, BorderLayout.CENTER);
-        
+
         //Listeners
         acordeon1.addListener(this);
         pesquisarAluno.addTableListener(this);
         pesquisarLivro.addTableListener(this);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

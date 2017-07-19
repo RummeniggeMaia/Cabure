@@ -38,7 +38,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="Gerenciar Empr&#xe9;stimos">
+            <TitledBorder justification="2" title="Realizar Empr&#xe9;stimos">
               <Font PropertyName="font" name="Tahoma" size="24" style="0"/>
             </TitledBorder>
           </Border>

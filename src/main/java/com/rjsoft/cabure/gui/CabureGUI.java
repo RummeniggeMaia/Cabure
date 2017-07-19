@@ -5,19 +5,15 @@ import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
-import com.rjsoft.cabure.gui.outros.PainelTextura;
+import com.rjsoft.cabure.gui.outros.SplashScreen;
 import com.rjsoft.cabure.util.JPAUtil;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.TexturePaint;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -53,16 +49,22 @@ public class CabureGUI extends javax.swing.JFrame
     private static final String TITULO = "Cabure - Sistema de Gerenciamento de Biblioteca";
 
     public CabureGUI() {
+//        EntityManager em = JPAUtil.EMF.createEntityManager();
+//        alunoCtrl = new AlunoCtrl(em);
+//        livroCtrl = new LivroCtrl(em);
+//        emprestimoCtrl = new EmprestimoCtrl(em);
+//        homeAtrasadosCtrl = new EmprestimoCtrl(em);
+//        homeRealizadosCtrl = new EmprestimoCtrl(em);
 
-        EntityManager em = JPAUtil.EMF.createEntityManager();
-        alunoCtrl = new AlunoCtrl(em);
-        livroCtrl = new LivroCtrl(em);
-        emprestimoCtrl = new EmprestimoCtrl(em);
-        homeAtrasadosCtrl = new EmprestimoCtrl(em);
-        homeRealizadosCtrl = new EmprestimoCtrl(em);
-        
         initComponents();
-        
+   
+        setSize(TAMANHO_MAXIMO);
+        setResizable(true);
+        setMinimumSize(TAMANHO_MINIMO);
+        setTitle(TITULO);
+    }
+
+    public void iniciarPaineis() {
         home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl);
         cadastrarAluno = new CadastrarAlunoPanel(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
@@ -78,16 +80,12 @@ public class CabureGUI extends javax.swing.JFrame
 
         painelCentro = home;
         add(painelCentro, BorderLayout.CENTER);
+        
         //Listeners
         acordeon1.addListener(this);
         pesquisarAluno.addTableListener(this);
         pesquisarLivro.addTableListener(this);
-        setSize(TAMANHO_MAXIMO);
-        setResizable(true);
-        setMinimumSize(TAMANHO_MINIMO);
-        setTitle(TITULO);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -344,6 +342,46 @@ public class CabureGUI extends javax.swing.JFrame
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_menuItemSobreActionPerformed
 
+    public AlunoCtrl getAlunoCtrl() {
+        return alunoCtrl;
+    }
+
+    public void setAlunoCtrl(AlunoCtrl alunoCtrl) {
+        this.alunoCtrl = alunoCtrl;
+    }
+
+    public LivroCtrl getLivroCtrl() {
+        return livroCtrl;
+    }
+
+    public void setLivroCtrl(LivroCtrl livroCtrl) {
+        this.livroCtrl = livroCtrl;
+    }
+
+    public EmprestimoCtrl getEmprestimoCtrl() {
+        return emprestimoCtrl;
+    }
+
+    public void setEmprestimoCtrl(EmprestimoCtrl emprestimoCtrl) {
+        this.emprestimoCtrl = emprestimoCtrl;
+    }
+
+    public EmprestimoCtrl getHomeAtrasadosCtrl() {
+        return homeAtrasadosCtrl;
+    }
+
+    public void setHomeAtrasadosCtrl(EmprestimoCtrl homeAtrasadosCtrl) {
+        this.homeAtrasadosCtrl = homeAtrasadosCtrl;
+    }
+
+    public EmprestimoCtrl getHomeRealizadosCtrl() {
+        return homeRealizadosCtrl;
+    }
+
+    public void setHomeRealizadosCtrl(EmprestimoCtrl homeRealizadosCtrl) {
+        this.homeRealizadosCtrl = homeRealizadosCtrl;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rjsoft.cabure.gui.Acordeon acordeon1;
@@ -445,5 +483,9 @@ public class CabureGUI extends javax.swing.JFrame
             painelCentro = cadastrarLivro;
             setPainelCentro();
         }
+    }
+
+    private JFrame getThis() {
+        return this;
     }
 }

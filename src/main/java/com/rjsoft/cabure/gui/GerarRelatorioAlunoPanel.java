@@ -63,6 +63,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         buttonGroupTipoRelatorio = new javax.swing.ButtonGroup();
         buttonGroupTipoSituacaoAluno = new javax.swing.ButtonGroup();
+        buttonGroupCategoriaPessoa = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         labelSituacao = new javax.swing.JLabel();
         labelErrTipoSituacaoAluno = new javax.swing.JLabel();
@@ -74,6 +75,11 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         radioButtonSituacaoInativos = new javax.swing.JRadioButton();
         labelTipoRelatorio = new javax.swing.JLabel();
         labelErrTipoRelatorioAluno = new javax.swing.JLabel();
+        labelSituacao1 = new javax.swing.JLabel();
+        radioButtonCategoriaTodas = new javax.swing.JRadioButton();
+        radioButtonCategoriaAlunos = new javax.swing.JRadioButton();
+        radioButtonCategoriaComunidade = new javax.swing.JRadioButton();
+        radioButtonCategoriaProfessores = new javax.swing.JRadioButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerar Relatório de Pessoas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
@@ -107,6 +113,25 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         labelErrTipoRelatorioAluno.setForeground(new java.awt.Color(255, 0, 0));
 
+        labelSituacao1.setText("Selecione a categoria de Pessoa a ser pesquisada:");
+
+        buttonGroupCategoriaPessoa.add(radioButtonCategoriaTodas);
+        radioButtonCategoriaTodas.setText("Todas as categorias (Aluno, Professor e Comunidade)");
+        radioButtonCategoriaTodas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioButtonCategoriaTodasActionPerformed(evt);
+            }
+        });
+
+        buttonGroupCategoriaPessoa.add(radioButtonCategoriaAlunos);
+        radioButtonCategoriaAlunos.setText("Alunos");
+
+        buttonGroupCategoriaPessoa.add(radioButtonCategoriaComunidade);
+        radioButtonCategoriaComunidade.setText("Comunidade");
+
+        buttonGroupCategoriaPessoa.add(radioButtonCategoriaProfessores);
+        radioButtonCategoriaProfessores.setText("Professores");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,10 +139,17 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelSituacao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -129,30 +161,34 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radioButtonSituacaoAtivos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioButtonSituacaoInativos)))
-                        .addGap(0, 279, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonGerarRelatorioLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(radioButtonSituacaoInativos))
+                            .addComponent(labelSituacao1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(radioButtonCategoriaTodas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonCategoriaAlunos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonCategoriaComunidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonCategoriaProfessores)))
+                        .addGap(0, 90, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelTipoRelatorio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelTipoRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelErrTipoRelatorioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTipoRelatorio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioButtonTipoSimplificado)
                     .addComponent(radioButtonTipoCompleto))
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelErrTipoSituacaoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelSituacao))
@@ -161,9 +197,17 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                     .addComponent(radioButtonSituacaoTodas)
                     .addComponent(radioButtonSituacaoAtivos)
                     .addComponent(radioButtonSituacaoInativos))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelSituacao1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonCategoriaTodas)
+                    .addComponent(radioButtonCategoriaAlunos)
+                    .addComponent(radioButtonCategoriaComunidade)
+                    .addComponent(radioButtonCategoriaProfessores))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonGerarRelatorioLivro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -179,15 +223,20 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void radioButtonCategoriaTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonCategoriaTodasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioButtonCategoriaTodasActionPerformed
 
     private void buttonGerarRelatorioLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGerarRelatorioLivroActionPerformed
         if (validacao()) {
             Boolean b = gerarCondicao();
-            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b);
+            String categoria = gerarCategoriaPessoa();
+            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b,categoria);
 
             gerarPDF(listaAlunos);
 
@@ -197,13 +246,19 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonGerarRelatorioLivro;
+    private javax.swing.ButtonGroup buttonGroupCategoriaPessoa;
     private javax.swing.ButtonGroup buttonGroupTipoRelatorio;
     private javax.swing.ButtonGroup buttonGroupTipoSituacaoAluno;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelErrTipoRelatorioAluno;
     private javax.swing.JLabel labelErrTipoSituacaoAluno;
     private javax.swing.JLabel labelSituacao;
+    private javax.swing.JLabel labelSituacao1;
     private javax.swing.JLabel labelTipoRelatorio;
+    private javax.swing.JRadioButton radioButtonCategoriaAlunos;
+    private javax.swing.JRadioButton radioButtonCategoriaComunidade;
+    private javax.swing.JRadioButton radioButtonCategoriaProfessores;
+    private javax.swing.JRadioButton radioButtonCategoriaTodas;
     private javax.swing.JRadioButton radioButtonSituacaoAtivos;
     private javax.swing.JRadioButton radioButtonSituacaoInativos;
     private javax.swing.JRadioButton radioButtonSituacaoTodas;
@@ -417,7 +472,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setPaddingBottom(10.f);
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase("RG", font));
+        cell = new PdfPCell(new Phrase("Categoria", font));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setPaddingBottom(10.f);
@@ -453,7 +508,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setPaddingBottom(10.f);
             table.addCell(cell);
-            cell = new PdfPCell(new Phrase(a.getRg(), font2));
+            cell = new PdfPCell(new Phrase(a.getCategoria(), font2));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setPaddingBottom(10.f);
@@ -543,5 +598,16 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return table;
+    }
+
+    private String gerarCategoriaPessoa() {
+        if(radioButtonCategoriaAlunos.isSelected()){
+            return "Aluno";
+        }else if(radioButtonCategoriaComunidade.isSelected()){
+            return "Comunidade";
+        }else if(radioButtonCategoriaProfessores.isSelected()){
+            return "Professor";
+        }
+        return "Todos";
     }
 }

@@ -71,16 +71,33 @@ public class AlunoJpaController {
         }
     }
 
-    public List<Aluno> pesquisarRelatorioAluno(Boolean condicao) {
-        Query query;
-        if (condicao == null) {
+    public List<Aluno> pesquisarRelatorioAluno(Boolean condicaoPessoa, String condicaoCategoria) {
+        Query query = null;
+        if (condicaoPessoa == null && condicaoCategoria.equals("Todos")) {
             query = entityManager.createQuery(
                     "SELECT a FROM Aluno a");
-        } else {
+        } else if (condicaoPessoa == null && !condicaoCategoria.equals("Todos")) {
             query = entityManager.createQuery(
-                    "SELECT a FROM Aluno a WHERE a.situacao = " + condicao);
+                    "SELECT a FROM Aluno a WHERE a.categoria = '" + condicaoCategoria + "'");
+            int i = query.getResultList().size();
+        } else if (condicaoPessoa == false && condicaoCategoria.equals("Todos")) {
+            query = entityManager.createQuery(
+                    "SELECT a FROM Aluno a WHERE a.situacao = " + condicaoPessoa);
+            int i = query.getResultList().size();
+        } else if (condicaoPessoa == false && !condicaoCategoria.equals("Todos")) {
+            query = entityManager.createQuery(
+                    "SELECT a FROM Aluno a WHERE a.situacao = " + condicaoPessoa + " AND a.categoria = '" + condicaoCategoria + "'");
+            int i = query.getResultList().size();
+        } else if (condicaoPessoa == true && condicaoCategoria.equals("Todos")) {
+            query = entityManager.createQuery(
+                    "SELECT a FROM Aluno a WHERE a.situacao = " + condicaoPessoa);
+            int i = query.getResultList().size();
+        } else if (condicaoPessoa == true && !condicaoCategoria.equals("Todos")) {
+            query = entityManager.createQuery(
+                    "SELECT a FROM Aluno a WHERE a.situacao = " + condicaoPessoa + " AND a.categoria = '" + condicaoCategoria + "'");
             int i = query.getResultList().size();
         }
+
         return (List<Aluno>) query.getResultList();
     }
 }

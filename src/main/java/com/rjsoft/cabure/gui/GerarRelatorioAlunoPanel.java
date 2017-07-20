@@ -18,8 +18,11 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.ColumnText;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
@@ -236,7 +239,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         if (validacao()) {
             Boolean b = gerarCondicao();
             String categoria = gerarCategoriaPessoa();
-            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b,categoria);
+            List<Aluno> listaAlunos = ctrl.pesquisarRelatorioAluno(b, categoria);
 
             gerarPDF(listaAlunos);
 
@@ -307,6 +310,8 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         jfc.setSelectedFile(new File(nomeArquivo));
         int esc = jfc.showSaveDialog(this);
         File diretorio = null;
+        Phrase phrase;
+        Paragraph paragraph;
         if (esc == JFileChooser.APPROVE_OPTION) {
             diretorio = jfc.getSelectedFile();
         } else {
@@ -315,7 +320,8 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream(diretorio));
-
+            MyFooter event = new MyFooter();
+            PdfWriter.getInstance(document, new FileOutputStream(diretorio)).setPageEvent(event);
             document.open();
 
             PdfPTable cabecalho = criarTabelaCabecalho(document);
@@ -329,6 +335,16 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
                 PdfPTable tabelaCompleta = criarTabelaCompleta(listaAlunos);
                 document.add(tabelaCompleta);
             }
+
+            if (listaAlunos.size() == 0) {
+                Font fontSemResultado = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+                phrase = new Phrase("\r\nA consulta não retornou nenhum resultado!!!", fontSemResultado);
+                paragraph = new Paragraph();
+                paragraph.add(phrase);
+                paragraph.setAlignment(Element.ALIGN_CENTER);
+                document.add(paragraph);
+            }
+
             JOptionPane.showMessageDialog(this, "Relatório de Pessoas emitido com sucesso!");
         } catch (FileNotFoundException | DocumentException ex) {
             Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -601,13 +617,34 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
     }
 
     private String gerarCategoriaPessoa() {
-        if(radioButtonCategoriaAlunos.isSelected()){
+        if (radioButtonCategoriaAlunos.isSelected()) {
             return "Aluno";
-        }else if(radioButtonCategoriaComunidade.isSelected()){
+        } else if (radioButtonCategoriaComunidade.isSelected()) {
             return "Comunidade";
-        }else if(radioButtonCategoriaProfessores.isSelected()){
+        } else if (radioButtonCategoriaProfessores.isSelected()) {
             return "Professor";
         }
         return "Todos";
+    }
+
+    class MyFooter extends PdfPageEventHelper {
+
+        Font ffont = new Font(Font.FontFamily.UNDEFINED, 10, Font.ITALIC);
+
+        public void onEndPage(PdfWriter writer, Document document) {
+            PdfContentByte cb = writer.getDirectContent();
+   //         Phrase header = new Phrase("this is a header", ffont);
+            Paragraph paragraph = new Paragraph();
+            Phrase footer = new Phrase("Sistema desenvolvido por RJ Soluções em Softwares - Tel: (84) 9  9701-7409 - Email: rjsolucoesdesoftware@gmail.com",ffont);
+            paragraph.add(footer);
+   //         ColumnText.showTextAligned(cb, Element.ALIGN_CENTER,
+   //                 header,
+   //                 (document.right() - document.left()) / 2 + document.leftMargin(),
+   //                 document.top() + 10, 0);
+            ColumnText.showTextAligned(cb, Element.ALIGN_CENTER,
+                    paragraph,
+                    (document.right() - document.left()) / 2 + document.leftMargin(),
+                    document.bottom() - 10, 0);
+        }
     }
 }

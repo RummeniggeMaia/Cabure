@@ -9,7 +9,10 @@ import com.rjsoft.cabure.util.JPAUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
@@ -43,79 +46,84 @@ public class Cabure {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
 
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
 //            TextureLookAndFeel.setTheme("Textile", "", "");
 //            UIManager.setLookAndFeel(new TextureLookAndFeel());
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CabureGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                
-//            }
-//        });
         /* Create and display the form */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    iniciarSplash();
-                    splash.setProgresso(0.1);
-                    EntityManager em = JPAUtil.EMF.createEntityManager();
-                    AlunoCtrl alunoCtrl = new AlunoCtrl(em);
-                    LivroCtrl livroCtrl = new LivroCtrl(em);
-                    EmprestimoCtrl emprestimoCtrl = new EmprestimoCtrl(em);
-                    EmprestimoCtrl homeAtrasadosCtrl = new EmprestimoCtrl(em);
-                    EmprestimoCtrl homeRealizadosCtrl = new EmprestimoCtrl(em);
-                    splash.setProgresso(0.5);
-                    CabureGUI gui = new CabureGUI();
-                    gui.setAlunoCtrl(alunoCtrl);
-                    gui.setLivroCtrl(livroCtrl);
-                    gui.setEmprestimoCtrl(emprestimoCtrl);
-                    gui.setHomeAtrasadosCtrl(homeAtrasadosCtrl);
-                    gui.setHomeRealizadosCtrl(homeRealizadosCtrl);
-                    splash.setProgresso(0.9);
-                    gui.iniciarPaineis();
-                    gui.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-                    gui.setVisible(true);
-                    splash.setProgresso(1);
-                    finalizarSplash();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(
-                            null,
-                            "Não foi possível se conectar com o banco de dados, sistema será finalizado.", "Erro ao iniciar Cabure",
-                            JOptionPane.ERROR_MESSAGE);
+                if (m()) {
                     try {
-                        String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
-                        PrintStream ps = new PrintStream(new File("Log_" + dataHora + ".txt"));
-                        ex.printStackTrace(ps);
-                    } catch (FileNotFoundException ex1) {
-                        ex1.printStackTrace();
-                    }
+                        iniciarSplash();
 
+                        EntityManager em = JPAUtil.EMF.createEntityManager();
+                        AlunoCtrl alunoCtrl = new AlunoCtrl(em);
+                        LivroCtrl livroCtrl = new LivroCtrl(em);
+                        EmprestimoCtrl emprestimoCtrl = new EmprestimoCtrl(em);
+                        EmprestimoCtrl homeAtrasadosCtrl = new EmprestimoCtrl(em);
+                        EmprestimoCtrl homeRealizadosCtrl = new EmprestimoCtrl(em);
+
+                        CabureGUI gui = new CabureGUI();
+                        gui.setAlunoCtrl(alunoCtrl);
+                        gui.setLivroCtrl(livroCtrl);
+                        gui.setEmprestimoCtrl(emprestimoCtrl);
+                        gui.setHomeAtrasadosCtrl(homeAtrasadosCtrl);
+                        gui.setHomeRealizadosCtrl(homeRealizadosCtrl);
+
+                        gui.iniciarPaineis();
+                        gui.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+                        gui.setVisible(true);
+
+                        finalizarSplash();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Não foi possível se conectar com o banco de dados, sistema será finalizado.", "Erro ao iniciar Cabure",
+                                JOptionPane.ERROR_MESSAGE);
+                        try {
+                            String dataHora = new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
+                            PrintStream ps = new PrintStream(new File("Log_" + dataHora + ".txt"));
+                            ex.printStackTrace(ps);
+                        } catch (FileNotFoundException ex1) {
+                            ex1.printStackTrace();
+                        }
+
+                        System.exit(0);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, 
+                            "Este computador não foi registrado!\n"
+                                    + "Por favor entrar em contato com a equipe de desenvolvimento.",
+                            "PC não habilitado a usar o sistema Caburé",
+                            JOptionPane.ERROR_MESSAGE);
                     System.exit(0);
                 }
-
             }
         });
-        //</editor-fold>
-        //</editor-fold>
-
-//        EntityManager em = JPAUtil.EMF.createEntityManager();
-//        em.close();
     }
 
+    public static boolean m() {
+        try {
+            //Colocar o mac da máquina do cliente aqui!
+            byte[] m = new byte[]{16, 120, -46, -80, 94, -85};
+
+            InetAddress ia = InetAddress.getLocalHost();
+            NetworkInterface ni = NetworkInterface.getByInetAddress(ia);
+            byte[] x = ni.getHardwareAddress();
+            
+            /** Descomente aqui pra saber o MAC da máquina.
+                Depois copie e cole no vertor "byte[] m" acima. */
+            //System.out.println(Arrays.toString(x));
+            
+            return Arrays.equals(m, x);
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 }

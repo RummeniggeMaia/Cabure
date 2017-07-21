@@ -10,12 +10,9 @@ import com.rjsoft.cabure.gui.listeners.AcordeonListener;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.imageio.ImageIO;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,6 +23,7 @@ public class Acordeon extends javax.swing.JPanel {
     private List<AcordeonListener> listeners;
     private boolean acordAluno;
     private boolean acordLivro;
+    private boolean acordRelatorio;
     /**
      * Creates new form Acordeon
      */
@@ -84,14 +82,17 @@ public class Acordeon extends javax.swing.JPanel {
         botPesAlunos = new javax.swing.JButton();
         botCadLivro = new javax.swing.JButton();
         botPesLivros = new javax.swing.JButton();
-        logo = new javax.swing.JLabel();
+        botRelatorioAlunos = new javax.swing.JButton();
+        botRelatorioLivros = new javax.swing.JButton();
+        botRelatorioEmprestimos = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         menuInicio = new javax.swing.JButton();
         menuAluno = new javax.swing.JButton();
         menuLivro = new javax.swing.JButton();
         menuEmprestimo = new javax.swing.JButton();
-        menuRelatorioAlunos = new javax.swing.JButton();
-        menuRelatorioLivros = new javax.swing.JButton();
-        menuRelatorioEmprestimos = new javax.swing.JButton();
+        menuRelatorios = new javax.swing.JButton();
 
         botCadAluno.setBackground(new java.awt.Color(255, 255, 255));
         botCadAluno.setText("Cadastrar");
@@ -117,26 +118,59 @@ public class Acordeon extends javax.swing.JPanel {
         botPesLivros.setBackground(new java.awt.Color(200, 200, 200));
         botPesLivros.setMaximumSize(new java.awt.Dimension(1000, 32));
 
+        botRelatorioAlunos.setBackground(new java.awt.Color(255, 255, 255));
+        botRelatorioAlunos.setText("Relatório Pessoas");
+        botRelatorioAlunos.setMaximumSize(new java.awt.Dimension(1000, 32));
+        botRelatorioAlunos = new BotaoIcone("Pessoas", BotaoIcone.ICON_RELATORIO_PESSOA, false);
+        botRelatorioAlunos.setMaximumSize(new Dimension(1000, 32));
+        botRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botRelatorioAlunosActionPerformed(evt);
+            }
+        });
+
+        botRelatorioLivros.setBackground(new java.awt.Color(255, 255, 255));
+        botRelatorioLivros.setText("Relatório Livros");
+        botRelatorioLivros.setMaximumSize(new java.awt.Dimension(1000, 32));
+        botRelatorioLivros = new BotaoIcone("Livros", BotaoIcone.ICON_RELATORIO_LIVRO, false);
+        botRelatorioLivros.setMaximumSize(new Dimension(1000, 32));
+        botRelatorioLivros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botRelatorioLivrosActionPerformed(evt);
+            }
+        });
+
+        botRelatorioEmprestimos.setBackground(new java.awt.Color(255, 255, 255));
+        botRelatorioEmprestimos.setText("Relatório Empréstimos");
+        botRelatorioEmprestimos.setMaximumSize(new java.awt.Dimension(1000, 32));
+        botRelatorioEmprestimos = new BotaoIcone("Empréstimos", BotaoIcone.ICON_RELATORIO_EMPRESTIMO, false);
+        botRelatorioEmprestimos.setMaximumSize(new Dimension(1000, 32));
+        botRelatorioEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botRelatorioEmprestimosActionPerformed(evt);
+            }
+        });
+
         setMinimumSize(new java.awt.Dimension(100, 100));
         setPreferredSize(new java.awt.Dimension(200, 100));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        try {
-            ImageIcon ii = new ImageIcon(ImageIO.read(new File("imagens/cabure_logo.png")));
-            logo.setIcon(ii);
-        } catch (Exception ex) {
-        }
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 50));
-        logo.setFocusable(false);
-        logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        logo.setMaximumSize(new java.awt.Dimension(1000, 154));
-        logo.setMinimumSize(new java.awt.Dimension(51, 16));
-        logo.setPreferredSize(new java.awt.Dimension(51, 16));
-        add(logo);
+        jPanel2.setMaximumSize(new java.awt.Dimension(1000, 30));
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        add(jPanel2);
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(32767, 135));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cabure_logomarca.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+
+        add(jPanel1);
 
         menuInicio.setText("Inicio");
+        menuInicio.setMargin(new java.awt.Insets(2, 2, 2, 2));
         menuInicio.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuInicio.setMinimumSize(new java.awt.Dimension(0, 0));
         menuInicio = new BotaoIcone("Inicio", BotaoIcone.ICON_HOME, false);
         menuInicio.setMaximumSize(new Dimension(1000, 32));
         menuInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -180,41 +214,16 @@ public class Acordeon extends javax.swing.JPanel {
         });
         add(menuEmprestimo);
 
-        menuRelatorioAlunos.setText("Relatório Pessoas");
-        menuRelatorioAlunos = new BotaoIcone("Relatório Pessoas", BotaoIcone.ICON_RELATORIO, false);
-        menuRelatorioAlunos.setMaximumSize(new java.awt.Dimension(1000, 32));
-        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
-        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
-        menuRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
+        menuRelatorios.setText("Relatórios");
+        menuRelatorios.setMaximumSize(new java.awt.Dimension(1000, 32));
+        menuRelatorios = new BotaoIcone("Relatórios", BotaoIcone.ICON_RELATORIO, true);
+        menuRelatorios.setMaximumSize(new Dimension(1000, 32));
+        menuRelatorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRelatorioAlunosActionPerformed(evt);
+                menuRelatoriosActionPerformed(evt);
             }
         });
-        add(menuRelatorioAlunos);
-
-        menuRelatorioLivros.setText("Relatório Livros");
-        menuRelatorioLivros = new BotaoIcone("Relatório Livros", BotaoIcone.ICON_RELATORIO, false);
-        menuRelatorioLivros.setMaximumSize(new java.awt.Dimension(1000, 32));
-        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
-        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
-        menuRelatorioLivros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRelatorioLivrosActionPerformed(evt);
-            }
-        });
-        add(menuRelatorioLivros);
-
-        menuRelatorioEmprestimos.setText("Relatório Empréstimos");
-        menuRelatorioEmprestimos = new BotaoIcone("Relatório Empréstimos", BotaoIcone.ICON_RELATORIO, false);
-        menuRelatorioEmprestimos.setMaximumSize(new java.awt.Dimension(1000, 32));
-        menuEmprestimo = new BotaoIcone("Empréstimos", BotaoIcone.ICON_EMPRESTIMO, false);
-        menuEmprestimo.setMaximumSize(new Dimension(1000, 32));
-        menuRelatorioEmprestimos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRelatorioEmprestimosActionPerformed(evt);
-            }
-        });
-        add(menuRelatorioEmprestimos);
+        add(menuRelatorios);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlunoActionPerformed
@@ -251,17 +260,33 @@ public class Acordeon extends javax.swing.JPanel {
         botaoPressionado(AcordeonListener.MENU_EMPRESTIMO);
     }//GEN-LAST:event_menuEmprestimoActionPerformed
 
-    private void menuRelatorioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioAlunosActionPerformed
+    private void botRelatorioAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRelatorioAlunosActionPerformed
         botaoPressionado(AcordeonListener.MENU_RELATORIO_ALUNOS);
-    }//GEN-LAST:event_menuRelatorioAlunosActionPerformed
+    }//GEN-LAST:event_botRelatorioAlunosActionPerformed
 
-    private void menuRelatorioLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioLivrosActionPerformed
+    private void botRelatorioLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRelatorioLivrosActionPerformed
          botaoPressionado(AcordeonListener.MENU_RELATORIO_LIVROS);
-    }//GEN-LAST:event_menuRelatorioLivrosActionPerformed
+    }//GEN-LAST:event_botRelatorioLivrosActionPerformed
 
-    private void menuRelatorioEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatorioEmprestimosActionPerformed
+    private void botRelatorioEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botRelatorioEmprestimosActionPerformed
          botaoPressionado(AcordeonListener.MENU_RELATORIO_EMPRESTIMOS);
-    }//GEN-LAST:event_menuRelatorioEmprestimosActionPerformed
+    }//GEN-LAST:event_botRelatorioEmprestimosActionPerformed
+
+    private void menuRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatoriosActionPerformed
+        acordRelatorio = !acordRelatorio;
+        int index = getComponentZOrder(menuRelatorios);
+        if (acordRelatorio) {
+            add(botRelatorioAlunos, index + 1);
+            add(botRelatorioLivros, index + 2);
+            add(botRelatorioEmprestimos, index + 3);
+        } else {
+            remove(botRelatorioAlunos);
+            remove(botRelatorioLivros);
+            remove(botRelatorioEmprestimos);
+        }
+        revalidate();
+        repaint();
+    }//GEN-LAST:event_menuRelatoriosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -269,13 +294,16 @@ public class Acordeon extends javax.swing.JPanel {
     private javax.swing.JButton botCadLivro;
     private javax.swing.JButton botPesAlunos;
     private javax.swing.JButton botPesLivros;
-    private javax.swing.JLabel logo;
+    private javax.swing.JButton botRelatorioAlunos;
+    private javax.swing.JButton botRelatorioEmprestimos;
+    private javax.swing.JButton botRelatorioLivros;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton menuAluno;
     private javax.swing.JButton menuEmprestimo;
     private javax.swing.JButton menuInicio;
     private javax.swing.JButton menuLivro;
-    private javax.swing.JButton menuRelatorioAlunos;
-    private javax.swing.JButton menuRelatorioEmprestimos;
-    private javax.swing.JButton menuRelatorioLivros;
+    private javax.swing.JButton menuRelatorios;
     // End of variables declaration//GEN-END:variables
 }

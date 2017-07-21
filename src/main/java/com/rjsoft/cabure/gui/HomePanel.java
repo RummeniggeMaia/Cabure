@@ -2,6 +2,7 @@ package com.rjsoft.cabure.gui;
 
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
+import com.rjsoft.cabure.modelo.Aluno;
 import com.rjsoft.cabure.modelo.Emprestimo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -501,6 +502,7 @@ public class HomePanel extends javax.swing.JPanel {
                     atrasadosCtrl.setEmprestimo(r);
                     atrasadosCtrl.salvarEmprestimo();
                     atrasadosCtrl.setEmprestimo(null);
+                    pesquisarEA();
                     JOptionPane.showMessageDialog(
                             null,
                             "Empréstimo com id \"" + id + "\" foi finalizado com sucesso!",
@@ -538,6 +540,7 @@ public class HomePanel extends javax.swing.JPanel {
                     realizadosCtrl.setEmprestimo(r);
                     realizadosCtrl.salvarEmprestimo();
                     realizadosCtrl.setEmprestimo(null);
+                    pesquisarER();
                     JOptionPane.showMessageDialog(
                             null,
                             "Empréstimo com id \"" + id + "\" foi finalizado com sucesso!",

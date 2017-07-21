@@ -28,6 +28,7 @@ import com.rjsoft.cabure.controle.EmprestimoCtrl;
 import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.modelo.Emprestimo;
 import com.rjsoft.cabure.modelo.Livro;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -261,17 +262,17 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         JFileChooser jfc = new JFileChooser();
         jfc.setSelectedFile(new File(nomeArquivo));
         int esc = jfc.showSaveDialog(this);
-        File diretorio = null;
+        File arquivo = null;
         if (esc == JFileChooser.APPROVE_OPTION) {
-            diretorio = jfc.getSelectedFile();
+            arquivo = jfc.getSelectedFile();
         } else {
             return;
         }
         try {
 
-            PdfWriter.getInstance(document, new FileOutputStream(diretorio));
+            PdfWriter.getInstance(document, new FileOutputStream(arquivo));
             MyFooter event = new MyFooter();
-            PdfWriter.getInstance(document, new FileOutputStream(diretorio)).setPageEvent(event);
+            PdfWriter.getInstance(document, new FileOutputStream(arquivo)).setPageEvent(event);
             document.open();
 
             PdfPTable cabecalho = criarTabelaCabecalho(document);
@@ -301,11 +302,11 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
             document.close();
         }
 
-//        try {
-//            Desktop.getDesktop().open(new File(nomeArquivo));
-//        } catch (IOException ex) {
-//            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            Desktop.getDesktop().open(arquivo);
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioLivroPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private PdfPTable criarTabelaCabecalho(Document document) {
@@ -325,7 +326,7 @@ public class GerarRelatorioLivroPanel extends javax.swing.JPanel {
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
 
         try {
-            image = Image.getInstance("imagens/cabure_logo_gs.png");
+            image = Image.getInstance(getClass().getClassLoader().getResource("imagens/cabure_logo_gs.png"));
             image.setAlignment(Element.ALIGN_CENTER);
             cellTitulo = new PdfPCell(
                     new Phrase("Sistema de Gerenciamento de Biblioteca - Caburé",

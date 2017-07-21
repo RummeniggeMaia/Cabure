@@ -26,6 +26,7 @@ import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rjsoft.cabure.controle.AlunoCtrl;
 import com.rjsoft.cabure.modelo.Aluno;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -226,8 +227,8 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -309,19 +310,19 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         JFileChooser jfc = new JFileChooser();
         jfc.setSelectedFile(new File(nomeArquivo));
         int esc = jfc.showSaveDialog(this);
-        File diretorio = null;
+        File arquivo = null;
         Phrase phrase;
         Paragraph paragraph;
         if (esc == JFileChooser.APPROVE_OPTION) {
-            diretorio = jfc.getSelectedFile();
+            arquivo = jfc.getSelectedFile();
         } else {
             return;
         }
 
         try {
-            PdfWriter.getInstance(document, new FileOutputStream(diretorio));
+            PdfWriter.getInstance(document, new FileOutputStream(arquivo));
             MyFooter event = new MyFooter();
-            PdfWriter.getInstance(document, new FileOutputStream(diretorio)).setPageEvent(event);
+            PdfWriter.getInstance(document, new FileOutputStream(arquivo)).setPageEvent(event);
             document.open();
 
             PdfPTable cabecalho = criarTabelaCabecalho(document);
@@ -351,11 +352,11 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         } finally {
             document.close();
         }
-//        try {
-//            Desktop.getDesktop().open(new File(nomeArquivo));
-//        } catch (IOException ex) {
-//            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            Desktop.getDesktop().open(arquivo);
+        } catch (IOException ex) {
+            Logger.getLogger(GerarRelatorioAlunoPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private PdfPTable criarTabelaSimplificada(List<Aluno> listaAlunos) throws DocumentException {
@@ -568,7 +569,7 @@ public class GerarRelatorioAlunoPanel extends javax.swing.JPanel {
         Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
 
         try {
-            image = Image.getInstance("imagens/cabure_logo_gs.png");
+            image = Image.getInstance(getClass().getClassLoader().getResource("imagens/cabure_logo_gs.png"));
             image.setAlignment(Element.ALIGN_CENTER);
             cellTitulo = new PdfPCell(
                     new Phrase("Sistema de Gerenciamento de Biblioteca - Caburé",

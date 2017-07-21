@@ -33,19 +33,25 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuIniciar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/home.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Inicio"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuIniciarActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuIniciar.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/home.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuIniciar.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/home.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemIniciar">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/home.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Menu Inicial"/>
               </Properties>
@@ -57,10 +63,13 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuAluno">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/pessoas.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pessoas"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pessoas.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pessoas.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCadAluno">
@@ -68,13 +77,16 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F2"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/add.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar Pessoa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCadAlunoActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemCadAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/add.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuItemCadAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/add.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
               </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemPesAluno">
@@ -82,23 +94,29 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F3"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/pesquisar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pesquisar Pessoa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPesAlunoActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemPesAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pesquisar.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuItemPesAluno.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pesquisar.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
               </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuLivro">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/livros.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Livros"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/livros.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/livros.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemCadLivro">
@@ -106,13 +124,16 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F4"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/add.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar Livro"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCadLivroActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemCadLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/add.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuItemCadLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/add.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
               </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemPesLivro">
@@ -120,23 +141,29 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F5"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/pesquisar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pesquisar Livro"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemPesLivroActionPerformed"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuItemPesLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pesquisar.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuItemPesLivro.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/pesquisar.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
               </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/emprestimos.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Empr&#xe9;stimos"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    jMenu2.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/emprestimos.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    jMenu2.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/emprestimos.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemEmprestimos">
@@ -144,7 +171,10 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F6"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Verificar Empr&#xe9;stimos"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/emprestimos.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Realizar Empr&#xe9;stimos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemEmprestimosActionPerformed"/>
@@ -154,16 +184,22 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/relatorio.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    jMenu1.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/relatorio.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    jMenu1.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/relatorio.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemRelAlunos">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F7"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/relatorio_pessoas.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Alunos"/>
               </Properties>
@@ -176,6 +212,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F8"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/relatorio_livros.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Livros"/>
               </Properties>
               <Events>
@@ -187,6 +226,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F9"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/relatorio_emprestimos.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Empr&#xe9;stimos"/>
               </Properties>
               <Events>
@@ -197,14 +239,20 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuSobre">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/info.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Sobre"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    menuSobre.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/info.png&quot;))));&#xa;} catch (Exception ex) {&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//try {&#xa;//    menuSobre.setIcon(new ImageIcon(ImageIO.read(new File(&quot;imagens/info.png&quot;))));&#xa;//} catch (Exception ex) {&#xa;//}"/>
           </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemSobre">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/info.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es"/>
               </Properties>
               <Events>
@@ -234,7 +282,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-3,0,0,2,88"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-55,0,0,2,86"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>

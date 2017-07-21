@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -34,12 +35,22 @@ public class SplashScreen extends javax.swing.JFrame {
         setContentPane(screen);
         progresso = 0.0;
         try {
-            splash = ImageIO.read(getClass().getResourceAsStream("/splash.png"));
+            splash = ImageIO.read(getClass().getResourceAsStream("/imagens/splash.png"));
         } catch (Exception ex) {
             try {
-                splash = ImageIO.read(getClass().getResourceAsStream("/resources/splash.png"));
+                splash = ImageIO.read(getClass().getResourceAsStream("/resources/imagens/splash.png"));
             } catch (Exception ex2) {
             }
+        }
+        try {
+            setIconImage(
+                    new ImageIcon(
+                            ImageIO.read(
+                                    getClass().getResourceAsStream("/imagens/cabure_logomarca.png")
+                            )
+                    ).getImage()
+            );
+        } catch (Exception ex) {
         }
         setUndecorated(true);
         setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
@@ -121,7 +132,6 @@ public class SplashScreen extends javax.swing.JFrame {
 //                    )
 //            );
 //        }
-    
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);

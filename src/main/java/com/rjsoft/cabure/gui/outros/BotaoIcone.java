@@ -5,13 +5,13 @@
  */
 package com.rjsoft.cabure.gui.outros;
 
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -28,61 +28,88 @@ public class BotaoIcone extends JButton implements ActionListener {
     public static final int ICON_PESQUISAR = 5;
     public static final int ICON_RELATORIO = 6;
     public static final int ICON_PESSOAS = 7;
+    public static final int ICON_RELATORIO_PESSOA = 8;
+    public static final int ICON_RELATORIO_LIVRO = 9;
+    public static final int ICON_RELATORIO_EMPRESTIMO = 10;
 
     private boolean expandivel;
     private boolean expandido;
 
-    private BufferedImage iconeImg;
-    private BufferedImage collapsedImg;
-    private BufferedImage expandedImg;
-    
+    private Image iconeImg;
+    private Image collapsedImg;
+    private Image expandedImg;
+
     private int distIconEsq;
 
     public BotaoIcone(String text, int tipo, boolean expandivel) {
         super(text);
-        String imgUrl = "imagens/";
+        String imgNome = "/imagens/";
         distIconEsq = 8;
         switch (tipo) {
             case ICON_HOME: {
-                imgUrl += "home.png";
+                imgNome += "home.png";
                 break;
             }
             case ICON_LIVRO: {
-                imgUrl += "livros.png";
+                imgNome += "livros.png";
                 break;
             }
             case ICON_ALUNO: {
-                imgUrl += "alunos.png";
+                imgNome += "alunos.png";
                 break;
             }
             case ICON_PESSOAS: {
-                imgUrl += "pessoas.png";
+                imgNome += "pessoas.png";
                 break;
             }
             case ICON_EMPRESTIMO: {
-                imgUrl += "emprestimos.png";
+                imgNome += "emprestimos.png";
                 break;
             }
             case ICON_ADD: {
-                imgUrl += "add.png";
+                imgNome += "add.png";
                 distIconEsq = 35;
                 break;
             }
             case ICON_PESQUISAR: {
-                imgUrl += "pesquisar.png";
+                imgNome += "pesquisar.png";
                 distIconEsq = 35;
                 break;
             }
             case ICON_RELATORIO: {
-                imgUrl += "relatorio.png";
+                imgNome += "relatorio.png";
+                break;
+            }
+            case ICON_RELATORIO_PESSOA: {
+                imgNome += "relatorio_pessoas.png";
+                distIconEsq = 30;
+                break;
+            }
+            case ICON_RELATORIO_LIVRO: {
+                imgNome += "relatorio_livros.png";
+                distIconEsq = 30;
+                break;
+            }
+            case ICON_RELATORIO_EMPRESTIMO: {
+                imgNome += "relatorio_emprestimos.png";
+                distIconEsq = 30;
                 break;
             }
         }
         try {
-            iconeImg = ImageIO.read(new File(imgUrl));
-            collapsedImg = ImageIO.read(new File("imagens/collapse.png"));
-            expandedImg = ImageIO.read(new File("imagens/expand.png"));
+            iconeImg = new ImageIcon(getClass().getResource(imgNome)).getImage();
+            expandedImg = new ImageIcon(getClass().getResource("/imagens/expand.png")).getImage();
+            collapsedImg = new ImageIcon(getClass().getResource("/imagens/collapse.png")).getImage();
+//            System.out.println(">>>> " + new ImageIcon(getClass().getResource("/imagens/expand.png")));
+//            iconeImg = ImageIO.read(getClass().getClassLoader().getResourceAsStream(imgNome));
+//            ImageIcon ii = new ImageIcon(getClass().getClassLoader().getResource("\\imagens\\collapse.png"));
+//            collapsedImg = (BufferedImage) ii.getImage();
+//            ii = new ImageIcon(getClass().getClassLoader().getResource("\\imagens\\expand.png"));
+//            expandedImg = (BufferedImage) ii.getImage();
+//            collapsedImg = ImageIO.read(getClass().getClassLoader().getResource("resources/imagens/collapse.png"));
+//            expandedImg = ImageIO.read(getClass().getClassLoader().getResource("resources/imagens/expand.png"));
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
         this.expandivel = expandivel;
         addActionListener(this);
@@ -103,12 +130,12 @@ public class BotaoIcone extends JButton implements ActionListener {
         if (iconeImg == null || expandedImg == null || collapsedImg == null) {
             return;
         }
-        g2d.drawImage(iconeImg, null, distIconEsq, 10);
+        g2d.drawImage(iconeImg, distIconEsq, 10, null);
         if (expandivel) {
             if (expandido) {
-                g2d.drawImage(expandedImg, null, getWidth() - 25, 12);
+                g2d.drawImage(expandedImg, getWidth() - 25, 12, null);
             } else {
-                g2d.drawImage(collapsedImg, null, getWidth() - 25, 12);
+                g2d.drawImage(collapsedImg, getWidth() - 25, 12, null);
             }
         }
     }

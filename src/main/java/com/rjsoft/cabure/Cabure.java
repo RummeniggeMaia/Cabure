@@ -111,7 +111,7 @@ public class Cabure {
     public static boolean m() {
         try {
             //Colocar o mac da máquina do cliente aqui!
-            byte[] m = new byte[]{16, 120, -46, -80, 94, -85};
+            byte[] m = new byte[]{92, -55, -45, 99, -3, 105};
 
             InetAddress ia = InetAddress.getLocalHost();
             NetworkInterface ni = NetworkInterface.getByInetAddress(ia);

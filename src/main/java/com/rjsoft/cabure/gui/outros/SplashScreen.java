@@ -37,10 +37,6 @@ public class SplashScreen extends javax.swing.JFrame {
         try {
             splash = ImageIO.read(getClass().getResourceAsStream("/imagens/splash.png"));
         } catch (Exception ex) {
-            try {
-                splash = ImageIO.read(getClass().getResourceAsStream("/resources/imagens/splash.png"));
-            } catch (Exception ex2) {
-            }
         }
         try {
             setIconImage(

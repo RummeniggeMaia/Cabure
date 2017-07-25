@@ -1,9 +1,11 @@
 package com.rjsoft.cabure.gui;
 
 import com.rjsoft.cabure.controle.EmprestimoCtrl;
+import com.rjsoft.cabure.controle.LivroCtrl;
 import com.rjsoft.cabure.gui.listeners.TableListener;
 import com.rjsoft.cabure.modelo.Aluno;
 import com.rjsoft.cabure.modelo.Emprestimo;
+import com.rjsoft.cabure.modelo.Livro;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
@@ -21,15 +23,17 @@ public class HomePanel extends javax.swing.JPanel {
 
     private EmprestimoCtrl realizadosCtrl;
     private EmprestimoCtrl atrasadosCtrl;
+    private LivroCtrl livroCtrl;
     private String[] colunasRealizados;
     private String[] colunasAtrasados;
 
     /**
      * Creates new form Home
      */
-    public HomePanel(EmprestimoCtrl realizados, EmprestimoCtrl atrasados) {
+    public HomePanel(EmprestimoCtrl realizados, EmprestimoCtrl atrasados, LivroCtrl livroCtrl) {
         this.realizadosCtrl = realizados;
         this.atrasadosCtrl = atrasados;
+        this.livroCtrl = livroCtrl;
         realizados.getPaginador().setLimit(25);
         atrasados.getPaginador().setLimit(25);
 
@@ -498,6 +502,11 @@ public class HomePanel extends javax.swing.JPanel {
             if (esc == JOptionPane.OK_OPTION) {
                 if (id != null) {
                     Emprestimo r = atrasadosCtrl.pesquisarPorId(id);
+                    int qtd = r.getQuantidade();
+                    Livro l = r.getLivro();
+                    l.setQntEstante(l.getQntEstante() + qtd);
+                    livroCtrl.setLivro(l);
+                    livroCtrl.salvarLivro();
                     r.setFinalizado(true);
                     atrasadosCtrl.setEmprestimo(r);
                     atrasadosCtrl.salvarEmprestimo();
@@ -536,6 +545,11 @@ public class HomePanel extends javax.swing.JPanel {
             if (esc == JOptionPane.OK_OPTION) {
                 if (id != null) {
                     Emprestimo r = realizadosCtrl.pesquisarPorId(id);
+                    int qtd = r.getQuantidade();
+                    Livro l = r.getLivro();
+                    l.setQntEstante(l.getQntEstante() + qtd);
+                    livroCtrl.setLivro(l);
+                    livroCtrl.salvarLivro();
                     r.setFinalizado(true);
                     realizadosCtrl.setEmprestimo(r);
                     realizadosCtrl.salvarEmprestimo();

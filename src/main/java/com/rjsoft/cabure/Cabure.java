@@ -111,7 +111,7 @@ public class Cabure {
     public static boolean m() {
         try {
             //Colocar o mac da máquina do cliente aqui!
-            byte[] m = new byte[]{92, -55, -45, 99, -3, 105};
+            byte[] m = new byte[]{16, 120, -46, -80, 94, -85};
 
             InetAddress ia = InetAddress.getLocalHost();
             NetworkInterface ni = NetworkInterface.getByInetAddress(ia);
@@ -119,7 +119,7 @@ public class Cabure {
             
             /** Descomente aqui pra saber o MAC da máquina.
                 Depois copie e cole no vertor "byte[] m" acima. */
-            //System.out.println(Arrays.toString(x));
+            System.out.println(Arrays.toString(x));
             
             return Arrays.equals(m, x);
         } catch (Exception ex) {

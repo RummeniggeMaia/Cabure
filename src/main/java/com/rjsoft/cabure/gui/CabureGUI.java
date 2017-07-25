@@ -72,7 +72,7 @@ public class CabureGUI extends javax.swing.JFrame
     }
 
     public void iniciarPaineis() {
-        home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl);
+        home = new HomePanel(homeRealizadosCtrl, homeAtrasadosCtrl, livroCtrl);
         cadastrarAluno = new CadastrarAlunoPanel(alunoCtrl);
         pesquisarAluno = new PesquisarAlunoPanel(alunoCtrl);
         cadastrarLivro = new CadastrarLivroPanel(livroCtrl);

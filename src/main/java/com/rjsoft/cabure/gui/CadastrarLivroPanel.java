@@ -63,7 +63,6 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         labelErrVolume = new javax.swing.JLabel();
         labelPaginas = new javax.swing.JLabel();
         labelErrPaginas = new javax.swing.JLabel();
-        textFieldPaginas = new javax.swing.JFormattedTextField();
         textFieldVolume = new javax.swing.JTextField();
         textFieldNumeroEdicao = new javax.swing.JTextField();
         labelTitulo = new javax.swing.JLabel();
@@ -85,6 +84,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         textFieldSerie = new javax.swing.JTextField();
         textFieldISBN = new javax.swing.JTextField();
         buttonSalvar = new javax.swing.JButton();
+        textFieldPaginas = new javax.swing.JTextField();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastrar Livro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24))); // NOI18N
 
@@ -163,12 +163,6 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
 
         labelErrPaginas.setForeground(new java.awt.Color(255, 0, 0));
 
-        try {
-            textFieldPaginas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         labelTitulo.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         labelTitulo.setText("Título:");
 
@@ -195,7 +189,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
         labelErrSerie.setForeground(new java.awt.Color(255, 0, 0));
 
         labelISBN.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        labelISBN.setText("ISBN:");
+        labelISBN.setText("CDD:");
 
         labelErrISBN.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -238,13 +232,23 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                             .addComponent(textFieldSegundoAutor)
                             .addComponent(textFieldPrimeiroAutor)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(textFieldNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldPaginas))
+                                .addComponent(textFieldSubtitulo))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldISBN))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(textFieldNumeroEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(textFieldVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textFieldPaginas))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -314,17 +318,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
                                         .addComponent(labelISBN)
                                         .addGap(6, 6, 6)
                                         .addComponent(labelErrISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(textFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldSubtitulo))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(textFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textFieldISBN)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -672,7 +666,7 @@ public class CadastrarLivroPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textFieldId;
     private javax.swing.JTextField textFieldLocal;
     private javax.swing.JTextField textFieldNumeroEdicao;
-    private javax.swing.JFormattedTextField textFieldPaginas;
+    private javax.swing.JTextField textFieldPaginas;
     private javax.swing.JTextField textFieldPrimeiroAutor;
     private javax.swing.JFormattedTextField textFieldQntEstante;
     private javax.swing.JTextField textFieldSegundoAutor;

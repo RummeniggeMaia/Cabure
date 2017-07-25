@@ -224,6 +224,8 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
 
             List<Emprestimo> listaEmprestimos = ctrlEmprestimo.pesquisarEmprestimos();
             List<Emprestimo> listaEmprestimosAtrasados = ctrlEmprestimo.pesquisarAtrasados();
+            listaEmprestimos = removerEmprestimosFinalizados(listaEmprestimos);
+            listaEmprestimosAtrasados = removerEmprestimosFinalizados(listaEmprestimosAtrasados);
 
             gerarPDF(listaEmprestimos, listaEmprestimosAtrasados);
 
@@ -812,6 +814,17 @@ public class GerarRelatorioEmprestimoPanel extends javax.swing.JPanel {
         }
 
         return table;
+    }
+
+    private List<Emprestimo> removerEmprestimosFinalizados(List<Emprestimo> listaEmprestimos) {
+      List<Emprestimo> aux = new ArrayList<Emprestimo>();
+      
+      for(Emprestimo e : listaEmprestimos){
+          if(e.isFinalizado() == false)
+              aux.add(e);
+      }
+      
+      return aux;
     }
 
     class MyFooter extends PdfPageEventHelper {
